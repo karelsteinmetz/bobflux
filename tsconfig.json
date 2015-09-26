@@ -1,0 +1,33 @@
+{
+    "version": "1.6.2",
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es6",
+        "module": "amd",
+        "outDir": "dist",
+        "sourceMap": true,
+        "removeComments": true,
+        "listFiles": true,
+        "declaration": true
+    },
+    "formatCodeOptions": {
+        "indentSize": 4,
+        "tabSize": 4,
+        "newLineCharacter": "\r\n",
+        "convertTabsToSpaces": true,
+        "insertSpaceAfterCommaDelimiter": true,
+        "insertSpaceAfterSemicolonInForStatements": true,
+        "insertSpaceBeforeAndAfterBinaryOperators": true,
+        "insertSpaceAfterKeywordsInControlFlowStatements": true,
+        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+        "placeOpenBraceOnNewLineForFunctions": false,
+        "placeOpenBraceOnNewLineForControlBlocks": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./node_modules/**/*"
+    ],
+    "files": [
+    ]
+}

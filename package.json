@@ -1,0 +1,30 @@
+{
+  "name": "bobflux",
+  "version": "0.0.1",
+  "description": "Bobflux is pure functional implementation of FLUX pattern and is fitted to Bobril.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karelsteinmetz/bobflux.git"
+  },
+  "keywords": [
+    "bobril",
+    "flux",
+    "es6"
+  ],
+  "author": {
+    "name": "Karel Steinmetz",
+    "email": "karel.steinmetz@gmail.com"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "bobril": "*"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jasmine": "^2.0.1",
+    "gulp-typescript": "^2.8.2"
+  },
+  "license": "MIT"
+}
