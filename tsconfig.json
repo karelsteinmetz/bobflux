@@ -26,8 +26,21 @@
     },
     "filesGlob": [
         "./**/*.ts",
-        "./node_modules/**/*"
+        "./node_modules/bobril/**/*.ts",
+        "!/node_modules/**/*"
     ],
     "files": [
+        "./node_modules/bobril/index.d.ts",
+        "./node_modules/bobril/index.ts",
+        "./spec/helpers.spec.ts",
+        "./spec/jasmine.d.ts",
+        "./spec/store.spec.ts",
+        "./src/actionFactory.ts",
+        "./src/component.ts",
+        "./src/cursor.ts",
+        "./src/helpers.ts",
+        "./src/lib.ts",
+        "./src/state.ts",
+        "./src/store.ts"
     ]
 }
