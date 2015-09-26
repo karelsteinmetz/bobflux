@@ -25,9 +25,9 @@
         "placeOpenBraceOnNewLineForControlBlocks": false
     },
     "filesGlob": [
-        "./**/*.ts",
-        "./node_modules/bobril/**/*.ts",
-        "!/node_modules/**/*"
+        "./**/*.ts",,
+        "!./node_modules/**/*"
+        "./node_modules/bobril/**/*.ts"
     ],
     "files": [
         "./node_modules/bobril/index.d.ts",
