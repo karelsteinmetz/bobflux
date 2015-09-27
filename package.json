@@ -16,7 +16,7 @@
     "email": "karel.steinmetz@gmail.com"
   },
   "files": [
-    "src"
+    "dist/src"
   ],
   "dependencies": {
     "bobril": "*"
