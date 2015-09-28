@@ -1,0 +1,63 @@
+{
+    "version": "1.6.2",
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es3",
+        "module": "amd",
+        "outDir": "dist",
+        "sourceMap": true,
+        "removeComments": true,
+        "listFiles": true,
+        "declaration": true
+    },
+    "formatCodeOptions": {
+        "indentSize": 4,
+        "tabSize": 4,
+        "newLineCharacter": "\r\n",
+        "convertTabsToSpaces": true,
+        "insertSpaceAfterCommaDelimiter": true,
+        "insertSpaceAfterSemicolonInForStatements": true,
+        "insertSpaceBeforeAndAfterBinaryOperators": true,
+        "insertSpaceAfterKeywordsInControlFlowStatements": true,
+        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+        "placeOpenBraceOnNewLineForFunctions": false,
+        "placeOpenBraceOnNewLineForControlBlocks": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*",
+        "./node_modules/bobril/**/*.ts",
+        "./node_modules/bobflux/**/*.ts"
+    ],
+    "files": [
+        "./dist/node_modules/bobflux/dist/src/actionFactory.d.ts",
+        "./dist/node_modules/bobflux/dist/src/component.d.ts",
+        "./dist/node_modules/bobflux/dist/src/cursor.d.ts",
+        "./dist/node_modules/bobflux/dist/src/helpers.d.ts",
+        "./dist/node_modules/bobflux/dist/src/lib.d.ts",
+        "./dist/node_modules/bobflux/dist/src/state.d.ts",
+        "./dist/node_modules/bobflux/dist/src/store.d.ts",
+        "./dist/node_modules/bobril/index.d.ts",
+        "./dist/src/app.d.ts",
+        "./dist/src/bootstrap.d.ts",
+        "./src/app.ts",
+        "./src/bootstrap.ts",
+        "./node_modules/bobril/index.d.ts",
+        "./node_modules/bobril/index.ts",
+        "./node_modules/bobflux/dist/src/actionFactory.d.ts",
+        "./node_modules/bobflux/dist/src/actionFactory.ts",
+        "./node_modules/bobflux/dist/src/component.d.ts",
+        "./node_modules/bobflux/dist/src/component.ts",
+        "./node_modules/bobflux/dist/src/cursor.d.ts",
+        "./node_modules/bobflux/dist/src/cursor.ts",
+        "./node_modules/bobflux/dist/src/helpers.d.ts",
+        "./node_modules/bobflux/dist/src/helpers.ts",
+        "./node_modules/bobflux/dist/src/lib.d.ts",
+        "./node_modules/bobflux/dist/src/lib.ts",
+        "./node_modules/bobflux/dist/src/state.d.ts",
+        "./node_modules/bobflux/dist/src/state.ts",
+        "./node_modules/bobflux/dist/src/store.d.ts",
+        "./node_modules/bobflux/dist/src/store.ts"
+    ]
+}
