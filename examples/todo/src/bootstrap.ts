@@ -1,4 +1,6 @@
+import * as bobflux from 'node_modules/bobflux/dist/src/lib';
+import * as states from './states';
 
 export default () => {
-	console.log('Booting...');
+    bobflux.bootstrap(states.default());
 }
