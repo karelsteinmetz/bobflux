@@ -1,4 +1,4 @@
-# bobflux
+# Bobflux
 * pure functional implementation of FLUX pattern.
 * frontend architecture inspired by flux, reflux and redux.
 * fitted and dependent on Bobril.
@@ -17,22 +17,55 @@ npm i bobflux --save
  * is global state
  * is composition of substates
  * action calls action factory with specified cursor and handler which creates new instance of state
-* Bobril is there only for rendering
+* Bobril is there only for "rendering" (View)
 * Bobril component context should be used for intermediate state (drag & drop, input border color when is has been focused)
 
  ![](./doc/img/flux_like.png)
 
 ## Actions
-* every action returns new instance of modified state and substates
+* returns new instance of modified state and substates
 * beware on array operations like push etc.
-* declaration:
+* use as much as possible specific cursors
+* if you want to modify more substates then you would rather create two actions with specified cursors
+* implementation:
 ```js
-export let removeTodo = bobflux.createAction(cursors.todos, (todos: states.ITodo[], id: number): states.ITodo[]=> {
-     return [...todos.filter(t => t.id !== id)];
-});
+export let removeTodo = bobflux.createAction(
+    cursors.todos,
+    (todos: states.ITodo[], id: number): states.ITodo[]=> {
+        return [...todos.filter(t => t.id !== id)];
+    }
+);
 ```
 
-* usage:
+* invoking:
 ```js
 actions.removeTodo(t.id);
+```
+
+## Component
+* is derived component from Bobril
+* implements shouldChnage
+* gets state through cursor
+* sets state in our context if it has been changed
+* shouldChange implementation:
+```js
+shouldChange(ctx: IContext<IState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
+    let currentState = getState(c);
+    if (currentState === ctx.state)
+        return false;
+    ctx.state = currentState;
+    return true;
+}
+```
+* component implementation:
+```js
+export let create = bobflux.createComponent({
+    render(ctx: IContext, me: b.IBobrilNode) {
+      //...
+    }
+}}
+```
+* invoking:
+```js
+todoItemsHeader.create(cursors.editedTodo, {}),
 ```
