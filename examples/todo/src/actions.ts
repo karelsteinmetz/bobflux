@@ -13,9 +13,12 @@ export let updateEditedTodoName = bobflux.createAction(cursors.editedTodo, (todo
     });
 });
 
-export let removeTodo = bobflux.createAction(cursors.todos, (todos: states.ITodo[], id: number): states.ITodo[]=> {
-    return [...todos.filter(t => t.id !== id)];
-});
+export let removeTodo = bobflux.createAction(
+    cursors.todos,
+    (todos: states.ITodo[], id: number): states.ITodo[]=> {
+        return [...todos.filter(t => t.id !== id)];
+    }
+);
 
 export interface IChangeCompletionParams {
     id: number;

@@ -31,8 +31,6 @@
         "!./examples/**/*"
     ],
     "files": [
-        "./node_modules/bobril/index.d.ts",
-        "./node_modules/bobril/index.ts",
         "./spec/helpers.spec.ts",
         "./spec/jasmine.d.ts",
         "./spec/store.spec.ts",
@@ -42,6 +40,8 @@
         "./src/helpers.ts",
         "./src/lib.ts",
         "./src/state.ts",
-        "./src/store.ts"
+        "./src/store.ts",
+        "./node_modules/bobril/index.d.ts",
+        "./node_modules/bobril/index.ts"
     ]
 }
