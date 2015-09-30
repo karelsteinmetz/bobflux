@@ -26,6 +26,7 @@
     },
     "filesGlob": [
         "./**/*.ts",
+        "!./dist/**/*",
         "!./node_modules/**/*",
         "./node_modules/bobril/**/*.ts",
         "!./examples/**/*"
