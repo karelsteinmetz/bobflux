@@ -1,7 +1,7 @@
 # Bobflux
-* pure functional implementation of FLUX architecture
-* frontend architecture inspired by [Flux](https://facebook.github.io/flux/docs/overview.html#content), [Reflux](https://github.com/spoike/refluxjs) and [Redux](https://github.com/gaearon/redux)
-* fitted and dependent on [Bobril](https://github.com/Bobris/Bobril)
+* is pure functional implementation of FLUX architecture
+* is frontend architecture inspired by [Flux](https://facebook.github.io/flux/docs/overview.html#content), [Reflux](https://github.com/spoike/refluxjs) and [Redux](https://github.com/gaearon/redux)
+* fits and depends on [Bobril](https://github.com/Bobris/Bobril)
 
 ## Installation
 ```
@@ -18,7 +18,7 @@ npm i bobflux --save
  * is global state
  * is composition of sub states
  * action calls action factory with specified cursor and handler. Handler creates new instance of state
-* Bobril is there only for "rendering" (View)
+* Bobril is only for "rendering" (View)
 * Bobril component context should be used for intermediate state (drag & drop, input border color when it has been focused)
 
  ![](./doc/img/flux_like.png)
@@ -27,7 +27,7 @@ npm i bobflux --save
 * returns new instances of modified state and its sub states
 * beware on array operations like push etc.
 * use as much as possible specific cursors
-* if you want to modify more sub states then you should rather create two actions with specified cursors. Then invoke actions synchronously. b.invalidate waits for both actions. If actions take a long time then will be rendered intermediate state between actions.
+* if you want to modify more sub states then you should create two actions with specified cursors. Then invoke actions synchronously. b.invalidate waits for both actions. If actions take a long time then intermediate state will be rendered between actions.
 * implementation:
 ```js
 export let removeTodo = bobflux.createAction(
