@@ -2,8 +2,8 @@
     "version": "1.6.2",
     "compileOnSave": false,
     "compilerOptions": {
-        "target": "es6",
-        "module": "amd",
+        "target": "es5",
+        "module": "commonjs",
         "outDir": "dist",
         "sourceMap": true,
         "removeComments": true,
