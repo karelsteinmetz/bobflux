@@ -39,7 +39,7 @@
         "./src/component.ts",
         "./src/cursor.ts",
         "./src/helpers.ts",
-        "./src/lib.ts",
+        "./src/index.ts",
         "./src/state.ts",
         "./src/store.ts",
         "./node_modules/bobril/index.d.ts",
