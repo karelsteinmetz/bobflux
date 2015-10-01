@@ -28,6 +28,8 @@ npm i bobflux --save
 * beware on array operations like push etc.
 * use as much as possible specific cursors
 * if you want to modify more sub states then you should create two actions with specified cursors. Then invoke actions synchronously. b.invalidate waits for both actions. If actions take a long time then intermediate state will be rendered between actions.
+
+### Common
 * implementation:
 ```js
 export let removeTodo = bobflux.createAction(
@@ -41,6 +43,49 @@ export let removeTodo = bobflux.createAction(
 ```js
 actions.removeTodo(t.id);
 ```
+
+### Without parameters
+* implementation:
+```js
+export let removeStaticTodo = bobflux.createAction(
+    cursors.todos,
+    (todos: states.ITodo[]): states.ITodo[]=> {
+        return [...todos.filter(t => t.id !== 1)];
+    }
+);
+```
+* invoking:
+```js
+actions.removeStaticTodo();
+```
+
+### With more parameters
+* implementation:
+```js
+export interface IChangeCompletionParams {
+    id: number;
+    completed: boolean;
+}
+export let changeCompletion = bobflux.createAction(
+   cursors.todos,
+   (todos: states.ITodo[], params: IChangeCompletionParams): states.ITodo[] => {
+    return todos.map(t => {
+        if (t.id === params.id)
+            return bobflux.shallowCopy(t, (nT) => {
+                nT.isComplete = params.completed;
+                return nT;
+            });
+        return t;
+    })
+});
+```
+* invoking:
+```js
+ actions.changeCompletion({ id: t.id, completed: value })
+```
+
+### Issues
+* beware on invoking because params of actions are optional!!! Compiler cannot check this mistake.
 
 ## Component
 * is derived component from Bobril
