@@ -1,4 +1,4 @@
-import * as bobflux from 'node_modules/bobflux/dist/src/lib';
+import * as bobflux from 'node_modules/bobflux/dist/src/index';
 
 
 export interface ITodo {

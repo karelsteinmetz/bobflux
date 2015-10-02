@@ -1,5 +1,5 @@
 import * as b from 'node_modules/bobril/index';
-import * as bobflux from 'node_modules/bobflux/dist/src/lib';
+import * as bobflux from 'node_modules/bobflux/dist/src/index';
 import * as states from './states';
 import * as guiFactory from './guiFactory';
 import * as actions from './actions';

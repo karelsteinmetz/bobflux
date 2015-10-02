@@ -27,25 +27,11 @@
     "filesGlob": [
         "./**/*.ts",
         "!./node_modules/**/*",
+        "!./dist/**/*",
         "./node_modules/bobril/**/*.d.ts",
         "./node_modules/bobflux/**/*.d.ts"
     ],
     "files": [
-        "./dist/node_modules/bobflux/dist/src/actionFactory.d.ts",
-        "./dist/node_modules/bobflux/dist/src/component.d.ts",
-        "./dist/node_modules/bobflux/dist/src/cursor.d.ts",
-        "./dist/node_modules/bobflux/dist/src/helpers.d.ts",
-        "./dist/node_modules/bobflux/dist/src/lib.d.ts",
-        "./dist/node_modules/bobflux/dist/src/state.d.ts",
-        "./dist/node_modules/bobflux/dist/src/store.d.ts",
-        "./dist/node_modules/bobril/index.d.ts",
-        "./dist/src/app.d.ts",
-        "./dist/src/bootstrap.d.ts",
-        "./dist/src/cursor.d.ts",
-        "./dist/src/cursors.d.ts",
-        "./dist/src/guiFactory.d.ts",
-        "./dist/src/state.d.ts",
-        "./dist/src/states.d.ts",
         "./src/actions.ts",
         "./src/app.ts",
         "./src/bootstrap.ts",
@@ -59,7 +45,7 @@
         "./node_modules/bobflux/dist/src/component.d.ts",
         "./node_modules/bobflux/dist/src/cursor.d.ts",
         "./node_modules/bobflux/dist/src/helpers.d.ts",
-        "./node_modules/bobflux/dist/src/lib.d.ts",
+        "./node_modules/bobflux/dist/src/index.d.ts",
         "./node_modules/bobflux/dist/src/state.d.ts",
         "./node_modules/bobflux/dist/src/store.d.ts"
     ]
