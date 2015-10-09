@@ -5,7 +5,7 @@
         "target": "es3",
         "module": "amd",
         "outDir": "dist",
-        "sourceMap": true,
+        "sourceMap": false,
         "removeComments": true,
         "listFiles": true,
         "declaration": true
