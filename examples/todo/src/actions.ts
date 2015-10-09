@@ -1,4 +1,5 @@
-import * as bobflux from 'node_modules/bobflux/dist/src/index';
+import * as bobflux from '../node_modules/bobflux/dist/src/index';
+import { IAction } from '../node_modules/bobflux/dist/src/index';
 import * as states from './states';
 import * as cursors from './cursors';
 

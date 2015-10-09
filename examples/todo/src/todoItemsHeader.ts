@@ -1,19 +1,30 @@
-import * as b from 'node_modules/bobril/index';
-import * as bobflux from 'node_modules/bobflux/dist/src/index';
+import * as b from '../node_modules/bobril/index';
+import { ICursor, IContext, createComponent } from '../node_modules/bobflux/dist/src/index';
 import * as states from './states';
-import * as guiFactory from './guiFactory';
 import * as actions from './actions';
+import * as cursors from './cursors';
+import inlineForm from './bootstrap/inlineForm';
+import formGroup from './bootstrap/formGroup';
+import input from './bootstrap/input';
+import button from './bootstrap/button';
 
-
-interface IContext extends bobflux.IContext<states.ITodo> {
+interface ICtx extends IContext<states.ITodo> {
 }
 
-export let create = bobflux.createComponent({
-    render(ctx: IContext, me: b.IBobrilNode) {
+export default createComponent({
+    render(ctx: ICtx, me: b.IBobrilNode) {
         me.tag = 'div';
-        me.children = [
-            guiFactory.createInput(ctx.state.name, (value: string) => actions.updateEditedTodoName(value)),
-            guiFactory.createButton('Add', () => { actions.addTodo(ctx.state.name); return true; })
-        ];
+        me.children = inlineForm({
+            content: [
+                formGroup({
+                    content: [
+                        // { tag: 'label', children: ctx.data.label, className: 'sr-only' },
+                        { tag: 'label', children: 'Name:' },
+                        input({ name: ctx.state.name, onChange: (value: string) => actions.updateEditedTodoName(value), placeHolder: 'Name' }),
+                    ]
+                }),
+                button({ label: 'Add', onClick: () => { actions.addTodo(ctx.state.name); return true } })
+            ]
+        })
     }
 });

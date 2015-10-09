@@ -21,6 +21,7 @@
     "systemjs": "^0.19.3"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.5",
     "gulp": "^3.9.0",
     "gulp-jasmine": "^2.0.1",
     "gulp-typescript": "^2.8.2"

@@ -1,16 +1,18 @@
-import * as b from 'node_modules/bobril/index';
+import * as b from '../node_modules/bobril/index';
 import bootstrap from './bootstrap';
-import * as todoItemsList from './todoItemsList';
-import * as todoItemsHeader from './todoItemsHeader';
+import todoItemsList from './todoItemsList';
+import todoItemsHeader from './todoItemsHeader';
 import * as cursors from './cursors';
-import * as guiFactory from './guiFactory';
+import container from './bootstrap/container';
 
 bootstrap();
 
 b.init(() => {
-    return [
-        'Hello Bobflux Todo example!',
-        todoItemsHeader.create(cursors.editedTodo, {}),
-        todoItemsList.create(cursors.todos, {})
-    ];
+    return container({
+        content: [
+            'Hello I\'m Bobflux Todo example!',
+            todoItemsHeader(cursors.editedTodo, {}),
+            todoItemsList(cursors.todos, {})
+        ]
+    })
 });

@@ -1,4 +1,4 @@
-import * as bobflux from 'node_modules/bobflux/dist/src/index';
+import * as bobflux from '../node_modules/bobflux/dist/src/index';
 import * as states from './states';
 
 export let todos: bobflux.ICursor<states.ITodo[]> = {
@@ -7,4 +7,8 @@ export let todos: bobflux.ICursor<states.ITodo[]> = {
 
 export let editedTodo: bobflux.ICursor<states.ITodo> = {
     key: 'todoSection.editedTodo'
+}
+
+export let editedTodoName: bobflux.ICursor<string> = {
+    key: 'todoSection.editedTodo.name'
 }
