@@ -6,7 +6,7 @@ import inlineForm from './bootstrap/inlineForm';
 import checkbox from './bootstrap/checkbox';
 import button from './bootstrap/button';
 
-interface ICtx extends IContext<states.ITodo[]> {
+export interface ICtx extends IContext<states.ITodo[]> {
 }
 
 export default createComponent({
@@ -18,7 +18,7 @@ export default createComponent({
                     checkbox({
                         label: t.name,
                         value: t.isComplete,
-                        onChanged: (value: boolean) => actions.changeCompletion({ id: t.id, completed: value })
+                        onChange: (value: boolean) => actions.changeCompletion({ id: t.id, completed: value })
                     }),
                     button({ label: 'Delete', onClick: () => { actions.removeTodo(t.id); return true; } })
                 ]

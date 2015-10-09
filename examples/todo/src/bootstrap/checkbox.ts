@@ -1,13 +1,34 @@
 import * as b from '../../node_modules/bobril/index';
 
-export interface IData {
-    label: string;
+export interface IInputData {
     value: boolean;
-    onValueChange: () => boolean;
+    onChange: (boolean) => void;
     isDisabled?: boolean;
 }
 
-interface ICtx extends b.IBobrilCtx {
+export interface IInputCtx extends b.IBobrilCtx {
+    data: IInputData;
+}
+
+let createInput = b.createComponent({
+    render(ctx: IInputCtx, me: b.IBobrilNode) {
+        me.tag = 'input';
+        me.attrs = {
+            type: 'checkbox',
+            value: ctx.data.value,
+            disabled: ctx.data.isDisabled
+        }
+    },
+    onChange(ctx: IInputCtx, value: boolean) {
+        ctx.data.onChange(value);
+    }
+})
+
+export interface IData extends IInputData {
+    label: string;
+}
+
+export interface ICtx extends b.IBobrilCtx {
     data: IData;
 }
 
@@ -18,17 +39,10 @@ export default b.createComponent({
         ctx.data.isDisabled && (me.className += ' disabled');
         me.children = {
             tag: 'label',
-            children: [{
-                tag: 'input',
-                attrs: {
-                    type: 'checkbox',
-                    value: ctx.data.value,
-                    disabled: ctx.data.isDisabled
-                },
-                component: {
-                    onChange: (ctx: any, v: boolean) => ctx.data.onValueChange(v)
-                }
-            }, ctx.data.label]
+            children: [
+                createInput(ctx.data)
+                , ctx.data.label
+            ]
         };
     }
 })
