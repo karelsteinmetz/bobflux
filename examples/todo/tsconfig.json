@@ -42,6 +42,7 @@
         "./src/bootstrap/inlineForm.ts",
         "./src/bootstrap/input.ts",
         "./src/cursors.ts",
+        "./src/footer.ts",
         "./src/states.ts",
         "./src/todoItemsHeader.ts",
         "./src/todoItemsList.ts",
