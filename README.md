@@ -23,6 +23,10 @@ npm i bobflux --save
 
  ![](./doc/img/flux_like.png)
 
+### Getting started video [cz] 
+[![Getting started video](http://img.youtube.com/vi/iU8_5aKHURM/default.jpg)](http://www.youtube.com/watch?v=iU8_5aKHURM)
+
+
 ## Actions
 * returns new instances of modified state and its sub states
 * beware on array operations like push etc.
