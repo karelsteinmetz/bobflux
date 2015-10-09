@@ -4,7 +4,7 @@ import * as states from './states';
 import * as cursors from './cursors';
 
 export let addTodo = bobflux.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
-    return [{ id: new Date().getDate(), name: name, isComplete: false }, ...todos];
+    return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
 });
 
 export let updateEditedTodoName = bobflux.createAction(cursors.editedTodo, (todo: states.ITodo, name: string): states.ITodo => {
@@ -16,7 +16,7 @@ export let updateEditedTodoName = bobflux.createAction(cursors.editedTodo, (todo
 
 export let removeTodo = bobflux.createAction(
     cursors.todos,
-    (todos: states.ITodo[], id: number): states.ITodo[]=> {
+    (todos: states.ITodo[], id: number): states.ITodo[] => {
         return [...todos.filter(t => t.id !== id)];
     }
 );
