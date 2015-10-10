@@ -1,7 +1,5 @@
 import * as b from 'node_modules/bobril/index';
-import { ICursor } from './cursor';
-import { IState } from './state';
-import { getState } from './store';
+import { IState, ICursor, getState } from 'node_modules/fun-model/dist/src/index';
 
 export interface IContext<TState extends IState> extends b.IBobrilCtx {
     state: TState;

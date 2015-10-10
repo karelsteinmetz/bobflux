@@ -20,7 +20,8 @@
     "dist/src"
   ],
   "dependencies": {
-    "bobril": "*"
+    "bobril": "*",
+    "fun-model": "*"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

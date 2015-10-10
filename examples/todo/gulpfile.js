@@ -29,10 +29,10 @@ gulp.task('nw', ['indexCopy', 'systemJsCopy', 'cssCopy'], function() {
 
 // common
 gulp.task('tsCompilation', function (cb) {
-  exec('tsc --p ./', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-  });
+    exec('tsc --p ./', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+    });
 });
 
 gulp.task('indexCopy', function () {

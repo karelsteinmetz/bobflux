@@ -1,11 +1,12 @@
 import * as bobflux from '../node_modules/bobflux/dist/src/index';
-import { IAction } from '../node_modules/bobflux/dist/src/index';
 import * as states from './states';
 import * as cursors from './cursors';
 
-export let addTodo = bobflux.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
-    return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
-});
+export function addTodo(name: string) {
+    return bobflux.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
+        return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
+    })(name);
+}
 
 export let updateEditedTodoName = bobflux.createAction(cursors.editedTodo, (todo: states.ITodo, name: string): states.ITodo => {
     return bobflux.shallowCopy(todo, (t) => {

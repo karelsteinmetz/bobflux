@@ -28,7 +28,8 @@
         "./**/*.ts",
         "!./dist/**/*",
         "!./node_modules/**/*",
-        "./node_modules/bobril/**/*.ts",
+        "./node_modules/bobril/**/*.d.ts",
+        "./node_modules/fun-model/**/*.d.ts",
         "!./examples/**/*"
     ],
     "files": [
@@ -37,12 +38,11 @@
         "./spec/store.spec.ts",
         "./src/actionFactory.ts",
         "./src/component.ts",
-        "./src/cursor.ts",
-        "./src/helpers.ts",
         "./src/index.ts",
-        "./src/state.ts",
-        "./src/store.ts",
         "./node_modules/bobril/index.d.ts",
-        "./node_modules/bobril/index.ts"
+        "./node_modules/fun-model/dist/src/actionFactory.d.ts",
+        "./node_modules/fun-model/dist/src/helpers.d.ts",
+        "./node_modules/fun-model/dist/src/index.d.ts",
+        "./node_modules/fun-model/dist/src/store.d.ts"
     ]
 }

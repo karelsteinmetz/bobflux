@@ -1,16 +1,18 @@
 ﻿var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var jasmine = require('gulp-jasmine');
+var exec = require('child_process').exec
 
 var distDir = 'dist';
 
 gulp.task('default', ['tsCompilation', 'srcTsMove', 'runTests']);
 
-gulp.task('tsCompilation', function () {
-    var tsProject = ts.createProject('tsconfig.json');
-    return tsProject.src()
-        .pipe(ts(tsProject)).js
-        .pipe(gulp.dest(distDir));
+gulp.task('tsCompilation', function (cb) {
+    exec('tsc --p ./', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
 });
 
 gulp.task('runTests', ['tsCompilation'], function () {
