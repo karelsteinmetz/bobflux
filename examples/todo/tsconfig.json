@@ -4,7 +4,7 @@
     "compilerOptions": {
         "target": "es3",
         "module": "amd",
-        "outDir": "dist",
+        "outDir": "dist/web",
         "sourceMap": false,
         "removeComments": true,
         "listFiles": true,
