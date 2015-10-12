@@ -23,6 +23,7 @@
   "dependencies": {
     "bobflux": "*",
     "bobril": "*",
+    "bootstrap": "^3.3.5",
     "systemjs": "^0.19.3"
   },
   "window": {
@@ -35,7 +36,6 @@
     "resizable": true
   },
   "devDependencies": {
-    "bootstrap": "^3.3.5",
     "gulp": "^3.9.0",
     "gulp-exec": "^2.1.2",
     "gulp-jasmine": "^2.0.1",
