@@ -1,6 +1,6 @@
 {
   "name": "bobflux",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Bobflux is pure functional implementation of FLUX architecture.",
   "main": "dist/src/index.js",
   "repository": {
