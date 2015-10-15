@@ -34,7 +34,6 @@
     ],
     "files": [
         "./spec/jasmine.d.ts",
-        "./src/component.d.ts",
         "./src/component.ts",
         "./src/index.ts",
         "./node_modules/bobril/index.d.ts",
