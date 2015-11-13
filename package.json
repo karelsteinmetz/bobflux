@@ -1,6 +1,6 @@
 {
   "name": "bobflux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bobflux is pure functional implementation of FLUX architecture.",
   "main": "dist/index.js",
   "repository": {
@@ -17,11 +17,11 @@
     "email": "karel.steinmetz@gmail.com"
   },
   "files": [
-    "dist/src"
+    "dist"
   ],
   "dependencies": {
     "bobril": "*",
-    "fun-model": "*"
+    "fun-model": "0.1.*"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
