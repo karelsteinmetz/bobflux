@@ -4,7 +4,7 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "outDir": "dist",
+        "outDir": "build",
         "sourceMap": true,
         "removeComments": true,
         "listFiles": true,
@@ -27,20 +27,22 @@
     "filesGlob": [
         "./**/*.ts",
         "!./dist/**/*",
+        "!./build/**/*",
         "!./node_modules/**/*",
         "./node_modules/bobril/**/*.d.ts",
         "./node_modules/fun-model/**/*.d.ts",
         "!./examples/**/*"
     ],
     "files": [
-        "spec/jasmine.d.ts",
-        "src/component.ts",
-        "src/index.ts",
-        "node_modules/bobril/index.d.ts",
-        "node_modules/fun-model/dist/src/actionFactory.d.ts",
-        "node_modules/fun-model/dist/src/helpers.d.ts",
-        "node_modules/fun-model/dist/src/index.d.ts",
-        "node_modules/fun-model/dist/src/store.d.ts"
+        "./spec/jasmine.d.ts",
+        "./src/component.ts",
+        "./src/index.ts",
+        "./node_modules/bobril/index.d.ts",
+        "./node_modules/fun-model/dist/actionFactory.d.ts",
+        "./node_modules/fun-model/dist/debug.d.ts",
+        "./node_modules/fun-model/dist/helpers.d.ts",
+        "./node_modules/fun-model/dist/index.d.ts",
+        "./node_modules/fun-model/dist/store.d.ts"
     ],
     "exclude": []
 }

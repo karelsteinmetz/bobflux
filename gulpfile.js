@@ -3,9 +3,9 @@ var ts = require('gulp-typescript');
 var jasmine = require('gulp-jasmine');
 var exec = require('child_process').exec
 
-var distDir = 'dist';
+var buildDir = 'build';
 
-gulp.task('default', ['tsCompilation', 'srcTsMove', 'runTests']);
+gulp.task('default', ['tsCompilation', 'runTests']);
 
 gulp.task('tsCompilation', function (cb) {
     exec('tsc --p ./', function (err, stdout, stderr) {
@@ -16,14 +16,22 @@ gulp.task('tsCompilation', function (cb) {
 });
 
 gulp.task('runTests', ['tsCompilation'], function () {
-    return gulp.src('dist/spec/**/*.spec.js')
+    return gulp.src('build/spec/**/*.spec.js')
         .pipe(jasmine({
             verbose: true,
             includeStackTrace: true
         }));
 });
 
-gulp.task('srcTsMove', function () {
+// Dist
+var distDir = 'dist'
+
+gulp.task('dist', ['srcTsCopy'], function () {
+    return gulp.src(buildDir + '/src/**/*')
+        .pipe(gulp.dest(distDir));
+});
+
+gulp.task('srcTsCopy', function () {
     return gulp.src('src/**/*.ts')
-        .pipe(gulp.dest(distDir + '/src'));
+        .pipe(gulp.dest(distDir));
 });

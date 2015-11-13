@@ -1,19 +1,19 @@
 import * as b from 'node_modules/bobril/index';
-import { IState, ICursor, getState } from 'node_modules/fun-model/dist/src/index';
+import * as f from 'node_modules/fun-model/dist/index';
 
-export interface IContext<TState extends IState> extends b.IBobrilCtx {
+export interface IContext<TState extends f.IState> extends b.IBobrilCtx {
     state: TState;
 }
 
-export function createComponent<TState extends IState, TData>(component: b.IBobrilComponent)
-    : (cursor: ICursor<TState>, data: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
-    return (c: ICursor<TState>, d: TData, ch?: b.IBobrilChildren) => b.createDerivedComponent<TData>(
+export function createComponent<TState extends f.IState, TData>(component: b.IBobrilComponent)
+    : (cursor: f.ICursor<TState>, data: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
+    return (c: f.ICursor<TState>, d: TData, ch?: b.IBobrilChildren) => b.createDerivedComponent<TData>(
         b.createComponent({
-            init(ctx: IContext<IState>) {
-                ctx.state = getState(c);
+            init(ctx: IContext<f.IState>) {
+                ctx.state = f.getState(c);
             },
-            shouldChange(ctx: IContext<IState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
-                let currentState = getState(c);
+            shouldChange(ctx: IContext<f.IState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
+                let currentState = f.getState(c);
                 if (currentState === ctx.state)
                     return false;
 
