@@ -21,7 +21,7 @@
     "dist"
   ],
   "dependencies": {
-    "bobflux": "*",
+    "bobflux": "0.*.*",
     "bobril": "*",
     "bootstrap": "^3.3.5",
     "systemjs": "^0.19.3"
