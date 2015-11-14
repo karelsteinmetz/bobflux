@@ -1,5 +1,5 @@
 import * as b from '../node_modules/bobril/index';
-import { ICursor, IContext, createComponent } from '../node_modules/bobflux/dist/src/index';
+import * as f from './flux';
 import * as states from './states';
 import * as actions from './actions';
 import * as cursors from './cursors';
@@ -8,10 +8,10 @@ import formGroup from './bootstrap/formGroup';
 import input from './bootstrap/input';
 import button from './bootstrap/button';
 
-interface ICtx extends IContext<states.ITodo> {
+interface ICtx extends f.IContext<states.ITodo> {
 }
 
-export default createComponent({
+export default f.createComponent({
     render(ctx: ICtx, me: b.IBobrilNode) {
         me.tag = 'div';
         me.children = inlineForm({

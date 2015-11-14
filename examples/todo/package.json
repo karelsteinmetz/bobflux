@@ -1,6 +1,6 @@
 {
   "name": "bobflux-todo-example",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Bobflux is pure functional implementation of FLUX pattern and is fitted to Bobril.",
   "main": "index.html",
   "repository": {
@@ -21,7 +21,7 @@
     "dist"
   ],
   "dependencies": {
-    "bobflux": "0.*.*",
+    "bobflux": "1.*.*",
     "bobril": "*",
     "bootstrap": "^3.3.5",
     "systemjs": "^0.19.3"

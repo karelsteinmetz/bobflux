@@ -1,6 +1,6 @@
-import * as bobflux from '../node_modules/bobflux/dist/src/index';
+import * as f from './flux';
 import * as states from './states';
 
 export default () => {
-    bobflux.bootstrap(states.default(), (m, p) => console.log('todo -> ' + m, p));
+    f.bootstrap(states.default(), (m, p) => console.log('todo -> ' + m, p));
 }

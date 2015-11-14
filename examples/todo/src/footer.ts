@@ -1,11 +1,11 @@
 import * as b from '../node_modules/bobril/index';
-import { ICursor, IContext, createComponent } from '../node_modules/bobflux/dist/src/index';
+import * as f from './flux';
 import * as states from './states';
 
-interface ICtx extends IContext<states.ITodo[]> {
+interface ICtx extends f.IContext<states.ITodo[]> {
 }
 
-export default createComponent({
+export default f.createComponent({
     render(ctx: ICtx, me: b.IBobrilNode) {
         me.tag = 'div';
         let count = ctx.state.filter(t => !t.isComplete).length

@@ -1,5 +1,4 @@
-import * as bobflux from '../node_modules/bobflux/dist/src/index';
-
+import * as f from './flux';
 
 export interface ITodo {
     id: number;
@@ -7,12 +6,12 @@ export interface ITodo {
     name: string;
 }
 
-export interface ITodosState extends bobflux.IState {
+export interface ITodosState extends f.IState {
     editedTodo: ITodo;
     todos: ITodo[];
 }
 
-export interface IApplicationState extends bobflux.IState {
+export interface IApplicationState extends f.IState {
     todoSection: ITodosState;
 }
 
