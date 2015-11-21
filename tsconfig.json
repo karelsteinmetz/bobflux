@@ -37,10 +37,10 @@
         "src/component.ts",
         "src/index.ts",
         "node_modules/bobril/index.d.ts",
-        "node_modules/fun-model/dist/src/actionFactory.d.ts",
-        "node_modules/fun-model/dist/src/helpers.d.ts",
-        "node_modules/fun-model/dist/src/index.d.ts",
-        "node_modules/fun-model/dist/src/store.d.ts"
+        "node_modules/fun-model/dist/actionFactory.d.ts",
+        "node_modules/fun-model/dist/helpers.d.ts",
+        "node_modules/fun-model/dist/index.d.ts",
+        "node_modules/fun-model/dist/store.d.ts"
     ],
     "exclude": []
 }

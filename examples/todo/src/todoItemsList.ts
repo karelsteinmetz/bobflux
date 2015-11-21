@@ -1,5 +1,5 @@
 import * as b from '../node_modules/bobril/index';
-import { ICursor, IContext, createComponent } from '../node_modules/bobflux/dist/src/index';
+import { ICursor, IContext, createComponent } from '../node_modules/bobflux/dist/index';
 import * as states from './states';
 import * as actions from './actions';
 import inlineForm from './bootstrap/inlineForm';

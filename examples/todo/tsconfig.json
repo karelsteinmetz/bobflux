@@ -48,11 +48,11 @@
         "./src/todoItemsHeader.ts",
         "./src/todoItemsList.ts",
         "./node_modules/bobril/index.d.ts",
-        "./node_modules/bobflux/dist/src/component.d.ts",
-        "./node_modules/bobflux/dist/src/index.d.ts",
-        "./node_modules/fun-model/dist/src/actionFactory.d.ts",
-        "./node_modules/fun-model/dist/src/helpers.d.ts",
-        "./node_modules/fun-model/dist/src/index.d.ts",
-        "./node_modules/fun-model/dist/src/store.d.ts"
+        "./node_modules/bobflux/dist/component.d.ts",
+        "./node_modules/bobflux/dist/index.d.ts",
+        "./node_modules/fun-model/dist/actionFactory.d.ts",
+        "./node_modules/fun-model/dist/helpers.d.ts",
+        "./node_modules/fun-model/dist/index.d.ts",
+        "./node_modules/fun-model/dist/store.d.ts"
     ]
 }
