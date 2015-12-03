@@ -1,12 +1,11 @@
 import * as f from './flux';
+import { IAction } from './flux';
 import * as states from './states';
 import * as cursors from './cursors';
 
-export function addTodo(name: string) {
-    return f.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
-        return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
-    })(name);
-}
+export let addTodo = f.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
+    return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
+});
 
 export let updateEditedTodoName = f.createAction(cursors.editedTodo, (todo: states.ITodo, name: string): states.ITodo => {
     return f.shallowCopy(todo, (t) => {

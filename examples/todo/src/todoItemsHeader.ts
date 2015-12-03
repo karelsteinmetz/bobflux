@@ -1,5 +1,6 @@
 import * as b from '../node_modules/bobril/index';
 import * as f from './flux';
+import { ICursor } from './flux';
 import * as states from './states';
 import * as actions from './actions';
 import * as cursors from './cursors';
