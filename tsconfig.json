@@ -9,7 +9,7 @@
         "removeComments": true,
         "listFiles": true,
         "declaration": true,
-         "moduleResolution": "classic"
+        "moduleResolution": "classic"
     },
     "formatCodeOptions": {
         "indentSize": 4,
