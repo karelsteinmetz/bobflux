@@ -3,6 +3,7 @@ import * as f from 'node_modules/fun-model/dist/index';
 
 export interface IContext<TState extends f.IState> extends b.IBobrilCtx {
     state: TState;
+    forceShouldChange: boolean;
 }
 
 export function createComponent<TState extends f.IState, TData>(component: b.IBobrilComponent)
@@ -13,6 +14,9 @@ export function createComponent<TState extends f.IState, TData>(component: b.IBo
                 ctx.state = f.getState(c);
             },
             shouldChange(ctx: IContext<f.IState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
+                if (ctx.forceShouldChange)
+                    return true;
+                    
                 let currentState = f.getState(c);
                 if (currentState === ctx.state)
                     return false;
