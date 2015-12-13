@@ -7,8 +7,9 @@
     <script src="system.js"></script>
     <script>
         System.config({
-            'baseURL': './',
-            'defaultJSExtensions': true
+            baseURL: './',
+            defaultJSExtensions: true,
+            map: {"bobflux":"node_modules/bobflux/index.js","bobril":"node_modules/bobril/index.js","fun-model":"node_modules/fun-model/index.js"}
         });
         System.import('src/app.js');
     </script>

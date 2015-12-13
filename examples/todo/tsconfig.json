@@ -1,5 +1,4 @@
 {
-    "version": "1.6.2",
     "compileOnSave": false,
     "compilerOptions": {
         "target": "es3",
@@ -9,7 +8,7 @@
         "removeComments": true,
         "listFiles": true,
         "declaration": true,
-        "moduleResolution": "classic"
+        "moduleResolution": "node"
     },
     "formatCodeOptions": {
         "indentSize": 4,
@@ -31,6 +30,7 @@
         "!./dist/**/*",
         "./node_modules/bobril/**/*.d.ts",
         "./node_modules/bobflux/**/*.d.ts",
+        "!./node_modules/bobflux/examples/**/*",
         "./node_modules/fun-model/**/*.d.ts"
     ],
     "files": [
@@ -50,15 +50,13 @@
         "./src/todoItemsHeader.ts",
         "./src/todoItemsList.ts",
         "./node_modules/bobril/index.d.ts",
-        "./node_modules/bobflux/dist/component.d.ts",
-        "./node_modules/bobflux/dist/index.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/dist/actionFactory.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/dist/debug.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/dist/helpers.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/dist/index.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/dist/store.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/typings/es6-promise/es6-promise.d.ts",
-        "./node_modules/bobflux/node_modules/fun-model/typings/tsd.d.ts"
+        "./node_modules/bobflux/index.d.ts",
+        "./node_modules/bobflux/src/component.d.ts",
+        "./node_modules/fun-model/index.d.ts",
+        "./node_modules/fun-model/src/actionFactory.d.ts",
+        "./node_modules/fun-model/src/debug.d.ts",
+        "./node_modules/fun-model/src/helpers.d.ts",
+        "./node_modules/fun-model/src/store.d.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

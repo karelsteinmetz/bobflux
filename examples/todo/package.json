@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Bobflux is pure functional implementation of FLUX pattern and is fitted to Bobril.",
   "main": "index.html",
+  "typescript": {
+    "main": "./src/app.ts",
+    "definition": "./src/app.d.ts"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/karelsteinmetz/bobflux.git"

@@ -1,5 +1,5 @@
-import * as b from 'node_modules/bobril/index';
-import { IState, bootstrap as funBootstrap, debugCallbackType } from 'node_modules/fun-model/dist/index';
+import * as b from 'bobril';
+import { IState, bootstrap as funBootstrap, debugCallbackType } from 'fun-model';
 
 export {
 ICursor,
@@ -14,9 +14,9 @@ createActions,
 IAsyncAction,
 createAsyncAction,
 debugCallbackType
-} from 'node_modules/fun-model/dist/index';
+} from 'fun-model';
 
-export * from './component';
+export * from './src/component';
 
 export let bootstrap = (defaultState: IState, debugCallback: debugCallbackType = undefined, subStateSeparator: string = '.') => {
     funBootstrap(defaultState, () => b.invalidate(), (message, params) => { debugCallback && debugCallback(`bobflux -> ${message}`, params) });

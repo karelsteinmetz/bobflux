@@ -1,15 +1,13 @@
 {
-    "version": "1.6.2",
     "compileOnSave": false,
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
-        "outDir": "build",
-        "sourceMap": true,
-        "removeComments": true,
-        "listFiles": true,
         "declaration": true,
-        "moduleResolution": "classic"
+        "noImplicitAny": false,
+        "removeComments": false,
+        "moduleResolution": "node",
+        "noLib": false
     },
     "formatCodeOptions": {
         "indentSize": 4,
@@ -27,23 +25,21 @@
     },
     "filesGlob": [
         "./**/*.ts",
-        "!./dist/**/*",
-        "!./build/**/*",
+        "!./**/*.d.ts",
         "!./node_modules/**/*",
         "./node_modules/bobril/**/*.d.ts",
         "./node_modules/fun-model/**/*.d.ts",
         "!./examples/**/*"
     ],
     "files": [
-        "./spec/jasmine.d.ts",
+        "./index.ts",
         "./src/component.ts",
-        "./src/index.ts",
         "./node_modules/bobril/index.d.ts",
-        "./node_modules/fun-model/dist/actionFactory.d.ts",
-        "./node_modules/fun-model/dist/debug.d.ts",
-        "./node_modules/fun-model/dist/helpers.d.ts",
-        "./node_modules/fun-model/dist/index.d.ts",
-        "./node_modules/fun-model/dist/store.d.ts"
+        "./node_modules/fun-model/index.d.ts",
+        "./node_modules/fun-model/src/actionFactory.d.ts",
+        "./node_modules/fun-model/src/debug.d.ts",
+        "./node_modules/fun-model/src/helpers.d.ts",
+        "./node_modules/fun-model/src/store.d.ts"
     ],
     "exclude": [],
     "atom": {
