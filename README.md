@@ -118,3 +118,7 @@ export let create = bobflux.createComponent({
 ```js
 todoItemsHeader.create(cursors.editedTodo, {}),
 ```
+
+## Route component
+* is virtual component with bobflux component in children
+* bobflux component cannot be used in router beacause you can not specify cursor. Creation is invoked by router.

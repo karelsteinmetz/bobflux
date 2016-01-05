@@ -2,7 +2,6 @@
     "compileOnSave": false,
     "compilerOptions": {
         "target": "es6",
-        "module": "commonjs",
         "declaration": true,
         "noImplicitAny": false,
         "removeComments": false,
@@ -34,15 +33,12 @@
     "files": [
         "./index.ts",
         "./src/component.ts",
+        "./src/routeComponent.ts",
         "./node_modules/bobril/index.d.ts",
         "./node_modules/fun-model/index.d.ts",
         "./node_modules/fun-model/src/actionFactory.d.ts",
         "./node_modules/fun-model/src/debug.d.ts",
         "./node_modules/fun-model/src/helpers.d.ts",
         "./node_modules/fun-model/src/store.d.ts"
-    ],
-    "exclude": [],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+    ]
 }
