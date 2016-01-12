@@ -1,6 +1,6 @@
 import * as b from 'bobril';
 import * as gui from 'bobril-css-bootstrap';
-import * as f from './flux';
+import * as f from 'bobflux';
 import * as s from './states';
 import * as a from './actions';
 import * as c from './cursors';

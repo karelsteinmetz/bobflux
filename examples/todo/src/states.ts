@@ -1,4 +1,4 @@
-import * as f from './flux';
+import * as f from 'bobflux';
 
 export interface ITodo {
     id: number;

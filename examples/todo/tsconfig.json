@@ -26,7 +26,6 @@
         "src/actions.ts",
         "src/app.ts",
         "src/cursors.ts",
-        "src/flux.ts",
         "src/mainPage.ts",
         "src/states.ts",
         "src/todosPage.ts"
