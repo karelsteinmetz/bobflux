@@ -27,11 +27,19 @@ npm i bobflux --save
 [![Getting started video](http://img.youtube.com/vi/iU8_5aKHURM/default.jpg)](http://www.youtube.com/watch?v=iU8_5aKHURM)
 
 
+## Best Practices
+* don't pass functions as action parameters
+* if action has parameters then declare state and params like this:
+```js
+bobflux.createAction<states.ITodo[], IChangeCompletionParams>(cursors.todos, (todos, params) => { return state; )
+```
+
 ## Actions
 * returns new instances of modified state and its sub states
 * beware on array operations like push etc.
 * use as much as possible specific cursors
 * if you want to modify more sub states then you should create two actions with specified cursors. Then invoke actions synchronously. b.invalidate waits for both actions. If actions take a long time then intermediate state will be rendered between actions.
+* don't pass functions as action parameters
 
 ### Common
 * implementation:
@@ -70,7 +78,7 @@ export interface IChangeCompletionParams {
     id: number;
     completed: boolean;
 }
-export let changeCompletion = bobflux.createAction(
+export let changeCompletion = bobflux.createAction<states.ITodo[], IChangeCompletionParams>(
    cursors.todos,
    (todos: states.ITodo[], params: IChangeCompletionParams): states.ITodo[] => {
     return todos.map(t => {
