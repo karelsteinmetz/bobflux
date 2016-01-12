@@ -1,5 +1,5 @@
 import * as b from 'bobril';
-import * as f from 'bobflux';
+import * as f from './flux';
 import * as mp from './mainPage';
 import * as tdp from './todosPage';
 import * as c from './cursors';
