@@ -1,5 +1,4 @@
 import * as f from './flux';
-import { ICursor } from './flux';
 
 export interface ITodo {
     id: number;
