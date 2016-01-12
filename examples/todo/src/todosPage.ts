@@ -17,7 +17,8 @@ export let create = f.createRouteComponent<s.ITodosState, any>({
 
 let addForm = f.createComponent<s.ITodo, any>({
     render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
-        me.children = gui.inlineForm({
+        me.children = gui.form({
+            isInlined: true,
             content: [
                 gui.inputFormField('', ctx.state.name, a.updateNewTodoName),
                 gui.button({ label: 'Add', onClick: () => { a.addTodo(); return true; } })
