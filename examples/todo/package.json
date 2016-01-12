@@ -1,6 +1,6 @@
 {
   "name": "bobflux-todo-example",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Bobflux is pure functional implementation of FLUX pattern and is fitted to Bobril.",
   "main": "index.html",
   "typescript": {
