@@ -3,6 +3,7 @@ import { IState, bootstrap as funBootstrap, debugCallbackType } from 'fun-model'
 
 export {
 ICursor,
+ICursorFactory,
 IState,
 getState,
 setState,
