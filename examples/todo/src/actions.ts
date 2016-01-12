@@ -4,7 +4,7 @@ import * as states from './states';
 import * as cursors from './cursors';
 
 export let addTodo = f.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
-    return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
+    return [{ id: Date.now(), name: name, isDone: false }, ...todos];
 });
 
 export let updateEditedTodoName = f.createAction(cursors.editedTodo, (todo: states.ITodo, name: string): states.ITodo => {
@@ -23,14 +23,14 @@ export let removeTodo = f.createAction(
 
 export interface IChangeCompletionParams {
     id: number;
-    completed: boolean;
+    isDone: boolean;
 }
 
-export let changeCompletion = f.createAction(cursors.todos, (todos: states.ITodo[], params: IChangeCompletionParams): states.ITodo[]=> {
+export let changeDoneStatus = f.createAction<states.ITodo[], IChangeCompletionParams>(cursors.todos, (todos, params) => {
     return todos.map(t => {
         if (t.id === params.id)
             return f.shallowCopy(t, (nT) => {
-                nT.isComplete = params.completed;
+                nT.isDone = params.isDone;
                 return nT;
             });
         return t;

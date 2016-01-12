@@ -9,7 +9,7 @@ export let create = f.createRouteComponent<s.ITodosState, any>({
     render(ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = gui.table({
             headers: [],
-            rows: ctx.state.todos.map(t => [gui.checkboxInput({ value: t.isComplete, onChange: (v) => a.changeCompletion({ id: t.id, completed: v }) }), t.name])
+            rows: ctx.state.todos.map(t => [gui.checkboxInput({ value: t.isDone, onChange: (v) => a.changeDoneStatus({ id: t.id, isDone: v }) }), t.name])
         });
     }
 })
