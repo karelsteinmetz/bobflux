@@ -20,7 +20,7 @@ export default(): IApplicationState => {
         todoSection: {
             editedTodo: { id: null, name: '', isComplete: false },
             todos: [
-                { id: 1, name: 'First TODO...', isComplete: false },
+                { id: 1, name: 'First TODO...', isComplete: true },
                 { id: 2, name: 'Second TODO...', isComplete: false }
             ]
         }
