@@ -1,4 +1,4 @@
-import * as f from 'bobflux';
+import * as f from './flux';
 import * as s from './states';
 import * as c from './cursors';
 

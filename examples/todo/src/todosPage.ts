@@ -1,6 +1,6 @@
 import * as b from 'bobril';
 import * as gui from 'bobril-css-bootstrap';
-import * as f from 'bobflux';
+import * as f from './flux';
 import * as s from './states';
 import * as a from './actions';
 import * as c from './cursors';
@@ -17,7 +17,8 @@ export let create = f.createRouteComponent<s.ITodosState, any>({
 
 let addForm = f.createComponent<s.ITodo, any>({
     render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
-        me.children = gui.inlineForm({
+        me.children = gui.form({
+            isInlined: true,
             content: [
                 gui.inputFormField('', ctx.state.name, a.updateNewTodoName),
                 gui.button({ label: 'Add', onClick: () => { a.addTodo(); return true; } })

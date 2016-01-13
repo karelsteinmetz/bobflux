@@ -1,4 +1,4 @@
-import * as f from 'bobflux';
+import * as f from './flux';
 import * as states from './states';
 
 export let todosSection: f.ICursor<states.ITodosState> = {
