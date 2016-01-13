@@ -124,7 +124,7 @@ export let todos: f.ICursor<s.ITodo[]> = {
 }
 ```
 
- * for array items
+ * for array items with static cursor key
 
 ```js
 export let firstTodo: f.ICursor<s.ITodo> = {
@@ -133,6 +133,22 @@ export let firstTodo: f.ICursor<s.ITodo> = {
 
 export let firstTodoName: f.ICursor<string> = {
     key: 'todoSection.todos.0.name'
+}
+```
+
+ * for array items with dynamic cursor key
+
+```js
+export let todosIndexFactory: f.ICursorFactory<s.ITodo, number> = {
+    create: (index) => {
+        return { key: `todoSection.todos.${index}` };
+    }    
+}
+
+export let todoNameThroghtIndexFactory: f.ICursorFactory<string, number> = {
+    create: (index) => {
+        return { key: `todoSection.todos.${index}.name` };
+    }    
 }
 ```
 
