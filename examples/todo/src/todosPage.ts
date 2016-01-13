@@ -11,7 +11,7 @@ export let create = f.createRouteComponent<s.ITodosState, any>({
         me.children = [
             addForm(c.editedTodo),
             table(c.todos)
-        ]
+        ];
     }
 })
 
@@ -23,7 +23,7 @@ let addForm = f.createComponent<s.ITodo, any>({
                 gui.inputFormField('', ctx.state.name, a.updateNewTodoName),
                 gui.button({ label: 'Add', onClick: () => { a.addTodo(); return true; } })
             ]
-        })
+        });
     }
 })
 

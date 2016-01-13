@@ -1,15 +1,21 @@
 import * as f from './flux';
-import * as states from './states';
+import * as s from './states';
 
-export let todosSection: f.ICursor<states.ITodosState> = {
+export let todosSection: f.ICursor<s.ITodosState> = {
     key: 'todoSection'
 }
 
-export let todos: f.ICursor<states.ITodo[]> = {
+export let todosIndexFactory: f.ICursorFactory<s.ITodo, number> = {
+    create: (index) => {
+        return { key: `todoSection.todos.${index}` };
+    }    
+}
+
+export let todos: f.ICursor<s.ITodo[]> = {
     key: 'todoSection.todos'
 }
 
-export let editedTodo: f.ICursor<states.ITodo> = {
+export let editedTodo: f.ICursor<s.ITodo> = {
     key: 'todoSection.editedTodo'
 }
 
