@@ -58,21 +58,71 @@ import * as s from './states';
 f.bootstrap(s.default());
 ```
 
-## Actions
+## Views/Pages
+* can be pure bobril components or can be created by bobflux
+
+### Bobflux Components
+* is derived component from Bobril
+* gets state through cursor which has been specified in creation
+* sets last state into component context
+* offers state property in context (ctx.state)
+* component should not have data
+* all data should be passed by state
+* why?
+ * implements shouldChange and holds last state from last rendering
+ * protects against useless rendering parts in your application
+* there are two kinds of components:
+ * component
+   * is common component which has state in context
+ * routeComponent
+   * is fitted for bobril router and has state in context
+   * is virtual component which wrappes bobflux component
+   * bobflux component cannot be used in router beacause you can not specify cursor in route handler. Creation is invoked by router.
+* if you operate with b.invalidate(ctx) in your component you can force shouldChange by ctx.forceShouldChange
+ 
+```js
+import * as b from 'bobril';
+import * as gui from 'bobril-css-bootstrap';
+import * as f from 'bobflux';
+import * as s from './states';
+import * as a from './actions';
+import * as c from './cursors';
+
+export let create = f.createRouteComponent<s.ITodosState, any>({
+    render(ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+        me.children = [
+            addForm(c.editedTodo),
+            table(c.todos)
+        ]
+    }
+})
+
+let addForm = f.createComponent<s.ITodo, any>({
+    render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+        me.children = gui.form({
+            isInlined: true,
+            content: [
+                gui.inputFormField('', ctx.state.name, a.updateNewTodoName),
+                gui.button({ label: 'Add', onClick: () => { a.addTodo(); return true; } })
+            ]
+        })
+    }
+})
+```
+
+## Action
 * returns new instances of modified state and its sub states
 * beware on array operations like push etc.
 * use as much as possible specific cursors
 * if you want to modify more sub states then you should create two actions with specified cursors. Then invoke actions synchronously. b.invalidate waits for both actions. If actions take a long time then intermediate state will be rendered between actions.
+* function should not be passed through parameters into action
 
-### Common
+### Common creation and invoking
 * implementation:
 ```js
-export let removeTodo = bobflux.createAction(
-    cursors.todos,
-    (todos: states.ITodo[], id: number): states.ITodo[]=> {
-        return [...todos.filter(t => t.id !== id)];
-    }
-);
+export let removeTodo = f.createAction<s.ITodo[], number>(c.todos, (todos, id) => {
+    return [...todos.filter(t => t.id !== id)];
+});
 ```
 * invoking:
 ```js
@@ -82,74 +132,40 @@ actions.removeTodo(t.id);
 ### Without parameters
 * implementation:
 ```js
-export let removeStaticTodo = bobflux.createAction(
-    cursors.todos,
-    (todos: states.ITodo[]): states.ITodo[]=> {
-        return [...todos.filter(t => t.id !== 1)];
-    }
-);
+export let removeTodoId1 = bobflux.createAction(cursors.todos, (todos: states.ITodo[]): states.ITodo[] => {
+    return [...todos.filter(t => t.id !== 1)];
+});
 ```
 * invoking:
 ```js
 actions.removeStaticTodo();
 ```
 
-### With more parameters
+### If you need pass more parameters into action
 * implementation:
+
 ```js
-export interface IChangeCompletionParams {
+export interface IChangeDoneStatusParams {
     id: number;
-    completed: boolean;
+    isDone: boolean;
 }
-export let changeCompletion = bobflux.createAction(
-   cursors.todos,
-   (todos: states.ITodo[], params: IChangeCompletionParams): states.ITodo[] => {
+
+export let changeDoneStatus = f.createAction<s.ITodo[], IChangeDoneStatusParams>(c.todos, (todos, params) => {
     return todos.map(t => {
         if (t.id === params.id)
-            return bobflux.shallowCopy(t, (nT) => {
-                nT.isComplete = params.completed;
+            return f.shallowCopy(t, (nT) => {
+                nT.isDone = params.isDone;
                 return nT;
             });
         return t;
     })
 });
 ```
+
 * invoking:
 ```js
- actions.changeCompletion({ id: t.id, completed: value })
+ actions.changeDoneStatus({ id: t.id, isDone: value })
 ```
 
 ### Issues
 * beware on invoking because params of actions are optional!!! Compiler cannot check this mistake.
-
-## Component
-* is derived component from Bobril
-* implements shouldChnage
-* gets state through cursor
-* sets last state in our context
-* shouldChange implementation:
-```js
-shouldChange(ctx: IContext<IState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
-    let currentState = getState(c);
-    if (currentState === ctx.state)
-        return false;
-    ctx.state = currentState;
-    return true;
-}
-```
-* component implementation:
-```js
-export let create = bobflux.createComponent({
-    render(ctx: IContext, me: b.IBobrilNode) {
-      //...
-    }
-}}
-```
-* invoking:
-```js
-todoItemsHeader.create(cursors.editedTodo, {}),
-```
-
-## Route component
-* is virtual component with bobflux component in children
-* bobflux component cannot be used in router beacause you can not specify cursor. Creation is invoked by router.
