@@ -5,6 +5,12 @@ export let todosSection: f.ICursor<s.ITodosState> = {
     key: 'todoSection'
 }
 
+export let todosIndexFactory: f.ICursorFactory<s.ITodo, number> = {
+    create: (index) => {
+        return { key: `todoSection.todos.${index}` };
+    }    
+}
+
 export let todos: f.ICursor<s.ITodo[]> = {
     key: 'todoSection.todos'
 }
