@@ -1,6 +1,6 @@
 # Bobflux
 * is pure functional implementation of FLUX architecture
-* is frontend architecture inspired by [Flux](https://facebook.github.io/flux/docs/overview.html#content), [Reflux](https://github.com/spoike/refluxjs) and [Redux](https://github.com/gaearon/redux)
+* is inspired by [Flux](https://facebook.github.io/flux/docs/overview.html#content), [Reflux](https://github.com/spoike/refluxjs) and [Redux](https://github.com/gaearon/redux)
 * fits and depends on [Bobril](https://github.com/Bobris/Bobril)
 
 ## Installation
@@ -8,24 +8,55 @@
 npm i bobflux --save
 ```
 
-## About Flux, Immutability and Shallow Copy
-* you can see some notes: [fun-model](https://github.com/karelsteinmetz/fun-model/blob/master/README.md)
+## Fun-model
+* is core of bobflux,
+* is not dependent on bobril, can be used for React applications,
+* there is [fun-model](https://github.com/karelsteinmetz/fun-model/blob/master/README.md) you can see some notes about flux, immutability etc.
 
-
-## Common keywords
+## Common keywords in Bobflux application
 * one store for one application state
 * application state:
  * is global state
  * is composition of sub states
- * action calls action factory with specified cursor and handler. Handler creates new instance of state
+ * actions are create by action factory with specified cursor and handler. Handler creates new instance of state or it can return the same state
 * Bobril is only for "rendering" (View)
-* Bobril component context should be used for intermediate state (drag & drop, input border color when it has been focused)
+* Bobril component context (b.IBobrilCtx) should be used for intermediate state (drag & drop, input border color on focus etc.)
 
+## Livecycle
  ![](./doc/img/flux_like.png)
 
 ### Getting started video [cz] 
 [![Getting started video](http://img.youtube.com/vi/iU8_5aKHURM/default.jpg)](http://www.youtube.com/watch?v=iU8_5aKHURM)
 
+## State
+* is object
+* is global state of application
+* one instance is held in store
+* default state must be set before firts usage
+
+```js
+//state.ts
+import * as f from 'bobflux';
+
+export interface ITodo {
+    id: number;
+    isDone: boolean;
+    name: string;
+}
+
+export interface ITodosState extends f.IState {
+    editedTodo: ITodo;
+    todos: ITodo[];
+}
+```
+
+```js
+//app.ts - main application file in bobril-build or systemjs
+import * as f from 'bobflux';
+import * as s from './states';
+
+f.bootstrap(s.default());
+```
 
 ## Actions
 * returns new instances of modified state and its sub states
