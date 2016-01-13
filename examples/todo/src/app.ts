@@ -1,20 +1,23 @@
-import * as b from '../node_modules/bobril/index';
-import bootstrap from './bootstrap';
-import todoItemsList from './todoItemsList';
-import todoItemsHeader from './todoItemsHeader';
-import footer from './footer';
-import * as cursors from './cursors';
-import container from './bootstrap/container';
+import * as b from 'bobril';
+import * as f from 'bobflux';
+import * as mp from './mainPage';
+import * as tdp from './todosPage';
+import * as c from './cursors';
+import * as s from './states';
 
-bootstrap();
+f.bootstrap(s.default(), (message, params) => { });
 
-b.init(() => {
-    return container({
-        content: [
-            'Hello I\'m Bobflux Todo example!',
-            todoItemsHeader(cursors.editedTodo, {}),
-            todoItemsList(cursors.todos, {}),
-            footer(cursors.todos, {})
-        ]
-    })
-});
+b.routes(
+    b.route(
+        {
+            url: '/',
+            handler: mp.create
+        },
+        [
+            b.routeDefault({
+                name: 'default',
+                handler: tdp.create(c.todosSection)
+            }),
+
+        ])
+);

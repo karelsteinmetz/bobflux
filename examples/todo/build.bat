@@ -1,2 +1,1 @@
-call gulp web
-call gulp nw
+node ./node_modules/bobril-build/bin/bb

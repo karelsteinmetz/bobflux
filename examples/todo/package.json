@@ -1,51 +1,42 @@
 {
-  "name": "bobflux-todo-example",
-  "version": "2.0.0",
-  "description": "Bobflux is pure functional implementation of FLUX pattern and is fitted to Bobril.",
-  "main": "index.html",
-  "typescript": {
+    "name": "bobflux-todo-example",
+    "version": "2.0.0",
+    "description": "Bobflux is pure functional implementation of FLUX pattern and is fitted to Bobril.",
     "main": "./src/app.ts",
-    "definition": "./src/app.d.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/karelsteinmetz/bobflux.git"
-  },
-  "keywords": [
-    "bobril",
-    "flux",
-    "es6",
-    "node-webkit"
-  ],
-  "author": {
-    "name": "Karel Steinmetz",
-    "email": "karel.steinmetz@gmail.com"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "bobflux": "1.*.*",
-    "fun-model": "0.1.*",
-    "bobril": "*",
-    "bootstrap": "^3.3.5",
-    "systemjs": "^0.19.3"
-  },
-  "window": {
-    "title": "bobflux-todo-example",
-    "toolbar": false,
-    "frame": true,
-    "width": 850,
-    "height": 500,
-    "position": "center",
-    "resizable": true
-  },
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-exec": "^2.1.2",
-    "gulp-jasmine": "^2.0.1",
-    "gulp-typescript": "^2.8.2",
-    "gulp-zip": "^3.0.2"
-  },
-  "license": "MIT"
+    "typescript": {
+        "main": "./src/app.ts"
+    },
+    "bobril": {
+        "dir": "release",
+        "resourcesAreRelativeToProjectDir": false,
+        "title": "Bobflux TODO example",
+        "constantOverrides": {
+            "module_name": {
+            }
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/karelsteinmetz/bobflux.git"
+    },
+    "keywords": [
+        "bobril",
+        "es6",
+        "flux",
+        "node-webkit"
+    ],
+    "author": {
+        "email": "karel.steinmetz@gmail.com",
+        "name": "Karel Steinmetz"
+    },
+    "dependencies": {
+        "bobflux": "2.*.*",
+        "bobril": "*",
+        "bobril-css-bootstrap": "0.*",
+        "bootstrap": "^3.3.5"
+    },
+    "devDependencies": {
+        "bobril-build": "*"
+    },
+    "license": "MIT"
 }

@@ -7,7 +7,7 @@ export interface IContext<TState extends f.IState> extends b.IBobrilCtx {
 }
 
 export function createComponent<TState extends f.IState, TData>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState>, data: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
+    : (cursor: f.ICursor<TState>, data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
     return (c: f.ICursor<TState>, d: TData, ch?: b.IBobrilChildren) => b.createDerivedComponent<TData>(
         b.createComponent({
             init(ctx: IContext<f.IState>) {

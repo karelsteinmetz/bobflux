@@ -1,36 +1,37 @@
-import * as f from './flux';
-import { IAction } from './flux';
-import * as states from './states';
-import * as cursors from './cursors';
+import * as f from 'bobflux';
+import * as s from './states';
+import * as c from './cursors';
 
-export let addTodo = f.createAction(cursors.todos, (todos: states.ITodo[], name: string): states.ITodo[] => {
-    return [{ id: Date.now(), name: name, isComplete: false }, ...todos];
-});
-
-export let updateEditedTodoName = f.createAction(cursors.editedTodo, (todo: states.ITodo, name: string): states.ITodo => {
-    return f.shallowCopy(todo, (t) => {
-        t.name = name;
-        return t;
-    });
-});
-
-export let removeTodo = f.createAction(
-    cursors.todos,
-    (todos: states.ITodo[], id: number): states.ITodo[] => {
-        return [...todos.filter(t => t.id !== id)];
-    }
+export let addTodo = f.createAction<s.ITodosState, any>(c.todosSection, (state) =>
+    f.shallowCopy(state, (section) => {
+        section.todos = [
+            { id: new Date().getTime(), isDone: false, name: section.editedTodo.name },
+            ...section.todos
+        ];
+        section.editedTodo = { id: null, name: '', isDone: false };
+    })
 );
+
+export let updateNewTodoName = f.createAction<s.ITodo, string>(c.editedTodo, (todo, name) =>
+    f.shallowCopy(todo, (t) => {
+        t.name = name;
+    })
+);
+
+export let removeTodo = f.createAction<s.ITodo[], number>(c.todos, (todos, id) => {
+    return [...todos.filter(t => t.id !== id)];
+});
 
 export interface IChangeCompletionParams {
     id: number;
-    completed: boolean;
+    isDone: boolean;
 }
 
-export let changeCompletion = f.createAction(cursors.todos, (todos: states.ITodo[], params: IChangeCompletionParams): states.ITodo[]=> {
+export let changeDoneStatus = f.createAction<s.ITodo[], IChangeCompletionParams>(c.todos, (todos, params) => {
     return todos.map(t => {
         if (t.id === params.id)
             return f.shallowCopy(t, (nT) => {
-                nT.isComplete = params.completed;
+                nT.isDone = params.isDone;
                 return nT;
             });
         return t;

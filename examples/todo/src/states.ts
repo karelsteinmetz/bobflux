@@ -1,9 +1,8 @@
-import * as f from './flux';
-import { ICursor } from './flux';
+import * as f from 'bobflux';
 
 export interface ITodo {
     id: number;
-    isComplete: boolean;
+    isDone: boolean;
     name: string;
 }
 
@@ -19,10 +18,10 @@ export interface IApplicationState extends f.IState {
 export default(): IApplicationState => {
     return {
         todoSection: {
-            editedTodo: { id: null, name: '', isComplete: false },
+            editedTodo: { id: null, name: '', isDone: false },
             todos: [
-                { id: 1, name: 'First TODO...', isComplete: false },
-                { id: 2, name: 'Second TODO...', isComplete: false }
+                { id: 1, name: 'First TODO...', isDone: true },
+                { id: 2, name: 'Second TODO...', isDone: false }
             ]
         }
     };
