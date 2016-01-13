@@ -22,12 +22,12 @@ export let removeTodo = f.createAction<s.ITodo[], number>(c.todos, (todos, id) =
     return [...todos.filter(t => t.id !== id)];
 });
 
-export interface IChangeCompletionParams {
+export interface IChangeDoneStatusParams {
     id: number;
     isDone: boolean;
 }
 
-export let changeDoneStatus = f.createAction<s.ITodo[], IChangeCompletionParams>(c.todos, (todos, params) => {
+export let changeDoneStatus = f.createAction<s.ITodo[], IChangeDoneStatusParams>(c.todos, (todos, params) => {
     return todos.map(t => {
         if (t.id === params.id)
             return f.shallowCopy(t, (nT) => {
