@@ -109,6 +109,32 @@ let addForm = f.createComponent<s.ITodo, any>({
     }
 })
 ```
+## Cursor
+* has key which specifies path to target propery of objects or subobjects in global application state
+* there are two kinds of cursors:
+ * for maps - "all objects/classes" in js
+
+```js
+export let editedTodoName: f.ICursor<string> = {
+    key: 'todoSection.editedTodo.name'
+}
+
+export let todos: f.ICursor<s.ITodo[]> = {
+    key: 'todoSection.todos'
+}
+```
+
+ * for array items
+
+```js
+export let firstTodo: f.ICursor<s.ITodo> = {
+    key: 'todoSection.todos.0'
+}
+
+export let firstTodoName: f.ICursor<string> = {
+    key: 'todoSection.todos.0.name'
+}
+```
 
 ## Action
 * returns new instances of modified state and its sub states
@@ -166,6 +192,24 @@ export let changeDoneStatus = f.createAction<s.ITodo[], IChangeDoneStatusParams>
 ```js
  actions.changeDoneStatus({ id: t.id, isDone: value })
 ```
+
+### With cursor factory
+* implementation:
+```js
+let testAction = af.createAction<tds.ITodo, tds.ITodoParams>(
+    {
+        create: (params) => {
+            return { key: `todos.${params.index}` };
+        }
+    },
+    (state, params) => { return params.todo }
+);
+```
+* invoking:
+```js
+testAction({ index: 1, todo: { done: false, name: 'New second todo' } });
+```
+
 
 ### Issues
 * beware on invoking because params of actions are optional!!! Compiler cannot check this mistake.
