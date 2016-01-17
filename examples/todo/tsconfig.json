@@ -21,13 +21,14 @@
         "./node_modules/fun-model/**/*.d.ts"
     ],
     "files": [
-        "d:/dev/dev-github/bobflux/examples/todo/node_modules/bobril-build/typings/jasmine/jasmine.d.ts",
+        "app.ts",
+        "c:/dev-github/bobflux/examples/todo/node_modules/bobril-build/typings/jasmine/jasmine.d.ts",
         "spec/actions.spec.ts",
         "src/actions.ts",
-        "src/app.ts",
         "src/cursors.ts",
         "src/flux.ts",
         "src/mainPage.ts",
+        "src/states.cursors.ts",
         "src/states.ts",
         "src/todosPage.ts"
     ],

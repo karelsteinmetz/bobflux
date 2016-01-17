@@ -1,9 +1,11 @@
 import * as b from 'bobril';
-import * as f from './flux';
-import * as mp from './mainPage';
-import * as tdp from './todosPage';
-import * as c from './cursors';
-import * as s from './states';
+import * as f from './src/flux';
+import * as mp from './src/mainPage';
+import * as tdp from './src/todosPage';
+import * as c from './src/cursors';
+import * as s from './src/states';
+
+b.asset('css/bootstrap.css');
 
 f.bootstrap(s.default(), (message, params) => { });
 
