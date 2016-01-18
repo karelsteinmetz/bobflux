@@ -36,7 +36,8 @@
         "bootstrap": "^3.3.5"
     },
     "devDependencies": {
-        "bobril-build": "*"
+        "bobril-build": "*",
+        "bobflux-gen": "*"
     },
     "license": "MIT"
 }
