@@ -25,7 +25,6 @@
         "c:/dev-github/bobflux/examples/todo/node_modules/bobril-build/typings/jasmine/jasmine.d.ts",
         "spec/actions.spec.ts",
         "src/actions.ts",
-        "src/cursors.ts",
         "src/flux.ts",
         "src/mainPage.ts",
         "src/states.cursors.ts",

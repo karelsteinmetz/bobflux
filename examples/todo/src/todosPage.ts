@@ -2,15 +2,15 @@ import * as b from 'bobril';
 import * as gui from 'bobril-css-bootstrap';
 import * as f from './flux';
 import * as s from './states';
+import * as c from './states.cursors';
 import * as a from './actions';
-import * as c from './cursors';
 
 
 export let create = f.createRouteComponent<s.ITodosState, any>({
     render(ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = [
-            addForm(c.editedTodo),
-            table(c.todos)
+            addForm(c.todoSectionEditedTodoCursor),
+            table(c.todoSectionTodosCursor)
         ];
     }
 })

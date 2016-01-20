@@ -2,8 +2,8 @@ import * as b from 'bobril';
 import * as f from './src/flux';
 import * as mp from './src/mainPage';
 import * as tdp from './src/todosPage';
-import * as c from './src/cursors';
 import * as s from './src/states';
+import * as c from './src/states.cursors';
 
 b.asset('css/bootstrap.css');
 
@@ -18,7 +18,7 @@ b.routes(
         [
             b.routeDefault({
                 name: 'default',
-                handler: tdp.create(c.todosSection)
+                handler: tdp.create(c.todoSectionCursor)
             }),
 
         ])
