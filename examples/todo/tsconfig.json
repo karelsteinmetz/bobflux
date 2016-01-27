@@ -22,14 +22,16 @@
     ],
     "files": [
         "app.ts",
-        "c:/dev-github/bobflux/examples/todo/node_modules/bobril-build/typings/jasmine/jasmine.d.ts",
-        "spec/actions.spec.ts",
-        "src/actions.ts",
+        "c:/dev-github/bobflux-main/examples/todo/node_modules/bobril-build/typings/jasmine/jasmine.d.ts",
+        "spec/todos/actions.spec.ts",
         "src/flux.ts",
         "src/mainPage.ts",
         "src/states.cursors.ts",
         "src/states.ts",
-        "src/todosPage.ts"
+        "src/todos/actions.ts",
+        "src/todos/state.cursors.ts",
+        "src/todos/state.ts",
+        "src/todos/todosPage.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

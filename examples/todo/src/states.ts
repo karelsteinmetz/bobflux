@@ -1,18 +1,8 @@
 import * as f from './flux';
-
-export interface ITodo {
-    id: number;
-    isDone: boolean;
-    name: string;
-}
-
-export interface ITodosState extends f.IState {
-    editedTodo: ITodo;
-    todos: ITodo[];
-}
+import * as td from './todos/state';
 
 export interface IApplicationState extends f.IState {
-    todoSection: ITodosState;
+    todoSection: td.ITodosState;
 }
 
 export default(): IApplicationState => {

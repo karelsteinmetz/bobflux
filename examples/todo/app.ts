@@ -1,7 +1,7 @@
 import * as b from 'bobril';
 import * as f from './src/flux';
 import * as mp from './src/mainPage';
-import * as tdp from './src/todosPage';
+import * as tdp from './src/todos/todosPage';
 import * as s from './src/states';
 import * as c from './src/states.cursors';
 
