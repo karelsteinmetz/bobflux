@@ -13,12 +13,12 @@
         "./**/*.ts",
         "!./node_modules/**/*",
         "!./dist/**/*",
-        "./node_modules/bobril/**/*.d.ts",
-        "./node_modules/bobril-css-bootstrap/**/*.d.ts",
-        "./node_modules/bobflux/**/*.d.ts",
+        "./node_modules/bobril/**/*.ts",
+        "./node_modules/bobril-css-bootstrap/**/*.ts",
+        "./node_modules/bobflux/**/*.ts",
         "!./node_modules/bobflux/node_modules/**/*",
         "!./node_modules/bobflux/examples/**/*",
-        "./node_modules/fun-model/**/*.d.ts"
+        "./node_modules/fun-model/**/*.ts"
     ],
     "files": [
         "app.ts",

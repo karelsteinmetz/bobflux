@@ -2,11 +2,6 @@ import * as b from 'bobril';
 import * as gui from 'bobril-css-bootstrap';
 
 export let create = b.createComponent({
-    id: 'body-style',
-    postInitDom(ctx: b.IBobrilCtx, me: b.IBobrilCacheNode, element: HTMLElement) {
-        document.body.style.minHeight = '200px';
-        document.body.style.paddingTop = '70px';
-    },
     render(ctx: b.IBobrilCtx, me: b.IBobrilNode) {
         me.children = [
             gui.navBar({
@@ -16,7 +11,7 @@ export let create = b.createComponent({
                 ],
                 activeItem: 'todos',
             }),
-            gui.container({ content: me.data.activeRouteHandler(), isFluid: true })
+            gui.container({ content: me.data.activeRouteHandler() })
         ];
     }
 });
