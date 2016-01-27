@@ -11,12 +11,10 @@ export let create = b.createComponent({
         me.children = [
             gui.navBar({
                 header: null,
-                routes: [
-                    { label: 'Todos', value: 'todos', onRoute: () => b.runTransition(b.createRedirectReplace('todos')) }
+                leftItems: [
+                    { label: 'Todos', value: 'todos', onSelect: () => b.runTransition(b.createRedirectReplace('todos')) }
                 ],
-                activeRoute: 'todos',
-                userName: '',
-                onLogout: () => { return true; }
+                activeItem: 'todos',
             }),
             gui.container({ content: me.data.activeRouteHandler(), isFluid: true })
         ];
