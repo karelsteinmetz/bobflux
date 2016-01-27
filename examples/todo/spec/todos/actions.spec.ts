@@ -15,7 +15,8 @@ describe('actions', () => {
             givenStore({ id: 1, isDone: false, name: 'Todo' });
 
             a.changeDoneStatus({ id: 1, isDone: true });
-
+            
+   
             expect(f.getState(firstTodoCursor).isDone).toBeTruthy();
         })
 
@@ -37,19 +38,16 @@ describe('actions', () => {
     })
 
     function givenStore(...todos: s.ITodo[]) {
-        f.bootstrap({
-            todoSection: {
-                editedTodo: { id: null, name: '', isDone: false },
-                todos: todos
-            }
-        });
+        let def = rs.default();
+        def.todos.todos = todos;
+        f.bootstrap(def);
     }
 })
 
 const firstTodoCursor: f.ICursor<s.ITodo> = {
-    key: 'todoSection.todos.0'
+    key: 'todos.todos.0'
 }
 
 const secondTodoCursor: f.ICursor<s.ITodo> = {
-    key: 'todoSection.todos.1'
+    key: 'todos.todos.1'
 }

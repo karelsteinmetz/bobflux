@@ -2,25 +2,25 @@ import * as s from './state';
 import * as f from '../flux';
 
 export let rootCursor: f.ICursor<s.ITodosState> = {
-    key: 'todoSection'
+    key: 'todos'
 }
 
 export let editedTodoCursor: f.ICursor<s.ITodo> = {
-    key: 'todoSection.editedTodo'
+    key: 'todos.editedTodo'
 }
 
 export let todosCursor: f.ICursor<s.ITodo[]> = {
-    key: 'todoSection.todos'
+    key: 'todos.todos'
 }
 
-export let todoSectionEditedTodoIdCursor: f.ICursor<number> = {
-    key: 'todoSection.todoSection.editedTodo.id'
+export let todosEditedTodoIdCursor: f.ICursor<number> = {
+    key: 'todos.todos.editedTodo.id'
 }
 
-export let todoSectionEditedTodoIsDoneCursor: f.ICursor<boolean> = {
-    key: 'todoSection.todoSection.editedTodo.isDone'
+export let todosEditedTodoIsDoneCursor: f.ICursor<boolean> = {
+    key: 'todos.todos.editedTodo.isDone'
 }
 
-export let todoSectionEditedTodoNameCursor: f.ICursor<string> = {
-    key: 'todoSection.todoSection.editedTodo.name'
+export let todosEditedTodoNameCursor: f.ICursor<string> = {
+    key: 'todos.todos.editedTodo.name'
 }

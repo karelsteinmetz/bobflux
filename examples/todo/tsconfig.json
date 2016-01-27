@@ -31,7 +31,10 @@
         "src/todos/actions.ts",
         "src/todos/state.cursors.ts",
         "src/todos/state.ts",
-        "src/todos/todosPage.ts"
+        "src/todos/todosPage.ts",
+        "src/whatNext/page.ts",
+        "src/whatNext/state.cursors.ts",
+        "src/whatNext/state.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

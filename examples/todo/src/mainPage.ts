@@ -7,9 +7,9 @@ export let create = b.createComponent({
             gui.navBar({
                 header: null,
                 leftItems: [
-                    { label: 'Todos', value: 'todos', onSelect: () => b.runTransition(b.createRedirectReplace('todos')) }
-                ],
-                activeItem: 'todos',
+                    { label: 'Todos', value: 'todos', onSelect: () => b.runTransition(b.createRedirectReplace('todos')) },
+                    { label: 'What next?', value: 'whatNext', onSelect: () => b.runTransition(b.createRedirectReplace('whatNext')) }
+                ]
             }),
             gui.container({ content: me.data.activeRouteHandler() })
         ];

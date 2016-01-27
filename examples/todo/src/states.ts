@@ -1,18 +1,15 @@
 import * as f from './flux';
 import * as td from './todos/state';
+import * as wn from './whatNext/state';
 
 export interface IApplicationState extends f.IState {
-    todoSection: td.ITodosState;
+    todos: td.ITodosState
+    whatNext: wn.IWhatNextState
 }
 
 export default(): IApplicationState => {
     return {
-        todoSection: {
-            editedTodo: { id: null, name: '', isDone: false },
-            todos: [
-                { id: 1, name: 'First TODO...', isDone: true },
-                { id: 2, name: 'Second TODO...', isDone: false }
-            ]
-        }
+        todos: td.default(),
+        whatNext: wn.default()
     };
 }
