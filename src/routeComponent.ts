@@ -21,9 +21,11 @@ export function createRouteComponent<TState extends f.IState, TData extends IRou
                     ctx.lastData = ctx.data;
                 },
                 shouldChange(ctx: IRouteContext<TState, TData>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
-                    if (ctx.forceShouldChange)
-                        return true;
                     let currentState = f.getState(c);
+                    if (ctx.forceShouldChange) {
+                        ctx.state = currentState;
+                        return true;
+                    }
                     if (ctx.data === ctx.lastData && currentState === ctx.state)
                         return false;
                     ctx.state = currentState;
