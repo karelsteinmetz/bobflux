@@ -1,33 +1,33 @@
 {
-  "name": "bobflux",
-  "version": "2.0.7",
-  "description": "Bobflux is pure functional implementation of FLUX architecture.",
-  "main": "./index.js",
-  "typescript": {
-    "main": "./index.ts",
-    "definition": "./index.d.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/karelsteinmetz/bobflux.git"
-  },
-  "keywords": [
-    "bobril",
-    "flux",
-    "es6"
-  ],
-  "author": {
-    "name": "Karel Steinmetz",
-    "email": "karel.steinmetz@gmail.com"
-  },
-  "dependencies": {
-    "bobril": "*",
-    "fun-model": "1.0.*"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-jasmine": "^2.0.1",
-    "gulp-typescript": "^2.8.2"
-  },
-  "license": "MIT"
+    "name": "bobflux",
+    "version": "2.0.7",
+    "description": "Bobflux is pure functional implementation of FLUX architecture.",
+    "main": "./index.js",
+    "typescript": {
+        "main": "./index.ts",
+        "definition": "./index.d.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/karelsteinmetz/bobflux.git"
+    },
+    "keywords": [
+        "bobril",
+        "flux",
+        "es6"
+    ],
+    "author": {
+        "name": "Karel Steinmetz",
+        "email": "karel.steinmetz@gmail.com"
+    },
+    "dependencies": {
+        "bobril": "*",
+        "fun-model": "1.0.*"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-jasmine": "^2.0.1",
+        "gulp-typescript": "^2.8.2"
+    },
+    "license": "MIT"
 }
