@@ -6,9 +6,9 @@ export interface IContext<TState extends f.IState> extends b.IBobrilCtx {
     forceShouldChange: boolean;
 }
 
-export function createComponent<TState extends f.IState, TData>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState>, data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
-    return (c: f.ICursor<TState>, d: TData, ch?: b.IBobrilChildren) => b.createDerivedComponent<TData>(
+export function createComponent<TState extends f.IState>(component: b.IBobrilComponent)
+    : (cursor: f.ICursor<TState>) => b.IBobrilNode {
+    return (c: f.ICursor<TState>) => b.createDerivedComponent(
         b.createComponent({
             init(ctx: IContext<f.IState>) {
                 ctx.state = f.getState(c);
@@ -25,5 +25,5 @@ export function createComponent<TState extends f.IState, TData>(component: b.IBo
                 return true;
             }
         }),
-        component)(d, ch);
+        component)();
 }
