@@ -1,1 +1,0 @@
-node ./node_modules/bobril-build/bin/bb

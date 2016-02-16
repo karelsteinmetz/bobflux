@@ -1,9 +1,7 @@
 .*
-*.bat
 resources
 spec
 tests
-examples
 tsconfig.json
 gulpfile.js
 build.bat

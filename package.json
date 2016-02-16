@@ -1,6 +1,6 @@
 {
     "name": "bobflux",
-    "version": "2.0.8",
+    "version": "2.1.0",
     "description": "Bobflux is pure functional implementation of FLUX architecture.",
     "main": "./index.js",
     "typescript": {
@@ -20,14 +20,19 @@
         "name": "Karel Steinmetz",
         "email": "karel.steinmetz@gmail.com"
     },
+    "bobril": {
+        "example": "examples/app.ts",
+        "title": "Bobflux Examples"
+    },
     "dependencies": {
         "bobril": "*",
         "fun-model": "1.0.*"
     },
     "devDependencies": {
-        "gulp": "^3.9.0",
-        "gulp-jasmine": "^2.0.1",
-        "gulp-typescript": "^2.8.2"
+        "bobril-build": "*",
+        "bobflux-gen": "*",
+        "bobril-css-bootstrap": "0.*",
+        "bootstrap": "*"
     },
     "license": "MIT"
 }

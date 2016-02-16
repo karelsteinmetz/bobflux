@@ -2,7 +2,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "target": "es6",
-        "declaration": true,
+        "declaration": false,
         "noImplicitAny": false,
         "removeComments": false,
         "moduleResolution": "node",
@@ -22,23 +22,25 @@
         "placeOpenBraceOnNewLineForFunctions": false,
         "placeOpenBraceOnNewLineForControlBlocks": false
     },
-    "filesGlob": [
-        "./**/*.ts",
-        "!./**/*.d.ts",
-        "!./node_modules/**/*",
-        "./node_modules/bobril/**/*.d.ts",
-        "./node_modules/fun-model/**/*.d.ts",
-        "!./examples/**/*"
-    ],
+    "filesGlob": [],
     "files": [
-        "./index.ts",
-        "./src/component.ts",
-        "./src/routeComponent.ts",
-        "./node_modules/bobril/index.d.ts",
-        "./node_modules/fun-model/index.d.ts",
-        "./node_modules/fun-model/src/actionFactory.d.ts",
-        "./node_modules/fun-model/src/debug.d.ts",
-        "./node_modules/fun-model/src/helpers.d.ts",
-        "./node_modules/fun-model/src/store.d.ts"
+        "c:/dev-github/bobril-build/typings/jasmine/jasmine.d.ts",
+        "examples/app.ts",
+        "examples/spec/todos/actions.spec.ts",
+        "examples/src/flux.ts",
+        "examples/src/mainPage.ts",
+        "examples/src/states.cursors.ts",
+        "examples/src/states.ts",
+        "examples/src/todos/actions.ts",
+        "examples/src/todos/state.cursors.ts",
+        "examples/src/todos/state.ts",
+        "examples/src/todos/todosPage.ts",
+        "examples/src/whatNext/page.ts",
+        "examples/src/whatNext/state.cursors.ts",
+        "examples/src/whatNext/state.ts",
+        "index.ts",
+        "spec/component.spec.ts",
+        "src/component.ts",
+        "src/routeComponent.ts"
     ]
 }

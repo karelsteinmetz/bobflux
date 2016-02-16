@@ -1,0 +1,1 @@
+node ../node_modules/bobflux-gen/bin/bfg c --appStatePath src/states.ts
