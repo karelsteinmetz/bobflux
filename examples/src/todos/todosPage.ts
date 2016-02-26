@@ -15,7 +15,7 @@ export let create = f.createRouteComponent<s.ITodosState, any>({
     }
 })
 
-let addForm = f.createComponent<s.ITodo, any>({
+let addForm = f.createComponent<s.ITodo>({
     render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = gui.form({
             isInlined: true,
@@ -27,7 +27,7 @@ let addForm = f.createComponent<s.ITodo, any>({
     }
 })
 
-let table = f.createComponent<s.ITodo[], any>({
+let table = f.createComponent<s.ITodo[]>({
     render(ctx: f.IContext<s.ITodo[]>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = gui.table({
             headers: [],
