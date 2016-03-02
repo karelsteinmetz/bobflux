@@ -4,6 +4,8 @@ import * as a from '../../src/todos/actions';
 import * as c from '../../src/todos/state.cursors';
 import * as s from '../../src/todos/state';
 import * as rs from '../../src/states';
+import * as tb from './state.builders';
+import * as rb from '../states.builders';
 
 describe('actions', () => {
     beforeEach(() => {
@@ -15,8 +17,8 @@ describe('actions', () => {
             givenStore({ id: 1, isDone: false, name: 'Todo' });
 
             a.changeDoneStatus({ id: 1, isDone: true });
-            
-   
+
+
             expect(f.getState(firstTodoCursor).isDone).toBeTruthy();
         })
 
@@ -38,9 +40,13 @@ describe('actions', () => {
     })
 
     function givenStore(...todos: s.ITodo[]) {
-        let def = rs.default();
-        def.todos.todos = todos;
-        f.bootstrap(def);
+        f.bootstrap(
+            new rb.ApplicationStateBuilder()
+                .withTodos(new tb.TodosStateBuilder()
+                    .withTodos(todos)
+                    .build()
+                )
+        );
     }
 })
 

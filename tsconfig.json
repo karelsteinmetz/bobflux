@@ -26,7 +26,10 @@
     "files": [
         "c:/dev-github/bobril-build/typings/jasmine/jasmine.d.ts",
         "examples/app.ts",
+        "examples/spec/states.builders.ts",
         "examples/spec/todos/actions.spec.ts",
+        "examples/spec/todos/state.builders.ts",
+        "examples/spec/whatNext/state.builders.ts",
         "examples/src/flux.ts",
         "examples/src/mainPage.ts",
         "examples/src/states.cursors.ts",

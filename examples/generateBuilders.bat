@@ -1,0 +1,1 @@
+bfg b --appStatePath src/states.ts --appStateName IApplicationState --recursively 1 --specRelativePath ../spec/
