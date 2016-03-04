@@ -4,13 +4,13 @@ import * as f from '../../src/flux';
 export class TodosStateBuilder {
     private state: s.ITodosState = s.default();
 
-    public withEditedTodo(editedTodo: s.ITodo): TodosStateBuilder {
-        this.state.editedTodo = editedTodo;
+    public withEditedTodo(editedTodo: s.ITodo | TodoBuilder): TodosStateBuilder {
+        this.state.editedTodo = isTodoBuilder(editedTodo) ? editedTodo.build() : editedTodo;
         return this;
     };
 
-    public withTodos(todos: s.ITodo[]): TodosStateBuilder {
-        this.state.todos = todos;
+    public withTodos(todos: (s.ITodo | TodoBuilder)[]): TodosStateBuilder {
+        this.state.todos = todos.map(i => isTodoBuilder(i) ? i.build() : i);
         return this;
     };
 
