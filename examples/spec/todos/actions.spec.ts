@@ -40,13 +40,9 @@ describe('actions', () => {
     })
 
     function givenStore(...todos: s.ITodo[]) {
-        f.bootstrap(
-            new rb.ApplicationStateBuilder()
-                .withTodos(new tb.TodosStateBuilder()
-                    .withTodos(todos)
-                    .build()
-                )
-        );
+        new tb.TodosStateBuilder()
+                .withTodos(todos)
+            .buildToStore();
     }
 })
 

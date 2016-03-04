@@ -6,7 +6,10 @@
         "noImplicitAny": false,
         "removeComments": false,
         "moduleResolution": "node",
-        "noLib": false
+        "noLib": false,
+        "module": "commonjs",
+        "jsx": "react",
+        "reactNamespace": "b"
     },
     "formatCodeOptions": {
         "indentSize": 4,
@@ -42,6 +45,7 @@
         "examples/src/whatNext/state.cursors.ts",
         "examples/src/whatNext/state.ts",
         "index.ts",
+        "node_modules/bobril/jsx.d.ts",
         "spec/component.spec.ts",
         "src/component.ts",
         "src/routeComponent.ts"
