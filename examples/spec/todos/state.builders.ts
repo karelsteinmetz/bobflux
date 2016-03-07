@@ -9,7 +9,7 @@ export class TodosStateBuilder {
         return this;
     };
 
-    public withTodos(todos: (s.ITodo | TodoBuilder)[]): TodosStateBuilder {
+    public withTodos(...todos: (s.ITodo | TodoBuilder)[]): TodosStateBuilder {
         this.state.todos = todos.map(i => isTodoBuilder(i) ? i.build() : i);
         return this;
     };
