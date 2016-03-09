@@ -2,7 +2,7 @@ import * as f from './flux';
 import * as td from './todos/state';
 import * as wn from './whatNext/state';
 
-export interface IApplicationState extends f.ICompositionState {
+export interface IApplicationState extends f.IRouteComponentState {
     todos: td.ITodosState
     whatNext: wn.IWhatNextState
 }

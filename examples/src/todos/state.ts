@@ -1,7 +1,7 @@
 import * as f from '../flux';
 
 
-export interface ITodosState extends f.ICompositionState {
+export interface ITodosState extends f.IRouteComponentState {
     editedTodo: ITodo;
     todos: ITodo[];
 }

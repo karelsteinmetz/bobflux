@@ -1,7 +1,7 @@
 import * as f from '../flux';
 
 
-export interface IWhatNextState extends f.ICompositionState {
+export interface IWhatNextState extends f.IRouteComponentState {
     sources: IBobrilSource[]
 }
 
