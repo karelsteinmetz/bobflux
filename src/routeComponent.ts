@@ -24,16 +24,11 @@ export function createRouteComponent<TState extends ICompositionState, TData ext
                     ctx.lastData = ctx.data;
                 },
                 shouldChange(ctx: IRouteContext<TState, TData>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
-                    let currentState = f.getState(c);
-                    if (ctx.forceShouldChange) {
-                        ctx.state = currentState;
-                        return true;
-                    }
-                    if (ctx.data === ctx.lastData && currentState === ctx.state)
-                        return false;
-                    ctx.state = currentState;
+                    let previousState = ctx.state;
+                    let previousData = ctx.lastData;
+                    ctx.state = f.getState(c);
                     ctx.lastData = ctx.data;
-                    return true;
+                    return ctx.forceShouldChange || !(ctx.data === previousData && ctx.state === previousState)
                 }
             }),
             component)

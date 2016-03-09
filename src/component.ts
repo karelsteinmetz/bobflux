@@ -17,15 +17,9 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                 ctx.state = f.getState(c);
             },
             shouldChange(ctx: IContext<TState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
-                let currentState = f.getState(c);
-                if (ctx.forceShouldChange) {
-                    ctx.state = currentState;
-                    return true;
-                }
-                if (currentState === ctx.state)
-                    return false;
-                ctx.state = currentState;
-                return true;
+                let previousState = ctx.state;
+                ctx.state = f.getState(c);
+                return ctx.forceShouldChange || ctx.state !== previousState
             }
         }),
         component)();
