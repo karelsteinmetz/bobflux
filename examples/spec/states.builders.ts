@@ -6,7 +6,7 @@ import * as wn from '../src/whatNext/state';
 import * as wnBuilders from './whatNext/state.builders';
 
 export class ApplicationStateBuilder {
-    private state: s.IApplicationState = s.default();
+    private state: s.IApplicationState = s.createDefaultApplicationState();
 
     public withTodos(todos: td.ITodosState | tdBuilders.TodosStateBuilder): ApplicationStateBuilder {
         this.state.todos = tdBuilders.isTodosStateBuilder(todos) ? todos.build() : todos;

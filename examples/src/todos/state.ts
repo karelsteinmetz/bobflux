@@ -1,18 +1,18 @@
 import * as f from '../flux';
 
 
-export interface ITodosState extends f.IState {
+export interface ITodosState extends f.ICompositionState {
     editedTodo: ITodo;
     todos: ITodo[];
 }
 
-export interface ITodo {
+export interface ITodo extends f.IComponentState {
     id: number;
     isDone: boolean;
     name: string;
 }
 
-export default (): ITodosState => {
+export const createDefaultTodosState = (): ITodosState => {
     return {
         editedTodo: { id: null, name: '', isDone: false },
         todos: [
@@ -20,4 +20,8 @@ export default (): ITodosState => {
             { id: 2, name: 'Second TODO...', isDone: false }
         ]
     }
+}
+
+export const createDefaultTodo = (): ITodo => {
+    return { id: 0, name: null, isDone: false };
 }

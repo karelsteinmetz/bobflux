@@ -9,7 +9,7 @@ import * as rb from '../states.builders';
 
 describe('actions', () => {
     beforeEach(() => {
-        f.bootstrap(rs.default());
+        f.bootstrap(rs.createDefaultApplicationState());
     })
 
     describe('changeDoneStatus', () => {
@@ -41,7 +41,7 @@ describe('actions', () => {
 
     function givenStore(...todos: s.ITodo[]) {
         new tb.TodosStateBuilder()
-                .withTodos(todos)
+                .withTodos(...todos)
             .buildToStore();
     }
 })

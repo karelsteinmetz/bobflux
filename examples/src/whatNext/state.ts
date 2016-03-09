@@ -1,17 +1,17 @@
 import * as f from '../flux';
 
 
-export interface IWhatNextState extends f.IState {
+export interface IWhatNextState extends f.ICompositionState {
     sources: IBobrilSource[]
 }
 
-export interface IBobrilSource {
+export interface IBobrilSource extends f.IComponentState {
     name: string
     description: string
     link: string
 }
 
-export default (): IWhatNextState => {
+export const createDefaultWhatNextState = (): IWhatNextState => {
     return {
         sources: [
             {
@@ -51,4 +51,12 @@ export default (): IWhatNextState => {
             }
         ]
     }
+}
+
+export const createDefaultBobrilSource = (): IBobrilSource => {
+    return {
+        name: null,
+        description: null,
+        link: null
+    };
 }

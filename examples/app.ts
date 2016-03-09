@@ -8,7 +8,7 @@ import * as wnp from './src/whatNext/page';
 
 b.asset('css/bootstrap.css');
 
-f.bootstrap(s.default(), (message, params) => { });
+f.bootstrap(s.createDefaultApplicationState(), (message, params) => { });
 
 b.routes(
     b.route(

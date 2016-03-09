@@ -2,14 +2,14 @@ import * as f from './flux';
 import * as td from './todos/state';
 import * as wn from './whatNext/state';
 
-export interface IApplicationState extends f.IState {
+export interface IApplicationState extends f.ICompositionState {
     todos: td.ITodosState
     whatNext: wn.IWhatNextState
 }
 
-export default(): IApplicationState => {
+export const createDefaultApplicationState = (): IApplicationState => {
     return {
-        todos: td.default(),
-        whatNext: wn.default()
+        todos: td.createDefaultTodosState(),
+        whatNext: wn.createDefaultWhatNextState()
     };
 }

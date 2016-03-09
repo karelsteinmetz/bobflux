@@ -2,7 +2,7 @@ import * as s from '../../src/todos/state';
 import * as f from '../../src/flux';
 
 export class TodosStateBuilder {
-    private state: s.ITodosState = s.default();
+    private state: s.ITodosState = s.createDefaultTodosState();
 
     public withEditedTodo(editedTodo: s.ITodo | TodoBuilder): TodosStateBuilder {
         this.state.editedTodo = isTodoBuilder(editedTodo) ? editedTodo.build() : editedTodo;
@@ -29,8 +29,7 @@ export function isTodosStateBuilder(obj: s.ITodosState | TodosStateBuilder): obj
 }
 
 export class TodoBuilder {
-    // default state must be set manualy
-    private state: s.ITodo = { id: null, isDone: false, name: null };
+    private state: s.ITodo = s.createDefaultTodo();
 
     public withId(id: number): TodoBuilder {
         this.state.id = id;
@@ -48,6 +47,11 @@ export class TodoBuilder {
     };
 
     public build(): s.ITodo {
+        return this.state;
+    }
+    
+    public buildToStore(): s.ITodo {
+        f.bootstrap({ todos: { editedTodo: this.state } });
         return this.state;
     }
 }

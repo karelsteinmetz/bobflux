@@ -2,7 +2,7 @@ import * as s from '../../src/whatNext/state';
 import * as f from '../../src/flux';
 
 export class WhatNextStateBuilder {
-    private state: s.IWhatNextState = s.default();
+    private state: s.IWhatNextState = s.createDefaultWhatNextState();
 
     public withSources(...sources: (s.IBobrilSource | BobrilSourceBuilder)[]): WhatNextStateBuilder {
         this.state.sources = sources.map(i => isBobrilSourceBuilder(i) ? i.build() : i);
@@ -23,10 +23,8 @@ export function isWhatNextStateBuilder(obj: s.IWhatNextState | WhatNextStateBuil
     return 'build' in obj;
 }
 
-
 export class BobrilSourceBuilder {
-    // default state must be set manualy
-    private state: s.IBobrilSource = { name: null, description: null, link: null };
+    private state: s.IBobrilSource = s.createDefaultBobrilSource();
 
     public withName(name: string): BobrilSourceBuilder {
         this.state.name = name;
@@ -46,8 +44,14 @@ export class BobrilSourceBuilder {
     public build(): s.IBobrilSource {
         return this.state;
     }
+    
+    public buildToStore(): s.IBobrilSource {
+        f.bootstrap({ whatNext: { sources: this.state } });
+        return this.state;
+    }
 }
 
 export function isBobrilSourceBuilder(obj: s.IBobrilSource | BobrilSourceBuilder): obj is BobrilSourceBuilder {
     return 'build' in obj;
 }
+
