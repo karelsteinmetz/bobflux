@@ -6,12 +6,12 @@ export interface IRouteComponentState extends f.IState {
 }
 
 export interface IRouteData {
-    routeParams: b.Params
+    routeParams: b.Params;
 }
 
 export interface IRouteComponentContext<TState extends IRouteComponentState, TData extends IRouteData> extends cm.IContext<TState> {
-    data: TData
-    lastData: TData
+    data: TData;
+    lastData: TData;
 }
 
 export function createRouteComponent<TState extends IRouteComponentState, TData extends IRouteData>(component: b.IBobrilComponent)
@@ -20,16 +20,17 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
         b.createDerivedComponent<TData>(
             b.createComponent<TData>({
                 init(ctx: IRouteComponentContext<TState, TData>) {
-                    ctx.state = f.getState(c);
+                    ctx.cursor = c;
+                    ctx.state = f.getState(ctx.cursor);
                     ctx.lastData = ctx.data;
                 },
                 shouldChange(ctx: IRouteComponentContext<TState, TData>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
                     let previousState = ctx.state;
                     let previousData = ctx.lastData;
-                    ctx.state = f.getState(c);
+                    ctx.state = f.getState(ctx.cursor);
                     ctx.lastData = ctx.data;
                     return ctx.forceShouldChange || !(ctx.data === previousData && ctx.state === previousState)
                 }
             }),
-            component)
+            component);
 }
