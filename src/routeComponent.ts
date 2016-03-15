@@ -29,7 +29,7 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
                     let previousData = ctx.lastData;
                     ctx.state = f.getState(ctx.cursor);
                     ctx.lastData = ctx.data;
-                    return ctx.forceShouldChange || !(ctx.data === previousData && ctx.state === previousState)
+                    return ctx.forceShouldChange || !(ctx.data === previousData && ctx.state === previousState);
                 }
             }),
             component);
