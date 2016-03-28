@@ -5,7 +5,7 @@ import * as cm from './component';
 export interface IDataComponentState extends f.IState {
 }
 
-export interface IRouteComponentContext<TState extends IDataComponentState, TData extends Object> extends cm.IContext<TState> {
+export interface IDataComponentContext<TState extends IDataComponentState, TData extends Object> extends cm.IContext<TState> {
     data: TData;
 }
 
@@ -14,11 +14,11 @@ export function createDataComponent<TState extends IDataComponentState, TData ex
     return (c: f.ICursor<TState>) =>
         b.createDerivedComponent<TData>(
             b.createComponent<TData>({
-                init(ctx: IRouteComponentContext<TState, TData>) {
+                init(ctx: IDataComponentContext<TState, TData>) {
                     ctx.cursor = c;
                     ctx.state = f.getState(ctx.cursor);
                 },
-                render(ctx: IRouteComponentContext<TState, TData>) {
+                render(ctx: IDataComponentContext<TState, TData>) {
                     ctx.state = f.getState(ctx.cursor);
                 }
             }),
