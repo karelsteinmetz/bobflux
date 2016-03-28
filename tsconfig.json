@@ -48,6 +48,7 @@
         "node_modules/bobril/jsx.d.ts",
         "spec/component.spec.ts",
         "spec/dataComponent.spec.ts",
+        "spec/routeComponent.spec.ts",
         "src/component.ts",
         "src/dataComponent.ts",
         "src/routeComponent.ts"
