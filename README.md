@@ -19,7 +19,7 @@ npm i bobflux --save
  * is global state
  * is composition of sub states
  * actions are create by action factory with specified cursor and handler. Handler creates new instance of state or it can return the same state
-* Bobril is only for "rendering" (View)
+* Bobril is here for "rendering" (View)
 * Bobril component context (b.IBobrilCtx) should be used for intermediate state (drag & drop, input border color on focus etc.)
 
 ## Livecycle
