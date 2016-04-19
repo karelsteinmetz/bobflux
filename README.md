@@ -8,9 +8,16 @@
 npm i bobflux --save
 ```
 
+## How to run example through [bobril-build](https://github.com/Bobris/bobril-build)
+```
+npm install bobril-build -g
+
+bb
+```
+
 ## Fun-model
 * is core of bobflux,
-* is not dependent on bobril, can be used for React applications,
+* is independent on bobril, can be used for React applications,
 * there is [fun-model](https://github.com/karelsteinmetz/fun-model/blob/master/README.md) you can see some notes about flux, immutability etc.
 
 ## Common keywords in Bobflux application
