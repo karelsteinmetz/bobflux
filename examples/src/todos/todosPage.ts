@@ -9,13 +9,13 @@ import * as a from './actions';
 export let create = f.createRouteComponent<s.ITodosState, any>({
     render(ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = [
-            addForm(c.editedTodoCursor),
-            table(c.todosCursor)
+            addFormFactory(),
+            tableFactory()
         ];
     }
-})
+});
 
-let addForm = f.createComponent<s.ITodo>({
+const addForm = f.createComponent<s.ITodo>({
     render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = gui.form({
             isInlined: true,
@@ -25,9 +25,10 @@ let addForm = f.createComponent<s.ITodo>({
             ]
         });
     }
-})
+});
+const addFormFactory = addForm(c.editedTodoCursor);
 
-let table = f.createComponent<s.ITodo[]>({
+const table = f.createComponent<s.ITodo[]>({
     render(ctx: f.IContext<s.ITodo[]>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = gui.table({
             headers: [],
@@ -38,4 +39,5 @@ let table = f.createComponent<s.ITodo[]>({
             })
         });
     }
-})
+});
+const tableFactory = table(c.todosCursor);

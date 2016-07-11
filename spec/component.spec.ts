@@ -15,14 +15,14 @@ describe('component', () => {
 
     describe('context', () => {
         it('has current state', (done) => {
-            let factory = c.createComponent<IState>({
+            const factory = c.createComponent<IState>({
                 render(ctx: ICtx, me: b.IBobrilNode) {
                     expect(ctx.state).toBe('default');
                     done();
                 }
             });
 
-            init(factory({ key: 'value' }));
+            init(factory({ key: 'value' })());
         })
     })
 
@@ -36,7 +36,7 @@ describe('component', () => {
                 }
             });
 
-            init(factory({ key: 'value' }));
+            init(factory({ key: 'value' })());
         })
     })
 
@@ -51,7 +51,7 @@ describe('component', () => {
             });
 
             new Promise((f, r) => {
-                init(factory(cursor));
+                init(factory(cursor)());
                 f();
             }).then(() => {
                 expect(renderStates).toEqual(['default']);

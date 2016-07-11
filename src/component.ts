@@ -11,8 +11,8 @@ export interface IContext<TState extends IComponentState> extends b.IBobrilCtx {
 }
 
 export function createComponent<TState extends IComponentState>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState>) => b.IBobrilNode {
-    return (c: f.ICursor<TState>) => b.createDerivedComponent(
+    : (cursor: f.ICursor<TState>) => (children?: b.IBobrilChildren) => b.IBobrilNode {
+    return (c: f.ICursor<TState>) => (children?: b.IBobrilChildren) => b.createDerivedComponent(
         b.createComponent({
             init(ctx: IContext<TState>) {
                 ctx.cursor = c;
@@ -24,5 +24,5 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                 return ctx.forceShouldChange || ctx.state !== previousState;
             }
         }),
-        component)();
+        component)(null, children);
 }
