@@ -33,7 +33,7 @@ bb
  ![](./doc/img/flux_like.png)
 
 ### Getting started video [cz] 
-[![Getting started video](http://img.youtube.com/vi/iU8_5aKHURM/default.jpg)](http://www.youtube.com/watch?v=iU8_5aKHURM)
+[![Getting started video](http://img.youtube.com/vi/8p27FLAneiM/default.jpg)](http://www.youtube.com/watch?v=8p27FLAneiM)
 
 ## State
 * is object
