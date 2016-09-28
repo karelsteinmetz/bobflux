@@ -1,6 +1,6 @@
 {
     "name": "bobflux",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "description": "Bobflux is pure functional implementation of FLUX architecture.",
     "main": "./index.js",
     "typescript": {
@@ -25,8 +25,8 @@
         "title": "Bobflux Examples"
     },
     "dependencies": {
-        "bobril": "*",
-        "fun-model": "1.*.*"
+        "bobril": "4.*",
+        "fun-model": "1.*"
     },
     "devDependencies": {
         "bobflux-gen": "*",
