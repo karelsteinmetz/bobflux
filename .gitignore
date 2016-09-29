@@ -1,10 +1,6 @@
 node_modules
 build
-**/*.js
+/examples/**/*.js
 /.vscode
-/index.js
-/index.d.ts
 /spec/**/*.d.ts
 /spec/**/*.js
-/src/**/*.d.ts
-/src/**/*.js
