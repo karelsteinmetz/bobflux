@@ -13,7 +13,7 @@ export function createDataComponent<TState extends IDataComponentState, TData ex
     : (cursor: f.ICursor<TState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
     return (c: f.ICursor<TState>) =>
         b.createDerivedComponent<TData>(
-            b.createComponent<TData>({
+            b.createVirtualComponent<TData>({
                 init(ctx: IDataComponentContext<TState, TData>) {
                     ctx.cursor = c;
                     ctx.state = f.getState(ctx.cursor);

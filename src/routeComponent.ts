@@ -18,7 +18,7 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
     : (cursor: f.ICursor<TState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
     return (c: f.ICursor<TState>) =>
         b.createDerivedComponent<TData>(
-            b.createComponent<TData>({
+            b.createVirtualComponent<TData>({
                 init(ctx: IRouteComponentContext<TState, TData>) {
                     ctx.cursor = c;
                     ctx.state = f.getState(ctx.cursor);

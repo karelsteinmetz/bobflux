@@ -1,6 +1,14 @@
 CHANGELOG
 ===
 
+5.2.0
+--
+
+New Features
+-
+
+Changed creation of Bobflux components. Components are created as virtual through createVirtualComponent.
+
 5.1.0
 --
 
