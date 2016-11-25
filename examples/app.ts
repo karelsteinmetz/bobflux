@@ -6,8 +6,6 @@ import * as s from "./src/states";
 import * as c from "./src/states.cursors";
 import * as wnp from "./src/whatNext/whatNextPage";
 
-b.asset("css/bootstrap.css");
-
 f.bootstrap(s.createDefaultApplicationState(), (message, params) => { });
 
 b.routes(

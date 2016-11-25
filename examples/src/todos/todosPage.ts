@@ -2,7 +2,6 @@ import * as b from "bobril";
 import * as g from "bobril-g11n";
 import * as m from "bobril-m";
 import * as fg from "bobril-flexbox-grid";
-import * as gui from "bobril-css-bootstrap";
 import * as f from "../flux";
 import * as s from "./state";
 import * as c from "./state.cursors";
@@ -65,14 +64,39 @@ const addFormFactory = createAddForm(c.editedTodoCursor);
 const createTodosOverview = f.createComponent<s.ITodo[]>({
     render(ctx: f.IContext<s.ITodo[]>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
         me.children = m.Paper({
-            children: gui.table({
-                headers: [],
-                rows: ctx.state.map(t => {
-                    return {
-                        columns: [gui.checkboxInput({ value: t.isDone, onChange: (v) => a.changeDoneStatus({ id: t.id, isDone: v }) }), t.name]
-                    };
+            children: [
+                fg.Row({
+                    children: [
+                        fg.Col({
+                            xs: 2,
+                            children: g.t('Is done')
+                        }),
+                        fg.Col({
+                            xs: 10,
+                            children: g.t('Name')
+                        })
+                    ]
                 })
-            })
+            ].concat(ctx.state.map(t => {
+                return m.Paper({
+                    children: fg.Row({
+                        children: [
+                            fg.Col({
+                                xs: 2,
+                                children: m.Checkbox({
+                                    checked: t.isDone,
+                                    action: () => a.changeDoneStatus({ id: t.id, isDone: !t.isDone })
+                                })
+                            }),
+                            fg.Col({
+                                xs: 10,
+                                children: t.name
+                            })
+                        ]
+                    })
+                })
+            }))
+
         })
     }
 });
