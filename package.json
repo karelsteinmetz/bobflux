@@ -1,12 +1,12 @@
 {
     "name": "bobflux",
-    "version": "5.2.0",
+    "version": "5.2.1",
     "description": "Bobflux is pure functional implementation of FLUX architecture.",
     "main": "./index.js",
     "types": "index.d.ts",
     "typescript": {
-        "main": "./index.ts",
-        "definition": "./index.d.ts"
+        "definition": "./index.d.ts",
+        "main": "./index.ts"
     },
     "repository": {
         "type": "git",
@@ -14,12 +14,12 @@
     },
     "keywords": [
         "bobril",
-        "flux",
-        "es6"
+        "es6",
+        "flux"
     ],
     "author": {
-        "name": "Karel Steinmetz",
-        "email": "karel.steinmetz@gmail.com"
+        "email": "karel.steinmetz@gmail.com",
+        "name": "Karel Steinmetz"
     },
     "bobril": {
         "example": "examples/app.ts",
@@ -30,8 +30,10 @@
         "fun-model": "1.*"
     },
     "devDependencies": {
-        "bobflux-gen": "*",
         "bobril-css-bootstrap": "0.*",
+        "bobril-flexbox-grid": "0.0.13",
+        "bobril-g11n": "^2.1.3",
+        "bobril-m": "^0.8.0",
         "bootstrap": "*"
     },
     "license": "MIT"

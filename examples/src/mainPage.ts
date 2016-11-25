@@ -1,17 +1,41 @@
-import * as b from 'bobril';
-import * as gui from 'bobril-css-bootstrap';
+import * as b from "bobril";
+import * as m from "bobril-m";
+import * as g from "bobril-g11n";
+import * as fg from "bobril-flexbox-grid";
 
-export let create = b.createComponent({
+export const createMainPage = b.createComponent({
     render(ctx: b.IBobrilCtx, me: b.IBobrilNode) {
         me.children = [
-            gui.navBar({
-                header: null,
-                leftItems: [
-                    { label: 'Todos', value: 'todos', onSelect: () => b.runTransition(b.createRedirectReplace('todos')) },
-                    { label: 'What next?', value: 'whatNext', onSelect: () => b.runTransition(b.createRedirectReplace('whatNext')) }
+            m.Paper({
+                children: [
+                    fg.Row({
+                        children: [
+                            fg.Col({
+                                md: 6,
+                                children: m.Button({
+                                    type: m.ButtonType.Raised,
+                                    feature: b.isActive("todos") || b.isActive("default") ? m.Feature.Secondary : m.Feature.Primary,
+                                    children: g.t("Todos"),
+                                    action: () => { b.runTransition(b.createRedirectReplace("todos")); }
+                                })
+                            }),
+                            fg.Col({
+                                md: 6,
+                                children: m.Button({
+                                    type: m.ButtonType.Raised,
+                                    feature: b.isActive("whatNext") ? m.Feature.Secondary : m.Feature.Primary,
+                                    children: g.t("What next?"),
+                                    action: () => b.runTransition(b.createRedirectReplace("whatNext"))
+                                })
+                            })
+                        ]
+                    }),
+
                 ]
             }),
-            gui.container({ content: me.data.activeRouteHandler() })
+            m.Paper({
+                children: me.data.activeRouteHandler()
+            })
         ];
     }
 });
