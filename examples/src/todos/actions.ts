@@ -1,24 +1,24 @@
-import * as f from '../flux';
-import * as s from './state';
-import * as c from './state.cursors';
+import * as f from "../flux";
+import * as s from "./state";
+import * as c from "./state.cursors";
 
-export let addTodo = f.createAction<s.ITodosState, any>(c.rootCursor, (state) =>
+export const addTodo = f.createAction<s.ITodosState, any>(c.rootCursor, (state) =>
     f.shallowCopy(state, (section) => {
         section.todos = [
             { id: new Date().getTime(), isDone: false, name: section.editedTodo.name },
             ...section.todos
         ];
-        section.editedTodo = { id: null, name: '', isDone: false };
+        section.editedTodo = { id: null, name: "", isDone: false };
     })
 );
 
-export let updateNewTodoName = f.createAction<s.ITodo, string>(c.editedTodoCursor, (todo, name) =>
+export const updateNewTodoName = f.createAction<s.ITodo, string>(c.editedTodoCursor, (todo, name) =>
     f.shallowCopy(todo, (t) => {
         t.name = name;
     })
 );
 
-export let removeTodo = f.createAction<s.ITodo[], number>(c.todosCursor, (todos, id) => {
+export const removeTodo = f.createAction<s.ITodo[], number>(c.todosCursor, (todos, id) => {
     return [...todos.filter(t => t.id !== id)];
 });
 
@@ -27,7 +27,7 @@ export interface IChangeDoneStatusParams {
     isDone: boolean;
 }
 
-export let changeDoneStatus = f.createAction<s.ITodo[], IChangeDoneStatusParams>(c.todosCursor, (todos, params) => {
+export const changeDoneStatus = f.createAction<s.ITodo[], IChangeDoneStatusParams>(c.todosCursor, (todos, params) => {
     return todos.map(t => {
         if (t.id === params.id)
             return f.shallowCopy(t, (nT) => {

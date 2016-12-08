@@ -18,7 +18,6 @@ describe('actions', () => {
 
             a.changeDoneStatus({ id: 1, isDone: true });
 
-
             expect(f.getState(firstTodoCursor).isDone).toBeTruthy();
         })
 
