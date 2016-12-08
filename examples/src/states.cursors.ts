@@ -20,5 +20,5 @@ export const userAccountCursor: f.ICursor<s.IUserAccountPageState> = {
 }
 
 export const userInfoCursor: f.ICursor<s.IUserInfo> = {
-    key: "userAccount.userInfo"
+    key: "userInfo"
 }

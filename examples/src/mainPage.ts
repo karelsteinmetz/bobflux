@@ -12,7 +12,7 @@ import * as wnp from "./whatNext/whatNextPage";
 import * as ua from "./userAccount/userAccountPage";
 
 interface ICtx extends f.IRouteComponentContext<s.IApplicationState, f.IRouteData> {
-    userInfoFactory: b.IComponentFactory<any>;
+    userInfoFactory: f.IComponentFactory;
 }
 
 export const createMainPage = f.createRouteComponent<s.IApplicationState, f.IRouteData>({
@@ -66,7 +66,13 @@ export const createMainPage = f.createRouteComponent<s.IApplicationState, f.IRou
                 ]
             }),
             m.Paper({
-                children: me.data.activeRouteHandler()
+                children: fg.Row({
+                    center: fg.ModificatorType.xs,
+                    children: fg.Col({
+                        md: 10,
+                        children: me.data.activeRouteHandler()
+                    })
+                })
             })
         ];
     }
@@ -87,7 +93,7 @@ export function createRoutes(): b.IRoute[] {
         b.route({
             url: "/userAccount",
             name: "userAccount",
-            handler: ua.createWhatNextPage(c.userAccountCursor)
+            handler: ua.createUserAccountPage({ [f.defaultStateName]: c.userAccountCursor, userInfo: c.userInfoCursor })
         }),
         b.routeDefault({
             name: "default",

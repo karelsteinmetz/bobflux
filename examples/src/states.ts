@@ -11,13 +11,17 @@ export interface IApplicationState extends f.IRouteComponentState {
     todos: td.ITodosState;
     whatNext: wn.IWhatNextState;
     userAccount: ua.IUserAccountPageState;
+    userInfo: ua.IUserInfo;
 }
 
 export const createDefaultApplicationState = (): IApplicationState => {
     return {
         todos: td.createDefaultTodosState(),
         whatNext: wn.createDefaultWhatNextState(),
-        userAccount: ua.createDefaultUserAccountPageState()
+        userAccount: ua.createDefaultUserAccountPageState(),
+        userInfo: f.shallowCopy(ua.createDefaultUserInfo(), ns => {
+            ns.email = "name@domain.com";
+        })
     };
 }
 

@@ -66,7 +66,7 @@ describe('routeComponent', () => {
                 init(factory(aRouteParams()));
                 f();
             }).then(() => {
-                expect(renderStates).toEqual(['default']);
+                expect(renderStates).toEqual([]);
                 invalidate();
             }).then(() => {
                 expect(renderStates).toEqual(['default']);

@@ -24,3 +24,5 @@ export * from './src/dataComponent';
 export let bootstrap = (defaultState: IState, debugCallback: debugCallbackType = undefined, subStateSeparator: string = '.') => {
     funBootstrap(defaultState, () => b.invalidate(), (message, params) => { debugCallback && debugCallback(`bobflux -> ${message}`, params); });
 };
+
+export const defaultStateName = "";

@@ -1,6 +1,6 @@
-import * as f from '../flux';
-import * as s from './userAccountPageStates';
-import * as c from './userAccountPageStates.cursors';
+import * as f from "../flux";
+import * as s from "./userAccountPageStates";
+import * as c from "./userAccountPageStates.cursors";
 
 export interface IUpdateEditedUserInfoParams {
     email?: string;
@@ -8,4 +8,8 @@ export interface IUpdateEditedUserInfoParams {
     surname?: string;
 }
 
-export const updateEditedUserInfo = f.createUpdateAction<IUpdateEditedUserInfoParams>(c.editedUserInfoCursor)
+export const updateEditedUserInfo = f.createUpdateAction<IUpdateEditedUserInfoParams>(c.editedUserInfoCursor, (state, params) => {
+    debugger;
+    console.log("updateEditedUserInfo", state, params);
+    return state;
+})

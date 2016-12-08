@@ -1,17 +1,17 @@
 "use strict";
-var b = require('bobril');
-var f = require('fun-model');
+const b = require('bobril');
+const f = require('fun-model');
 function createComponent(component) {
-    return function (c) { return function (children) { return b.createDerivedComponent(b.createVirtualComponent({
-        init: function (ctx) {
+    return (c) => (children) => b.createDerivedComponent(b.createComponent({
+        init(ctx) {
             ctx.cursor = c;
             ctx.state = f.getState(ctx.cursor);
         },
-        shouldChange: function (ctx, me, oldMe) {
-            var previousState = ctx.state;
+        shouldChange(ctx, me, oldMe) {
+            let previousState = ctx.state;
             ctx.state = f.getState(ctx.cursor);
             return ctx.forceShouldChange || ctx.state !== previousState;
         }
-    }), component)(null, children); }; };
+    }), component)(null, children);
 }
 exports.createComponent = createComponent;

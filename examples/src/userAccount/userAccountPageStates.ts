@@ -8,20 +8,20 @@ export interface IUserInfo extends f.IComponentState {
 
 export const createDefaultUserInfo = (): IUserInfo => {
     return {
-        email: "name@domain.com",
-        name: null,
-        surName: null
+        email: "",
+        name: "",
+        surName: ""
     };
-} 
+}
 
 export interface IUserAccountPageState extends f.IRouteComponentState {
-    userInfo: IUserInfo;
+    isEditingEnabled: boolean;
     editedUserInfo: IUserInfo;
 }
 
 export const createDefaultUserAccountPageState = (): IUserAccountPageState => {
     return {
-        userInfo: createDefaultUserInfo(),
+        isEditingEnabled: false,
         editedUserInfo: null
-    }
+    };
 }

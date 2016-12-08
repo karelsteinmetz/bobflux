@@ -1,4 +1,4 @@
-import * as f from '../flux';
+import * as f from "../flux";
 
 
 export interface ITodosState extends f.IRouteComponentState {
@@ -14,10 +14,10 @@ export interface ITodo extends f.IComponentState {
 
 export const createDefaultTodosState = (): ITodosState => {
     return {
-        editedTodo: { id: null, name: '', isDone: false },
+        editedTodo: { id: null, name: "", isDone: false },
         todos: [
-            { id: 1, name: 'First TODO...', isDone: true },
-            { id: 2, name: 'Second TODO...', isDone: false }
+            { id: 1, name: "First TODO...", isDone: true },
+            { id: 2, name: "Second TODO...", isDone: false }
         ]
     }
 }

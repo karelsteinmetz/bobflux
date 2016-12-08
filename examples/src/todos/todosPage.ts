@@ -10,25 +10,22 @@ import * as a from "./actions";
 
 export const createTodosPage = f.createRouteComponent<s.ITodosState, any>({
     render(ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
-        me.children = fg.Grid({
-            fluid: true,
-            children: [
-                fg.Row({
-                    center: fg.ModificatorType.xs,
-                    children: fg.Col({
-                        md: 11,
-                        children: addFormFactory()
-                    })
-                }),
-                fg.Row({
-                    center: fg.ModificatorType.xs,
-                    children: fg.Col({
-                        md: 11,
-                        children: todosOverviewFactory()
-                    })
+        me.children = [
+            fg.Row({
+                center: fg.ModificatorType.xs,
+                children: fg.Col({
+                    md: 12,
+                    children: addFormFactory()
                 })
-            ]
-        });
+            }),
+            fg.Row({
+                center: fg.ModificatorType.xs,
+                children: fg.Col({
+                    md: 12,
+                    children: todosOverviewFactory()
+                })
+            })
+        ];
     }
 });
 
@@ -69,11 +66,11 @@ const createTodosOverview = f.createComponent<s.ITodo[]>({
                     children: [
                         fg.Col({
                             xs: 2,
-                            children: g.t('Is done')
+                            children: g.t("Is done")
                         }),
                         fg.Col({
                             xs: 10,
-                            children: g.t('Name')
+                            children: g.t("Name")
                         })
                     ]
                 })
