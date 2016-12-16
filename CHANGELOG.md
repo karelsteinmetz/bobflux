@@ -1,5 +1,12 @@
 CHANGELOG
 ===
+5.3.0
+--
+
+New Features
+-
+
+Added support for passing cursors map into component factory.
 
 5.2.0
 --

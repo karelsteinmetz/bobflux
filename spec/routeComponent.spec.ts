@@ -66,9 +66,6 @@ describe('routeComponent', () => {
                 init(factory(aRouteParams()));
                 f();
             }).then(() => {
-                expect(renderStates).toEqual([]);
-                invalidate();
-            }).then(() => {
                 expect(renderStates).toEqual(['default']);
                 bf.createAction(cursor, (s) => { return 'newValue' })();
                 tick();
