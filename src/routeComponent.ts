@@ -7,6 +7,7 @@ export interface IRouteComponentState extends f.IState {
 }
 
 export interface IRouteData {
+    parentRouteName?: string;
     routeParams: b.Params;
 }
 

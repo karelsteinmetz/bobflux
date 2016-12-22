@@ -1,5 +1,13 @@
 CHANGELOG
 ===
+5.4.0
+--
+
+New Features
+-
+
+Added optional parentRouteName to IRouteData for nested route components and its routing.
+
 5.3.0
 --
 
