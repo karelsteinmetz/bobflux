@@ -5,6 +5,7 @@ export {
 ICursor,
 ICursorFactory,
 IState,
+IActionHandler,
 getState,
 setState,
 rootCursor,
