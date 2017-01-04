@@ -1,6 +1,6 @@
 {
     "name": "bobflux",
-    "version": "5.4.1",
+    "version": "5.4.2",
     "description": "Bobflux is pure functional implementation of FLUX architecture.",
     "main": "./index.js",
     "types": "index.d.ts",
@@ -22,6 +22,7 @@
         "name": "Karel Steinmetz"
     },
     "bobril": {
+        "additionalResourcesDirectory": "translations",
         "example": "examples/app.ts",
         "title": "Bobflux Examples"
     },
@@ -34,5 +35,8 @@
         "bobril-g11n": "^2.1.3",
         "bobril-m": "^0.8.0"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "resolutions": {
+        "bobril": "5.0.2"
+    }
 }
