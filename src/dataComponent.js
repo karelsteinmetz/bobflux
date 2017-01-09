@@ -1,15 +1,33 @@
 "use strict";
-const b = require('bobril');
-const f = require('fun-model');
+var b = require('bobril');
+var f = require('fun-model');
+var c = require("./common");
 function createDataComponent(component) {
-    return (c) => b.createDerivedComponent(b.createComponent({
-        init(ctx) {
-            ctx.cursor = c;
-            ctx.state = f.getState(ctx.cursor);
-        },
-        render(ctx) {
-            ctx.state = f.getState(ctx.cursor);
-        }
-    }), component);
+    return function (innerCursor) {
+        return b.createDerivedComponent(b.createVirtualComponent({
+            init: function (ctx) {
+                if (c.isCursor(innerCursor)) {
+                    ctx.cursor = innerCursor;
+                    ctx.state = f.getState(ctx.cursor);
+                }
+                else {
+                    Object.keys(innerCursor).forEach(function (ck) {
+                        ctx[c.unifyCursorName(ck)] = innerCursor[ck];
+                        ctx[c.unifyStateName(ck)] = f.getState(innerCursor[ck]);
+                    });
+                }
+            },
+            render: function (ctx) {
+                if (c.isCursor(innerCursor)) {
+                    ctx.state = f.getState(ctx.cursor);
+                }
+                else {
+                    Object.keys(innerCursor).forEach(function (ck) {
+                        ctx[c.unifyStateName(ck)] = f.getState(innerCursor[ck]);
+                    });
+                }
+            }
+        }), component);
+    };
 }
 exports.createDataComponent = createDataComponent;
