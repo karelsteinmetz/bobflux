@@ -21,7 +21,7 @@
     },
     "filesGlob": [],
     "files": [
-        "d:/dev/dev-github/bobril-build/typings/jasmine/jasmine.d.ts",
+        "D:/dev/dev-git/bobril-build/typings/jasmine/jasmine.d.ts",
         "node_modules/bobril/jsx.d.ts"
     ],
     "include": [

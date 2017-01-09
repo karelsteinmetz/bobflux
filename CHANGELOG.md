@@ -1,5 +1,13 @@
 CHANGELOG
 ===
+6.0.0
+--
+
+New Features
+-
+
+Upgraded fun-model for state freezing feature. This supports detection of immutability violation in development by throwing exception. Debug mode is enabled if you have set debugCallback in bootstraping. Thanks for the idea of GMC Software Team.
+
 5.4.0
 --
 
