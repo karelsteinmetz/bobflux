@@ -19,7 +19,7 @@ export class TodosStateBuilder {
     }
     
     public buildToStore(): s.ITodosState {
-        f.bootstrap({ todos: this.state });
+        f.bootstrap({ todos: this.state }, {});
         return this.state;
     }
 }
@@ -51,7 +51,7 @@ export class TodoBuilder {
     }
     
     public buildToStore(): s.ITodo {
-        f.bootstrap({ todos: { editedTodo: this.state } });
+        f.bootstrap({ todos: { editedTodo: this.state } }, {});
         return this.state;
     }
 }

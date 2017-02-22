@@ -1,29 +1,28 @@
 import * as b from 'bobril';
-import { IState, bootstrap as funBootstrap, debugCallbackType } from 'fun-model';
+import { IState, bootstrap as funBootstrap, IBootstrapParams } from 'fun-model';
 
 export {
-ICursor,
-ICursorFactory,
-IState,
-IActionHandler,
-getState,
-setState,
-rootCursor,
-shallowCopy,
-IAction,
-createAction,
-createActions,
-IAsyncAction,
-createAsyncAction,
-debugCallbackType
+    IBootstrapParams,
+    ICursor,
+    ICursorFactory,
+    IState,
+    IActionHandler,
+    getState,
+    setState,
+    rootCursor,
+    shallowCopy,
+    IAction,
+    createAction,
+    createActions,
+    debugCallbackType
 } from 'fun-model';
 
 export * from './src/component';
 export * from './src/routeComponent';
 export * from './src/dataComponent';
 
-export let bootstrap = (defaultState: IState, debugCallback: debugCallbackType = undefined, subStateSeparator: string = '.') => {
-    funBootstrap(defaultState, () => b.invalidate(), (message, params) => { debugCallback && debugCallback(`bobflux -> ${message}`, params); });
+export const bootstrap = (defaultState: IState, params: IBootstrapParams = {}) => {
+    funBootstrap(defaultState, () => b.invalidate(), params);
 };
 
 export const defaultStateName = "";

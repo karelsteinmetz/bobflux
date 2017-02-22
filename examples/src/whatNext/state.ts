@@ -55,8 +55,8 @@ export const createDefaultWhatNextState = (): IWhatNextState => {
 
 export const createDefaultBobrilSource = (): IBobrilSource => {
     return {
-        name: null,
-        description: null,
-        link: null
+        name: "",
+        description: "",
+        link: ""
     };
 }

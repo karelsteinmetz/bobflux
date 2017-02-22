@@ -9,7 +9,7 @@ import * as a from "./actions";
 
 
 export const createTodosPage = f.createRouteComponent<s.ITodosState, any>({
-    render(ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+    render(_ctx: f.IContext<s.ITodosState>, me: b.IBobrilNode) {
         me.children = [
             fg.Row({
                 center: fg.ModificatorType.xs,
@@ -30,7 +30,7 @@ export const createTodosPage = f.createRouteComponent<s.ITodosState, any>({
 });
 
 const createAddForm = f.createComponent<s.ITodo>({
-    render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+    render(ctx: f.IContext<s.ITodo>, me: b.IBobrilNode) {
         me.children = m.Paper({
             children: fg.Row({
                 middle: fg.ModificatorType.xs,
@@ -59,7 +59,7 @@ const createAddForm = f.createComponent<s.ITodo>({
 const addFormFactory = createAddForm(c.editedTodoCursor);
 
 const createTodosOverview = f.createComponent<s.ITodo[]>({
-    render(ctx: f.IContext<s.ITodo[]>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+    render(ctx: f.IContext<s.ITodo[]>, me: b.IBobrilNode) {
         me.children = m.Paper({
             children: [
                 fg.Row({

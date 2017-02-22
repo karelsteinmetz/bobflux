@@ -14,7 +14,7 @@ export class WhatNextStateBuilder {
     }
     
     public buildToStore(): s.IWhatNextState {
-        f.bootstrap({ whatNext: this.state });
+        f.bootstrap({ whatNext: this.state }, {});
         return this.state;
     }
 }
@@ -46,7 +46,7 @@ export class BobrilSourceBuilder {
     }
     
     public buildToStore(): s.IBobrilSource {
-        f.bootstrap({ whatNext: { sources: this.state } });
+        f.bootstrap({ whatNext: { sources: this.state } }, {});
         return this.state;
     }
 }

@@ -26,12 +26,12 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                 }
                 else {
                     Object.keys(innerCursor).forEach(ck => {
-                        ctx[c.unifyCursorName(ck)] = innerCursor[ck];
-                        ctx[c.unifyStateName(ck)] = f.getState(innerCursor[ck]);
+                        (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<TState>>innerCursor)[ck];
+                        (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
                     });
                 }
             },
-            shouldChange(ctx: IContext<TState>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
+            shouldChange(ctx: IContext<TState>): boolean {
                 if (c.isCursor(innerCursor)) {
                     const previousState = ctx.state;
                     ctx.state = f.getState(ctx.cursor);
@@ -41,13 +41,13 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                     let shouldChange = false;
                     Object.keys(innerCursor).forEach(ck => {
                         const stateName = c.unifyStateName(ck);
-                        const previousState = ctx[stateName];
-                        ctx[stateName] = f.getState(innerCursor[ck]);
-                        shouldChange = shouldChange || ctx.forceShouldChange || ctx[stateName] !== previousState;
+                        const previousState = (<any>ctx)[stateName];
+                        (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                        shouldChange = shouldChange || ctx.forceShouldChange || (<any>ctx)[stateName] !== previousState;
                     });
                     return shouldChange;
                 }
             }
         }),
-        component)(null, children);
+        component)({}, children);
 }

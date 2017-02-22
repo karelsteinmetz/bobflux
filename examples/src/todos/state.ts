@@ -14,7 +14,7 @@ export interface ITodo extends f.IComponentState {
 
 export const createDefaultTodosState = (): ITodosState => {
     return {
-        editedTodo: { id: null, name: "", isDone: false },
+        editedTodo: createDefaultTodo(),
         todos: [
             { id: 1, name: "First TODO...", isDone: true },
             { id: 2, name: "Second TODO...", isDone: false }
@@ -23,5 +23,5 @@ export const createDefaultTodosState = (): ITodosState => {
 }
 
 export const createDefaultTodo = (): ITodo => {
-    return { id: 0, name: null, isDone: false };
+    return { id: 0, name: "", isDone: false };
 }

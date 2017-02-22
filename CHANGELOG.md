@@ -1,5 +1,14 @@
 CHANGELOG
 ===
+7.0.0
+--
+
+New Features
+-
+
+Upgraded fun-model and fixed new bootstrap api.
+Fixed tsc restrictions.
+
 6.0.0
 --
 

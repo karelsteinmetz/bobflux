@@ -95,7 +95,7 @@ export function createRoutes(): b.IRoute[] {
             name: "userAccount",
             handler: ua.createUserAccountPage({ 
                 [f.defaultStateName]: c.userAccountCursor, 
-                userInfo: c.userInfoCursor 
+                userInfo: <any>c.userInfoCursor 
             })
         }),
         b.routeDefault({

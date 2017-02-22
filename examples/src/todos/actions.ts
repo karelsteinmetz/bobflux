@@ -8,13 +8,14 @@ export const addTodo = f.createAction<s.ITodosState, any>(c.rootCursor, (state) 
             { id: new Date().getTime(), isDone: false, name: section.editedTodo.name },
             ...section.todos
         ];
-        section.editedTodo = { id: null, name: "", isDone: false };
+        section.editedTodo = s.createDefaultTodo();
     })
 );
 
 export const updateNewTodoName = f.createAction<s.ITodo, string>(c.editedTodoCursor, (todo, name) =>
     f.shallowCopy(todo, (t) => {
-        t.name = name;
+        if (name)
+            t.name = name;
     })
 );
 
@@ -29,7 +30,7 @@ export interface IChangeDoneStatusParams {
 
 export const changeDoneStatus = f.createAction<s.ITodo[], IChangeDoneStatusParams>(c.todosCursor, (todos, params) => {
     return todos.map(t => {
-        if (t.id === params.id)
+        if (params && t.id === params.id)
             return f.shallowCopy(t, (nT) => {
                 nT.isDone = params.isDone;
                 return nT;

@@ -16,7 +16,7 @@ function createComponent(component) {
                 });
             }
         },
-        shouldChange: function (ctx, me, oldMe) {
+        shouldChange: function (ctx) {
             if (c.isCursor(innerCursor)) {
                 var previousState = ctx.state;
                 ctx.state = f.getState(ctx.cursor);
@@ -33,6 +33,6 @@ function createComponent(component) {
                 return shouldChange_1;
             }
         }
-    }), component)(null, children); }; };
+    }), component)({}, children); }; };
 }
 exports.createComponent = createComponent;

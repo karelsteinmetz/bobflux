@@ -5,7 +5,7 @@ import * as c from '../src/dataComponent';
 describe('dataComponent', () => {
 
     beforeEach(() => {
-        bf.bootstrap({ value: 'defaultValue' });
+        bf.bootstrap({ value: 'defaultValue' }, {});
         jasmine.clock().install();
     })
 
@@ -14,9 +14,9 @@ describe('dataComponent', () => {
     })
 
     describe('context', () => {
-        it('has current state', (done) => {
+        it('has current state', (done: Function) => {
             let factory = c.createDataComponent<IState, {}>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     expect(ctx.state).toBe('defaultValue');
                     done();
                 }
@@ -25,9 +25,9 @@ describe('dataComponent', () => {
             init(factory({}));
         })
         
-        it('has data', (done) => {
+        it('has data', (done: Function) => {
             let factory = c.createDataComponent<IState, string>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     expect(ctx.data).toBe('dataValue');
                     done();
                 }
@@ -38,16 +38,16 @@ describe('dataComponent', () => {
     })
     
     describe('render', () => {
-        it('is invoked on state change', (done) => {
+        it('is invoked on state change', (done: Function) => {
             let cursor = { key: 'value' };
-            let renderedStates = [];
+            let renderedStates: IState[] = [];
             let factory = c.createDataComponent<IState, string>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     renderedStates = [...renderedStates, ctx.state];
                 }
             })(cursor);
 
-            new Promise((f, r) => {
+            new Promise((f) => {
                 init(factory('defaultValue'));
                 f();
             }).then(() => {
@@ -55,7 +55,7 @@ describe('dataComponent', () => {
                 invalidate();
             }).then(() => {
                 expect(renderedStates).toEqual(['defaultValue', 'defaultValue']);
-                bf.createAction(cursor, (s) => { return 'newValue'} )();
+                bf.createAction(cursor, () => { return 'newValue'} )();
                 tick();
             }).then(() => {
                 expect(renderedStates).toEqual(['defaultValue', 'defaultValue', 'newValue']);

@@ -23,7 +23,7 @@ export class ApplicationStateBuilder {
     }
     
     public buildToStore(): s.IApplicationState {
-        f.bootstrap(this.state);
+        f.bootstrap(this.state, {});
         return this.state;
     }
 }

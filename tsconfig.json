@@ -2,14 +2,12 @@
     "compileOnSave": false,
     "compilerOptions": {
         "target": "es5",
-        "declaration": true,
-        "noImplicitAny": false,
+        "declaration": false,
+        "noImplicitAny": true,
         "removeComments": false,
         "moduleResolution": "node",
         "noLib": false,
         "module": "commonjs",
-        "jsx": "react",
-        "reactNamespace": "b",
         "experimentalDecorators": true,
         "lib": [
             "es5",
@@ -17,7 +15,15 @@
             "es2015.core",
             "es2015.promise"
         ],
-        "preserveConstEnums": false
+        "preserveConstEnums": false,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
+        "jsx": "react",
+        "reactNamespace": "b"
     },
     "filesGlob": [],
     "files": [

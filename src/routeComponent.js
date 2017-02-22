@@ -18,7 +18,7 @@ function createRouteComponent(component) {
                 }
                 ctx.lastData = ctx.data;
             },
-            shouldChange: function (ctx, me, oldMe) {
+            shouldChange: function (ctx) {
                 var shouldChange = false;
                 if (c.isCursor(innerCursor)) {
                     var previousState = ctx.state;

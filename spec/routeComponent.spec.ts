@@ -6,7 +6,7 @@ describe('routeComponent', () => {
     let valueCursor = { key: 'value' };
 
     beforeEach(() => {
-        bf.bootstrap({ value: 'default' });
+        bf.bootstrap({ value: 'default' }, {});
         jasmine.clock().install();
     })
 
@@ -15,9 +15,9 @@ describe('routeComponent', () => {
     })
 
     describe('context', () => {
-        it('has current state', (done) => {
+        it('has current state', (done: Function) => {
             let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     expect(ctx.state).toBe('default');
                     done();
                 }
@@ -26,9 +26,9 @@ describe('routeComponent', () => {
             init(factory(aRouteParams('routeParam')));
         })
 
-        it('has route data', (done) => {
+        it('has route data', (done: Function) => {
             let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     expect(ctx.data).toEqual({ routeParams: { routeParam: 'routeParam' } });
                     done();
                 }
@@ -39,10 +39,9 @@ describe('routeComponent', () => {
     })
 
     describe('init', () => {
-        it('sets state into context', (done) => {
-            let renderState = null;
+        it('sets state into context', (done: Function) => {
             let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     expect(ctx.state).toBe('default');
                     done();
                 }
@@ -53,21 +52,21 @@ describe('routeComponent', () => {
     })
 
     describe('render', () => {
-        it('is invoked on state change', (done) => {
+        it('is invoked on state change', (done: Function) => {
             let cursor = { key: 'value' };
-            let renderStates = [];
+            let renderStates: IState[] = [];
             let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     renderStates = [...renderStates, ctx.state];
                 }
             })(valueCursor);
 
-            new Promise((f, r) => {
+            new Promise((f) => {
                 init(factory(aRouteParams()));
                 f();
             }).then(() => {
                 expect(renderStates).toEqual(['default']);
-                bf.createAction(cursor, (s) => { return 'newValue' })();
+                bf.createAction(cursor, () => { return 'newValue' })();
                 tick();
             }).then(() => {
                 expect(renderStates).toEqual(['default', 'newValue']);
@@ -85,11 +84,6 @@ describe('routeComponent', () => {
 
     function init(childs: b.IBobrilChildren) {
         b.init(() => childs);
-        tick();
-    }
-
-    function invalidate() {
-        b.invalidate();
         tick();
     }
 

@@ -29,14 +29,14 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
-                            ctx[c.unifyCursorName(ck)] = innerCursor[ck];
-                            ctx[c.unifyStateName(ck)] = f.getState(innerCursor[ck]);
+                            (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<TState>>innerCursor)[ck];
+                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
                         });
                     }
                     ctx.lastData = ctx.data;
 
                 },
-                shouldChange(ctx: IRouteComponentContext<TState, TData>, me: b.IBobrilNode, oldMe: b.IBobrilCacheNode): boolean {
+                shouldChange(ctx: IRouteComponentContext<TState, TData>): boolean {
                     let shouldChange = false;
                     if (c.isCursor(innerCursor)) {
                         let previousState = ctx.state;
@@ -46,9 +46,9 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
                     else {
                         Object.keys(innerCursor).forEach(ck => {
                             const stateName = c.unifyStateName(ck);
-                            const previousState = ctx[stateName];
-                            ctx[stateName] = f.getState(innerCursor[ck]);
-                            shouldChange = shouldChange || ctx.forceShouldChange || ctx[stateName] !== previousState;
+                            const previousState = (<any>ctx)[stateName];
+                            (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                            shouldChange = shouldChange || ctx.forceShouldChange || (<any>ctx)[stateName] !== previousState;
                         });
                         shouldChange;
                     }

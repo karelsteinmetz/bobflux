@@ -4,7 +4,6 @@ import * as m from "bobril-m";
 import * as fg from "bobril-flexbox-grid";
 import * as f from "../flux";
 import * as s from "./userAccountPageStates";
-import * as a from "./userAccountPageActions";
 
 interface ICtx extends f.IRouteComponentContext<s.IUserAccountPageState, f.IRouteData> {
     userInfoCursor: f.ICursor<s.IUserInfo>;
@@ -12,7 +11,7 @@ interface ICtx extends f.IRouteComponentContext<s.IUserAccountPageState, f.IRout
 }
 
 export const createUserAccountPage = f.createRouteComponent<s.IUserAccountPageState, f.IRouteData>({
-    render(ctx: ICtx, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+    render(ctx: ICtx, me: b.IBobrilNode) {
         me.children = [
             createFields(ctx),
             createButtons(ctx)
@@ -28,7 +27,7 @@ function createFields(ctx: ICtx) {
                 children: m.TextField({
                     disabled: !ctx.state.isEditingEnabled,
                     // hintText: g.t("Email:"),
-                    value: ctx.state.isEditingEnabled ? ctx.state.editedUserInfo.email : ctx.userInfoState.email
+                    value: ctx.state.isEditingEnabled && ctx.state.editedUserInfo ? ctx.state.editedUserInfo.email : ctx.userInfoState.email
                 })
             })
         }),
@@ -39,7 +38,7 @@ function createFields(ctx: ICtx) {
                     children: m.TextField({
                         disabled: !ctx.state.isEditingEnabled,
                         // hintText: g.t("Name:"),
-                        value: ctx.state.isEditingEnabled ? ctx.state.editedUserInfo.name : ctx.userInfoState.name
+                        value: ctx.state.isEditingEnabled && ctx.state.editedUserInfo ? ctx.state.editedUserInfo.name : ctx.userInfoState.name
                     })
                 }),
                 fg.Col({
@@ -47,7 +46,7 @@ function createFields(ctx: ICtx) {
                     children: m.TextField({
                         disabled: !ctx.state.isEditingEnabled,
                         // hintText: g.t("Surname:"),
-                        value: ctx.state.isEditingEnabled ? ctx.state.editedUserInfo.surName : ctx.userInfoState.surName
+                        value: ctx.state.isEditingEnabled && ctx.state.editedUserInfo ? ctx.state.editedUserInfo.surName : ctx.userInfoState.surName
                     })
                 })
             ]

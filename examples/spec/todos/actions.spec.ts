@@ -1,15 +1,12 @@
-import * as b from 'bobril';
 import * as f from '../../src/flux';
 import * as a from '../../src/todos/actions';
-import * as c from '../../src/todos/state.cursors';
 import * as s from '../../src/todos/state';
 import * as rs from '../../src/states';
 import * as tb from './state.builders';
-import * as rb from '../states.builders';
 
 describe('actions', () => {
     beforeEach(() => {
-        f.bootstrap(rs.createDefaultApplicationState());
+        f.bootstrap(rs.createDefaultApplicationState(), {});
     })
 
     describe('changeDoneStatus', () => {

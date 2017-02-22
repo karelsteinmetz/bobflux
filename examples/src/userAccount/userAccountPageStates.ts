@@ -16,7 +16,7 @@ export const createDefaultUserInfo = (): IUserInfo => {
 
 export interface IUserAccountPageState extends f.IRouteComponentState {
     isEditingEnabled: boolean;
-    editedUserInfo: IUserInfo;
+    editedUserInfo: IUserInfo | null;
 }
 
 export const createDefaultUserAccountPageState = (): IUserAccountPageState => {

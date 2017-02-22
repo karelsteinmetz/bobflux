@@ -22,8 +22,8 @@ export function createDataComponent<TState extends IDataComponentState, TData ex
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
-                            ctx[c.unifyCursorName(ck)] = innerCursor[ck];
-                            ctx[c.unifyStateName(ck)] = f.getState(innerCursor[ck]);
+                            (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<TState>>innerCursor)[ck];
+                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
                         });
                     }
                 },
@@ -33,7 +33,7 @@ export function createDataComponent<TState extends IDataComponentState, TData ex
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
-                            ctx[c.unifyStateName(ck)] = f.getState(innerCursor[ck]);
+                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
                         });
                     }
                 }

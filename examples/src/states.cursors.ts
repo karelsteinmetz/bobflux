@@ -5,7 +5,9 @@ import * as wn from "./whatNext/state";
 
 export const rootKey = f.rootCursor.key;
 
-export const rootCursor: f.ICursor<s.IApplicationState> = f.rootCursor
+export const rootCursor: f.ICursor<s.IApplicationState> = {
+    key: ""
+}
 
 export const todosCursor: f.ICursor<td.ITodosState> = {
     key: "todos"

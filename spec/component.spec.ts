@@ -5,7 +5,7 @@ import * as c from "../src/component";
 describe("component", () => {
 
     beforeEach(() => {
-        bf.bootstrap({ value: "default" });
+        bf.bootstrap({ value: "default" }, {});
         jasmine.clock().install();
     })
 
@@ -15,9 +15,9 @@ describe("component", () => {
 
     describe("context", () => {
         describe("single cursor", () => {
-            it("has current state", (done) => {
+            it("has current state", (done: Function) => {
                 const factory = c.createComponent<IState>({
-                    render(ctx: ICtx, me: b.IBobrilNode) {
+                    render(ctx: ICtx) {
                         expect(ctx.state).toBe("default");
                         done();
                     }
@@ -26,10 +26,10 @@ describe("component", () => {
                 init(factory({ key: "value" })());
             })
 
-            it("has used cursor", (done) => {
+            it("has used cursor", (done: Function) => {
                 const cursor = { key: "value" };
                 const factory = c.createComponent<IState>({
-                    render(ctx: ICtx, me: b.IBobrilNode) {
+                    render(ctx: ICtx) {
                         expect(ctx.cursor).toBe(cursor);
                         done();
                     }
@@ -46,9 +46,9 @@ describe("component", () => {
                 firstState: IState;
             }
 
-            it("has current states for each cursor", (done) => {
+            it("has current states for each cursor", (done: Function) => {
                 const factory = c.createComponent<IState>({
-                    render(ctx: ICursorsMapCtx, me: b.IBobrilNode) {
+                    render(ctx: ICursorsMapCtx) {
                         expect(ctx.state).toBeUndefined();
                         expect(ctx.firstCursor).toBe(cursors["first"]);
                         expect(ctx.firstState).toBe("default");
@@ -62,10 +62,9 @@ describe("component", () => {
     })
 
     describe("init", () => {
-        it("sets state to context", (done) => {
-            let renderState = null;
+        it("sets state to context", (done: Function) => {
             let factory = c.createComponent<IState>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     expect(ctx.state).toBe("default");
                     done();
                 }
@@ -76,16 +75,16 @@ describe("component", () => {
     })
 
     describe("render", () => {
-        it("is invoked on state change", (done) => {
+        it("is invoked on state change", (done: Function) => {
             let cursor = { key: "value" };
-            let renderStates = [];
+            let renderStates: IState[] = [];
             let factory = c.createComponent<IState>({
-                render(ctx: ICtx, me: b.IBobrilNode) {
+                render(ctx: ICtx) {
                     renderStates = [...renderStates, ctx.state];
                 }
             })(cursor);
 
-            new Promise((f, r) => {
+            new Promise((f) => {
                 init(factory());
                 f();
             }).then(() => {
@@ -93,7 +92,7 @@ describe("component", () => {
                 invalidate();
             }).then(() => {
                 expect(renderStates).toEqual(["default"]);
-                bf.createAction(cursor, (s) => { return "newValue" })();
+                bf.createAction(cursor, () => { return "newValue" })();
                 tick();
             }).then(() => {
                 expect(renderStates).toEqual(["default", "newValue"]);

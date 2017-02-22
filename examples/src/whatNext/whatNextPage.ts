@@ -3,11 +3,10 @@ import * as m from "bobril-m";
 import * as fg from "bobril-flexbox-grid";
 import * as f from "../flux";
 import * as s from "./state";
-import * as c from "./state.cursors";
 
 
 export const createWhatNextPage = f.createRouteComponent<s.IWhatNextState, any>({
-    render(ctx: f.IContext<s.IWhatNextState>, me: b.IBobrilNode, oldMe?: b.IBobrilCacheNode) {
+    render(ctx: f.IContext<s.IWhatNextState>, me: b.IBobrilNode) {
         me.children = ctx.state.sources.map(bs => m.Paper({
             children: [
                 fg.Row({
