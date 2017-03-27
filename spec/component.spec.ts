@@ -92,7 +92,7 @@ describe("component", () => {
                 invalidate();
             }).then(() => {
                 expect(renderStates).toEqual(["default"]);
-                bf.createAction(cursor, () => { return "newValue" })();
+                bf.createParamLessAction(cursor, () => { return "newValue" })();
                 tick();
             }).then(() => {
                 expect(renderStates).toEqual(["default", "newValue"]);

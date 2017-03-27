@@ -14,6 +14,8 @@ export {
     IAction,
     createAction,
     createActions,
+    createParamLessAction,
+    createParamLessActions,
     debugCallbackType
 } from 'fun-model';
 

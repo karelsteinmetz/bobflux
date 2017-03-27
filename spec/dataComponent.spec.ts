@@ -55,7 +55,7 @@ describe('dataComponent', () => {
                 invalidate();
             }).then(() => {
                 expect(renderedStates).toEqual(['defaultValue', 'defaultValue']);
-                bf.createAction(cursor, () => { return 'newValue'} )();
+                bf.createParamLessAction(cursor, () => { return 'newValue'} )();
                 tick();
             }).then(() => {
                 expect(renderedStates).toEqual(['defaultValue', 'defaultValue', 'newValue']);

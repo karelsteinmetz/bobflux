@@ -2,7 +2,7 @@ import * as f from "../flux";
 import * as s from "./state";
 import * as c from "./state.cursors";
 
-export const addTodo = f.createAction<s.ITodosState, any>(c.rootCursor, (state) =>
+export const addTodo = f.createParamLessAction<s.ITodosState>(c.rootCursor, (state) =>
     f.shallowCopy(state, (section) => {
         section.todos = [
             { id: new Date().getTime(), isDone: false, name: section.editedTodo.name },

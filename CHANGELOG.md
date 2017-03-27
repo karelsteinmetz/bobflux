@@ -1,5 +1,12 @@
 CHANGELOG
 ===
+8.0.0
+--
+
+New Features
+-
+Upgraded fun-model for createParamLessAction and support for nullability in cursors.
+
 7.0.0
 --
 
