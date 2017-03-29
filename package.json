@@ -1,6 +1,6 @@
 {
     "name": "bobflux",
-    "version": "8.0.1",
+    "version": "8.0.2",
     "description": "Bobflux is pure functional implementation of FLUX architecture.",
     "main": "./index.js",
     "types": "index.d.ts",
@@ -26,7 +26,7 @@
         "example": "examples/app.ts",
         "title": "Bobflux Examples",
         "compilerOptions": {
-            "declaration": false,
+            "declaration": true,
             "noImplicitAny": true,
             "noImplicitThis": true,
             "noUnusedLocals": true,
