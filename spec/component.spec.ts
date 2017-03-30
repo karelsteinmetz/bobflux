@@ -6,32 +6,31 @@ describe("component", () => {
 
     beforeEach(() => {
         bf.bootstrap({ value: "default" }, {});
-        jasmine.clock().install();
     })
 
     afterEach(() => {
-        jasmine.clock().uninstall();
+        init(undefined);
     })
 
     describe("context", () => {
         describe("single cursor", () => {
-            it("has current state", (done: Function) => {
+            it("has current state", (done: () => void) => {
                 const factory = c.createComponent<IState>({
                     render(ctx: ICtx) {
                         expect(ctx.state).toBe("default");
-                        done();
+                        b.asap(done);
                     }
                 });
 
                 init(factory({ key: "value" })());
             })
 
-            it("has used cursor", (done: Function) => {
+            it("has used cursor", (done: () => void) => {
                 const cursor = { key: "value" };
                 const factory = c.createComponent<IState>({
                     render(ctx: ICtx) {
                         expect(ctx.cursor).toBe(cursor);
-                        done();
+                        b.asap(done);
                     }
                 });
 
@@ -46,13 +45,13 @@ describe("component", () => {
                 firstState: IState;
             }
 
-            it("has current states for each cursor", (done: Function) => {
+            it("has current states for each cursor", (done: () => void) => {
                 const factory = c.createComponent<IState>({
                     render(ctx: ICursorsMapCtx) {
                         expect(ctx.state).toBeUndefined();
                         expect(ctx.firstCursor).toBe(cursors["first"]);
                         expect(ctx.firstState).toBe("default");
-                        done();
+                        b.asap(done);
                     }
                 });
 
@@ -62,11 +61,11 @@ describe("component", () => {
     })
 
     describe("init", () => {
-        it("sets state to context", (done: Function) => {
+        it("sets state to context", (done: () => void) => {
             let factory = c.createComponent<IState>({
                 render(ctx: ICtx) {
                     expect(ctx.state).toBe("default");
-                    done();
+                    b.asap(done);
                 }
             });
 
@@ -75,7 +74,7 @@ describe("component", () => {
     })
 
     describe("render", () => {
-        it("is invoked on state change", (done: Function) => {
+        it("is invoked on state change", () => {
             let cursor = { key: "value" };
             let renderStates: IState[] = [];
             let factory = c.createComponent<IState>({
@@ -84,38 +83,24 @@ describe("component", () => {
                 }
             })(cursor);
 
-            new Promise((f) => {
-                init(factory());
-                f();
-            }).then(() => {
-                expect(renderStates).toEqual(["default"]);
-                invalidate();
-            }).then(() => {
-                expect(renderStates).toEqual(["default"]);
-                bf.createParamLessAction(cursor, () => { return "newValue" })();
-                tick();
-            }).then(() => {
-                expect(renderStates).toEqual(["default", "newValue"]);
-                done();
-            }).catch((e) => {
-                console.log("Unexpected error", e);
-                done();
-            })
+            init(factory());
+            expect(renderStates).toEqual(["default"]);
+            invalidate();
+            expect(renderStates).toEqual(["default"]);
+            bf.createParamLessAction(cursor, () => { return "newValue" })();
+            b.syncUpdate();
+            expect(renderStates).toEqual(["default", "newValue"]);
         })
     })
 
-    function init(childs: b.IBobrilChildren) {
-        b.init(() => childs);
-        tick();
+    function init(children: b.IBobrilChildren) {
+        b.init(() => children);
+        b.syncUpdate();
     }
 
     function invalidate() {
         b.invalidate();
-        tick();
-    }
-
-    function tick() {
-        jasmine.clock().tick(50);
+        b.syncUpdate();
     }
 })
 

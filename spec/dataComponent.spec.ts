@@ -6,39 +6,38 @@ describe('dataComponent', () => {
 
     beforeEach(() => {
         bf.bootstrap({ value: 'defaultValue' }, {});
-        jasmine.clock().install();
     })
 
     afterEach(() => {
-        jasmine.clock().uninstall();
+        init(undefined);
     })
 
     describe('context', () => {
-        it('has current state', (done: Function) => {
+        it('has current state', (done: () => void) => {
             let factory = c.createDataComponent<IState, {}>({
                 render(ctx: ICtx) {
                     expect(ctx.state).toBe('defaultValue');
-                    done();
+                    b.asap(done);
                 }
             })({ key: 'value' });
 
             init(factory({}));
         })
-        
-        it('has data', (done: Function) => {
+
+        it('has data', (done: () => void) => {
             let factory = c.createDataComponent<IState, string>({
                 render(ctx: ICtx) {
                     expect(ctx.data).toBe('dataValue');
-                    done();
+                    b.asap(done);
                 }
             })({ key: 'value' });
 
             init(factory('dataValue'));
         })
     })
-    
+
     describe('render', () => {
-        it('is invoked on state change', (done: Function) => {
+        it('is invoked on state change', () => {
             let cursor = { key: 'value' };
             let renderedStates: IState[] = [];
             let factory = c.createDataComponent<IState, string>({
@@ -47,38 +46,24 @@ describe('dataComponent', () => {
                 }
             })(cursor);
 
-            new Promise((f) => {
-                init(factory('defaultValue'));
-                f();
-            }).then(() => {
-                expect(renderedStates).toEqual(['defaultValue']);
-                invalidate();
-            }).then(() => {
-                expect(renderedStates).toEqual(['defaultValue', 'defaultValue']);
-                bf.createParamLessAction(cursor, () => { return 'newValue'} )();
-                tick();
-            }).then(() => {
-                expect(renderedStates).toEqual(['defaultValue', 'defaultValue', 'newValue']);
-                done();
-            }).catch((e) => {
-                console.log('Unexpected error', e);
-                done();
-            })
+            init(factory('defaultValue'));
+            expect(renderedStates).toEqual(['defaultValue']);
+            invalidate();
+            expect(renderedStates).toEqual(['defaultValue', 'defaultValue']);
+            bf.createParamLessAction(cursor, () => { return 'newValue' })();
+            b.syncUpdate();
+            expect(renderedStates).toEqual(['defaultValue', 'defaultValue', 'newValue']);
         })
     })
 
-    function init(childs: b.IBobrilChildren) {
-        b.init(() => childs);
-        tick();
+    function init(children: b.IBobrilChildren) {
+        b.init(() => children);
+        b.syncUpdate();
     }
 
     function invalidate() {
         b.invalidate();
-        tick();
-    }
-
-    function tick() {
-        jasmine.clock().tick(50);
+        b.syncUpdate();
     }
 })
 

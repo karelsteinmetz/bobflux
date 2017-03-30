@@ -1,6 +1,7 @@
 "use strict";
-var b = require('bobril');
-var f = require('fun-model');
+Object.defineProperty(exports, "__esModule", { value: true });
+var b = require("bobril");
+var f = require("fun-model");
 var c = require("./common");
 function createDataComponent(component) {
     return function (innerCursor) {

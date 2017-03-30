@@ -4,4 +4,4 @@ export * from './src/component';
 export * from './src/routeComponent';
 export * from './src/dataComponent';
 export declare const bootstrap: (defaultState: IState, params?: IBootstrapParams) => void;
-export declare const defaultStateName: string;
+export declare const defaultStateName = "";

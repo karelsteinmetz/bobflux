@@ -1,5 +1,15 @@
 CHANGELOG
 ===
+
+8.1.0
+--
+
+New Features
+-
+Added way to detect forceShouldChange enabled component, by having it always available in ctx.
+Simplified code in route component.
+Fixed and simplified tests by b.syncUpdate() feature.
+
 8.0.0
 --
 
