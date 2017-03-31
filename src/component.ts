@@ -20,6 +20,7 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
     return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) => (children?: b.IBobrilChildren) => b.createDerivedComponent(
         b.createVirtualComponent({
             init(ctx: IContext<TState>) {
+                ctx.forceShouldChange = false;
                 if (c.isCursor(innerCursor)) {
                     ctx.cursor = innerCursor;
                     ctx.state = f.getState(ctx.cursor);
@@ -38,12 +39,12 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                     return ctx.forceShouldChange || ctx.state !== previousState;
                 }
                 else {
-                    let shouldChange = false;
+                    let shouldChange = ctx.forceShouldChange;
                     Object.keys(innerCursor).forEach(ck => {
                         const stateName = c.unifyStateName(ck);
                         const previousState = (<any>ctx)[stateName];
                         (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
-                        shouldChange = shouldChange || ctx.forceShouldChange || (<any>ctx)[stateName] !== previousState;
+                        shouldChange = shouldChange || (<any>ctx)[stateName] !== previousState;
                     });
                     return shouldChange;
                 }

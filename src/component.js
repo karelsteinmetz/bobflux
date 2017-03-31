@@ -1,10 +1,12 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var b = require("bobril");
 var f = require("fun-model");
 var c = require("./common");
 function createComponent(component) {
     return function (innerCursor) { return function (children) { return b.createDerivedComponent(b.createVirtualComponent({
         init: function (ctx) {
+            ctx.forceShouldChange = false;
             if (c.isCursor(innerCursor)) {
                 ctx.cursor = innerCursor;
                 ctx.state = f.getState(ctx.cursor);
@@ -23,12 +25,12 @@ function createComponent(component) {
                 return ctx.forceShouldChange || ctx.state !== previousState;
             }
             else {
-                var shouldChange_1 = false;
+                var shouldChange_1 = ctx.forceShouldChange;
                 Object.keys(innerCursor).forEach(function (ck) {
                     var stateName = c.unifyStateName(ck);
                     var previousState = ctx[stateName];
                     ctx[stateName] = f.getState(innerCursor[ck]);
-                    shouldChange_1 = shouldChange_1 || ctx.forceShouldChange || ctx[stateName] !== previousState;
+                    shouldChange_1 = shouldChange_1 || ctx[stateName] !== previousState;
                 });
                 return shouldChange_1;
             }

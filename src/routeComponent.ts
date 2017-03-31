@@ -23,6 +23,7 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
         b.createDerivedComponent<TData>(
             b.createVirtualComponent<TData>({
                 init(ctx: IRouteComponentContext<TState, TData>) {
+                    ctx.forceShouldChange = false;
                     if (c.isCursor(innerCursor)) {
                         ctx.cursor = innerCursor;
                         ctx.state = f.getState(ctx.cursor);
@@ -37,24 +38,23 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
 
                 },
                 shouldChange(ctx: IRouteComponentContext<TState, TData>): boolean {
-                    let shouldChange = false;
+                    let shouldChange = ctx.forceShouldChange;
                     if (c.isCursor(innerCursor)) {
                         let previousState = ctx.state;
                         ctx.state = f.getState(ctx.cursor);
-                        shouldChange = ctx.forceShouldChange || ctx.state !== previousState;
+                        shouldChange = ctx.state !== previousState;
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
                             const stateName = c.unifyStateName(ck);
                             const previousState = (<any>ctx)[stateName];
                             (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
-                            shouldChange = shouldChange || ctx.forceShouldChange || (<any>ctx)[stateName] !== previousState;
+                            shouldChange = shouldChange || (<any>ctx)[stateName] !== previousState;
                         });
-                        shouldChange;
                     }
                     let previousData = ctx.lastData;
                     ctx.lastData = ctx.data;
-                    return ctx.forceShouldChange || !(ctx.data === previousData && !shouldChange);
+                    return shouldChange || (ctx.data !== previousData);
                 }
             }),
             component);

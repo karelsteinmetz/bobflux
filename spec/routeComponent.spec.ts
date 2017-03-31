@@ -7,30 +7,29 @@ describe('routeComponent', () => {
 
     beforeEach(() => {
         bf.bootstrap({ value: 'default' }, {});
-        jasmine.clock().install();
     })
 
     afterEach(() => {
-        jasmine.clock().uninstall();
+        init(undefined);
     })
 
     describe('context', () => {
-        it('has current state', (done: Function) => {
+        it('has current state', (done: () => void) => {
             let factory = c.createRouteComponent<IState, c.IRouteData>({
                 render(ctx: ICtx) {
                     expect(ctx.state).toBe('default');
-                    done();
+                    b.asap(done);
                 }
             })(valueCursor);
 
             init(factory(aRouteParams('routeParam')));
         })
 
-        it('has route data', (done: Function) => {
+        it('has route data', (done: () => void) => {
             let factory = c.createRouteComponent<IState, c.IRouteData>({
                 render(ctx: ICtx) {
                     expect(ctx.data).toEqual({ routeParams: { routeParam: 'routeParam' } });
-                    done();
+                    b.asap(done);
                 }
             })(valueCursor);
 
@@ -39,11 +38,11 @@ describe('routeComponent', () => {
     })
 
     describe('init', () => {
-        it('sets state into context', (done: Function) => {
+        it('sets state into context', (done: () => void) => {
             let factory = c.createRouteComponent<IState, c.IRouteData>({
                 render(ctx: ICtx) {
                     expect(ctx.state).toBe('default');
-                    done();
+                    b.asap(done);
                 }
             })(valueCursor);
 
@@ -52,7 +51,7 @@ describe('routeComponent', () => {
     })
 
     describe('render', () => {
-        it('is invoked on state change', (done: Function) => {
+        it('is invoked on state change', () => {
             let cursor = { key: 'value' };
             let renderStates: IState[] = [];
             let factory = c.createRouteComponent<IState, c.IRouteData>({
@@ -61,34 +60,21 @@ describe('routeComponent', () => {
                 }
             })(valueCursor);
 
-            new Promise((f) => {
-                init(factory(aRouteParams()));
-                f();
-            }).then(() => {
-                expect(renderStates).toEqual(['default']);
-                bf.createParamLessAction(cursor, () => { return 'newValue' })();
-                tick();
-            }).then(() => {
-                expect(renderStates).toEqual(['default', 'newValue']);
-                done();
-            }).catch((e) => {
-                console.log('Unexpected error', e);
-                done();
-            })
+            init(factory(aRouteParams()));
+            expect(renderStates).toEqual(['default']);
+            bf.createParamLessAction(cursor, () => { return 'newValue' })();
+            b.syncUpdate();
+            expect(renderStates).toEqual(['default', 'newValue']);
         })
     })
-    
+
     function aRouteParams(paramValue: string = 'aRouteParam'): bf.IRouteData {
         return { routeParams: { routeParam: paramValue } };
     }
 
-    function init(childs: b.IBobrilChildren) {
-        b.init(() => childs);
-        tick();
-    }
-
-    function tick() {
-        jasmine.clock().tick(50);
+    function init(children: b.IBobrilChildren) {
+        b.init(() => children);
+        b.syncUpdate();
     }
 })
 
