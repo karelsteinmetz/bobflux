@@ -1,5 +1,5 @@
 node_modules
-build
+dist
 /examples/**/*.js
 /.vscode
 /spec/**/*.d.ts

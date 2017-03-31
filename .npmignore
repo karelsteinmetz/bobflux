@@ -1,7 +1,6 @@
 .*
-resources
 spec
-tests
+dist
 tsconfig.json
 gulpfile.js
 build.bat
