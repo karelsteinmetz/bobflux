@@ -4,3 +4,4 @@ dist
 /.vscode
 /spec/**/*.d.ts
 /spec/**/*.js
+/yarn.lock

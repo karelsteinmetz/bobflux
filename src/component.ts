@@ -16,8 +16,8 @@ export interface IComponentFactory {
 }
 
 export function createComponent<TState extends IComponentState>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) => IComponentFactory {
-    return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) => (children?: b.IBobrilChildren) => b.createDerivedComponent(
+    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => IComponentFactory {
+    return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => (children?: b.IBobrilChildren) => b.createDerivedComponent(
         b.createVirtualComponent({
             init(ctx: IContext<TState>) {
                 ctx.forceShouldChange = false;
@@ -27,8 +27,8 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                 }
                 else {
                     Object.keys(innerCursor).forEach(ck => {
-                        (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<TState>>innerCursor)[ck];
-                        (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                        (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<f.IState>>innerCursor)[ck];
+                        (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<f.IState>>innerCursor)[ck]);
                     });
                 }
             },
@@ -43,7 +43,7 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                     Object.keys(innerCursor).forEach(ck => {
                         const stateName = c.unifyStateName(ck);
                         const previousState = (<any>ctx)[stateName];
-                        (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                        (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<f.IState>>innerCursor)[ck]);
                         shouldChange = shouldChange || (<any>ctx)[stateName] !== previousState;
                     });
                     return shouldChange;
