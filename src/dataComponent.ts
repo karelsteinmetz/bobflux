@@ -11,8 +11,8 @@ export interface IDataComponentContext<TState extends IDataComponentState, TData
 }
 
 export function createDataComponent<TState extends IDataComponentState, TData extends Object>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
-    return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) =>
+    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
+    return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) =>
         b.createDerivedComponent<TData>(
             b.createVirtualComponent<TData>({
                 init(ctx: IDataComponentContext<TState, TData>) {
@@ -22,8 +22,8 @@ export function createDataComponent<TState extends IDataComponentState, TData ex
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
-                            (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<TState>>innerCursor)[ck];
-                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                            (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<f.IState>>innerCursor)[ck];
+                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<f.IState>>innerCursor)[ck]);
                         });
                     }
                 },
@@ -33,7 +33,7 @@ export function createDataComponent<TState extends IDataComponentState, TData ex
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
-                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<f.IState>>innerCursor)[ck]);
                         });
                     }
                 }

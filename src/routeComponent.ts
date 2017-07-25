@@ -18,8 +18,8 @@ export interface IRouteComponentContext<TState extends IRouteComponentState, TDa
 
 
 export function createRouteComponent<TState extends IRouteComponentState, TData extends IRouteData>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
-    return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) =>
+    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
+    return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) =>
         b.createDerivedComponent<TData>(
             b.createVirtualComponent<TData>({
                 init(ctx: IRouteComponentContext<TState, TData>) {
@@ -30,8 +30,8 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
                     }
                     else {
                         Object.keys(innerCursor).forEach(ck => {
-                            (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<TState>>innerCursor)[ck];
-                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                            (<any>ctx)[c.unifyCursorName(ck)] = (<c.CursorFieldsMap<f.IState>>innerCursor)[ck];
+                            (<any>ctx)[c.unifyStateName(ck)] = f.getState((<c.CursorFieldsMap<f.IState>>innerCursor)[ck]);
                         });
                     }
                     ctx.lastData = ctx.data;
@@ -48,7 +48,7 @@ export function createRouteComponent<TState extends IRouteComponentState, TData 
                         Object.keys(innerCursor).forEach(ck => {
                             const stateName = c.unifyStateName(ck);
                             const previousState = (<any>ctx)[stateName];
-                            (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<TState>>innerCursor)[ck]);
+                            (<any>ctx)[stateName] = f.getState((<c.CursorFieldsMap<f.IState>>innerCursor)[ck]);
                             shouldChange = shouldChange || (<any>ctx)[stateName] !== previousState;
                         });
                     }

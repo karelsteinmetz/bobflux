@@ -11,4 +11,4 @@ export interface IContext<TState extends IComponentState> extends b.IBobrilCtx {
 export interface IComponentFactory {
     (children?: b.IBobrilChildren): b.IBobrilNode;
 }
-export declare function createComponent<TState extends IComponentState>(component: b.IBobrilComponent): (cursor: f.ICursor<TState> | c.CursorFieldsMap<TState>) => IComponentFactory;
+export declare function createComponent<TState extends IComponentState>(component: b.IBobrilComponent): (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => IComponentFactory;
