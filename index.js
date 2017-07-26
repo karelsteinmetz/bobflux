@@ -14,6 +14,7 @@ exports.createAction = fun_model_2.createAction;
 exports.createActions = fun_model_2.createActions;
 exports.createParamLessAction = fun_model_2.createParamLessAction;
 exports.createParamLessActions = fun_model_2.createParamLessActions;
+exports.createReplaceAction = fun_model_2.createReplaceAction;
 __export(require("./src/component"));
 __export(require("./src/routeComponent"));
 __export(require("./src/dataComponent"));

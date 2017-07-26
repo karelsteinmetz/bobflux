@@ -1,6 +1,13 @@
 CHANGELOG
 ===
 
+9.0.0
+--
+
+New Features
+-
+Upgraded fun-model for "Removed default replace handler from createAction. Use the new createReplaceAction instead".
+
 8.1.0
 --
 
