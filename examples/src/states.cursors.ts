@@ -14,7 +14,10 @@ export * from './states';
 
 export const rootKey = f.rootCursor.key;
 
-export const rootCursor: f.ICursor<s.IApplicationState> = f.rootCursor;
+// export const rootCursor: f.ICursor<s.IApplicationState> = f.rootCursor;
+export const rootCursor: f.ICursor<s.IApplicationState> = {
+    key: rootKey
+};
 
 export default rootCursor;
 
