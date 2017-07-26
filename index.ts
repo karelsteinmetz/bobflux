@@ -18,6 +18,7 @@ export {
     createActions,
     createParamLessAction,
     createParamLessActions,
+    createReplaceAction,
     debugCallbackType
 } from 'fun-model';
 
