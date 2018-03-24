@@ -29,7 +29,7 @@ bb
 * Bobril is here for "rendering" (View)
 * Bobril component context (b.IBobrilCtx) should be used for intermediate state (drag & drop, input border color on focus etc.)
 
-## Livecycle
+## Lifecycle
  ![](./doc/img/flux_like.png)
 
 ### Getting started video [cz] 
