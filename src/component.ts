@@ -12,7 +12,7 @@ export interface IContext<TState extends IComponentState> extends b.IBobrilCtx {
 }
 
 export interface IComponentFactory {
-    (children?: b.IBobrilChildren): b.IBobrilNode;
+    (children?: b.ChildrenType<never>): b.IBobrilNode;
 }
 
 export function createComponent<TState extends IComponentState>(component: b.IBobrilComponent)

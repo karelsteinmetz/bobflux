@@ -11,7 +11,7 @@ export interface IDataComponentContext<TState extends IDataComponentState, TData
 }
 
 export function createDataComponent<TState extends IDataComponentState, TData extends Object>(component: b.IBobrilComponent)
-    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode {
+    : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => b.IComponentFactory<TData> {
     return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) =>
         b.createDerivedComponent<TData>(
             b.createVirtualComponent<TData>({

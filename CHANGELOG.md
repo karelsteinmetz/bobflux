@@ -1,6 +1,13 @@
 CHANGELOG
 ===
 
+9.1.1
+--
+
+Fixed
+-
+Used and set component factory.
+
 9.1.0
 --
 

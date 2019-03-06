@@ -9,6 +9,6 @@ export interface IContext<TState extends IComponentState> extends b.IBobrilCtx {
     forceShouldChange: boolean;
 }
 export interface IComponentFactory {
-    (children?: b.IBobrilChildren): b.IBobrilNode;
+    (children?: b.ChildrenType<never>): b.IBobrilNode;
 }
 export declare function createComponent<TState extends IComponentState>(component: b.IBobrilComponent): (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => IComponentFactory;

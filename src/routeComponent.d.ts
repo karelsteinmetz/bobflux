@@ -12,4 +12,4 @@ export interface IRouteComponentContext<TState extends IRouteComponentState, TDa
     data: TData;
     lastData: TData;
 }
-export declare function createRouteComponent<TState extends IRouteComponentState, TData extends IRouteData>(component: b.IBobrilComponent): (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => (data?: TData, children?: b.IBobrilChildren) => b.IBobrilNode;
+export declare function createRouteComponent<TState extends IRouteComponentState, TData extends IRouteData>(component: b.IBobrilComponent): (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => b.IComponentFactory<TData>;

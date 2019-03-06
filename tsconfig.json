@@ -27,7 +27,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "sourceMap": true,
+    "strictFunctionTypes": true,
     "strictNullChecks": true,
+    "strictPropertyInitialization": true,
     "target": "es5",
     "resolveJsonModule": true
   },
