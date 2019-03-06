@@ -3,6 +3,7 @@ import * as bf from '../index';
 import * as c from '../src/dataComponent';
 
 describe('dataComponent', () => {
+    let valueCursor: bf.ICursor<string> = { key: 'value' };
 
     beforeEach(() => {
         bf.bootstrap({ value: 'defaultValue' }, {});
@@ -14,23 +15,23 @@ describe('dataComponent', () => {
 
     describe('context', () => {
         it('has current state', (done: () => void) => {
-            let factory = c.createDataComponent<IState, {}>({
-                render(ctx: ICtx) {
+            let factory = c.createDataComponent<string, {}>({
+                render(ctx: bf.IContext<string>) {
                     expect(ctx.state).toBe('defaultValue');
                     b.asap(done);
                 }
-            })({ key: 'value' });
+            })(valueCursor);
 
             init(factory({}));
         })
 
         it('has data', (done: () => void) => {
-            let factory = c.createDataComponent<IState, string>({
+            let factory = c.createDataComponent<string, string>({
                 render(ctx: ICtx) {
                     expect(ctx.data).toBe('dataValue');
                     b.asap(done);
                 }
-            })({ key: 'value' });
+            })(valueCursor);
 
             init(factory('dataValue'));
         })
@@ -38,19 +39,18 @@ describe('dataComponent', () => {
 
     describe('render', () => {
         it('is invoked on state change', () => {
-            let cursor = { key: 'value' };
-            let renderedStates: IState[] = [];
-            let factory = c.createDataComponent<IState, string>({
-                render(ctx: ICtx) {
+            let renderedStates: string[] = [];
+            let factory = c.createDataComponent<string, string>({
+                render(ctx: bf.IContext<string>) {
                     renderedStates = [...renderedStates, ctx.state];
                 }
-            })(cursor);
+            })(valueCursor);
 
             init(factory('defaultValue'));
             expect(renderedStates).toEqual(['defaultValue']);
             invalidate();
             expect(renderedStates).toEqual(['defaultValue', 'defaultValue']);
-            bf.createParamLessAction(cursor, () => { return 'newValue' })();
+            bf.createParamLessAction(valueCursor, () => { return 'newValue' })();
             b.syncUpdate();
             expect(renderedStates).toEqual(['defaultValue', 'defaultValue', 'newValue']);
         })

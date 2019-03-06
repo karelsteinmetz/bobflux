@@ -3,6 +3,7 @@ import * as bf from "../index";
 import * as c from "../src/component";
 
 describe("component", () => {
+    let valueCursor: bf.ICursor<string> = { key: 'value' };
 
     beforeEach(() => {
         bf.bootstrap({ value: "default" }, {});
@@ -15,34 +16,33 @@ describe("component", () => {
     describe("context", () => {
         describe("single cursor", () => {
             it("has current state", (done: () => void) => {
-                const factory = c.createComponent<IState>({
-                    render(ctx: ICtx) {
+                const factory = c.createComponent<string>({
+                    render(ctx: bf.IContext<string>) {
                         expect(ctx.state).toBe("default");
                         b.asap(done);
                     }
                 });
 
-                init(factory({ key: "value" })());
+                init(factory(valueCursor)());
             })
 
             it("has used cursor", (done: () => void) => {
-                const cursor = { key: "value" };
-                const factory = c.createComponent<IState>({
-                    render(ctx: ICtx) {
-                        expect(ctx.cursor).toBe(cursor);
+                const factory = c.createComponent<string>({
+                    render(ctx: bf.IContext<string>) {
+                        expect(ctx.cursor).toBe(valueCursor);
                         b.asap(done);
                     }
                 });
 
-                init(factory(cursor)());
+                init(factory(valueCursor)());
             })
         })
         describe("cursors map", () => {
-            const cursors = { ["first"]: { key: "value" } };
+            const cursors = { ["first"]: valueCursor };
 
             interface ICursorsMapCtx extends ICtx {
-                firstCursor: bf.ICursor<IState>;
-                firstState: IState;
+                firstCursor: bf.ICursor<string>;
+                firstState: string;
             }
 
             it("has current states for each cursor", (done: () => void) => {
@@ -62,32 +62,31 @@ describe("component", () => {
 
     describe("init", () => {
         it("sets state to context", (done: () => void) => {
-            let factory = c.createComponent<IState>({
-                render(ctx: ICtx) {
+            let factory = c.createComponent<string>({
+                render(ctx: bf.IContext<string>) {
                     expect(ctx.state).toBe("default");
                     b.asap(done);
                 }
             });
 
-            init(factory({ key: "value" })());
+            init(factory(valueCursor)());
         })
     })
 
     describe("render", () => {
         it("is invoked on state change", () => {
-            let cursor = { key: "value" };
-            let renderStates: IState[] = [];
-            let factory = c.createComponent<IState>({
-                render(ctx: ICtx) {
+            let renderStates: string[] = [];
+            let factory = c.createComponent<string>({
+                render(ctx: bf.IContext<string>) {
                     renderStates = [...renderStates, ctx.state];
                 }
-            })(cursor);
+            })(valueCursor);
 
             init(factory());
             expect(renderStates).toEqual(["default"]);
             invalidate();
             expect(renderStates).toEqual(["default"]);
-            bf.createParamLessAction(cursor, () => { return "newValue" })();
+            bf.createParamLessAction(valueCursor, () => { return "newValue" })();
             b.syncUpdate();
             expect(renderStates).toEqual(["default", "newValue"]);
         })

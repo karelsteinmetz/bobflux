@@ -50,5 +50,5 @@ export function createComponent<TState extends IComponentState>(component: b.IBo
                 }
             }
         }),
-        component)({}, children);
+        component)({ children })
 }

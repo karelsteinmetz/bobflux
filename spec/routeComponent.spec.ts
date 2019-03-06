@@ -15,8 +15,8 @@ describe('routeComponent', () => {
 
     describe('context', () => {
         it('has current state', (done: () => void) => {
-            let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx) {
+            let factory = c.createRouteComponent<string, c.IRouteData>({
+                render(ctx: bf.IContext<string>) {
                     expect(ctx.state).toBe('default');
                     b.asap(done);
                 }
@@ -39,8 +39,8 @@ describe('routeComponent', () => {
 
     describe('init', () => {
         it('sets state into context', (done: () => void) => {
-            let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx) {
+            let factory = c.createRouteComponent<string, c.IRouteData>({
+                render(ctx: bf.IContext<string>) {
                     expect(ctx.state).toBe('default');
                     b.asap(done);
                 }
@@ -53,9 +53,9 @@ describe('routeComponent', () => {
     describe('render', () => {
         it('is invoked on state change', () => {
             let cursor = { key: 'value' };
-            let renderStates: IState[] = [];
-            let factory = c.createRouteComponent<IState, c.IRouteData>({
-                render(ctx: ICtx) {
+            let renderStates: string[] = [];
+            let factory = c.createRouteComponent<string, c.IRouteData>({
+                render(ctx: bf.IContext<string>) {
                     renderStates = [...renderStates, ctx.state];
                 }
             })(valueCursor);

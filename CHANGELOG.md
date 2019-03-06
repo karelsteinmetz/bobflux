@@ -1,6 +1,14 @@
 CHANGELOG
 ===
 
+9.1.0
+--
+
+Fixed
+-
+New way how to write components in Bobril.
+
+
 9.0.0
 --
 
