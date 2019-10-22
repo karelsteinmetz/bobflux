@@ -1,6 +1,14 @@
 CHANGELOG
 ===
 
+9.2.0
+--
+
+Fixed
+-
+Improved typesafetyness with Bobril 13.
+
+
 9.1.1
 --
 

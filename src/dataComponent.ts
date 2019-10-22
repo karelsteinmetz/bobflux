@@ -8,9 +8,10 @@ export interface IDataComponentState extends f.IState {
 
 export interface IDataComponentContext<TState extends IDataComponentState, TData extends Object> extends cm.IContext<TState> {
     data: TData;
+    me: b.IBobrilCacheNode<TData>;
 }
 
-export function createDataComponent<TState extends IDataComponentState, TData extends Object>(component: b.IBobrilComponent)
+export function createDataComponent<TState extends IDataComponentState, TData extends Object>(component: b.IBobrilComponent<TData>)
     : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => b.IComponentFactory<TData> {
     return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) =>
         b.createDerivedComponent<TData>(
