@@ -5,3 +5,4 @@ dist
 /spec/**/*.d.ts
 /spec/**/*.js
 /yarn.lock
+/tsconfig.json
