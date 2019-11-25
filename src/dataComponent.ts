@@ -14,7 +14,7 @@ export interface IDataComponentContext<TState extends IDataComponentState, TData
 export function createDataComponent<TState extends IDataComponentState, TData extends Object>(component: b.IBobrilComponent<TData>)
     : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => b.IComponentFactory<TData> {
     return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) =>
-        b.createDerivedComponent<TData>(
+        b.createDerivedComponent(
             b.createVirtualComponent<TData>({
                 init(ctx: IDataComponentContext<TState, TData>) {
                     if (c.isCursor(innerCursor)) {
