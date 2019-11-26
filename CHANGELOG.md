@@ -1,6 +1,13 @@
 CHANGELOG
 ===
 
+UNRELEASED
+--
+
+Fixed
+-
+Compatibility with Bobril 14.0.0
+
 9.2.0
 --
 

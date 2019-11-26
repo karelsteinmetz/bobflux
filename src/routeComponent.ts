@@ -20,7 +20,7 @@ export interface IRouteComponentContext<TState extends IRouteComponentState, TDa
 export function createRouteComponent<TState extends IRouteComponentState, TData extends IRouteData>(component: b.IBobrilComponent)
     : (cursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) => b.IComponentFactory<TData> {
     return (innerCursor: f.ICursor<TState> | c.CursorFieldsMap<f.IState>) =>
-        b.createDerivedComponent<TData>(
+        b.createDerivedComponent(
             b.createVirtualComponent<TData>({
                 init(ctx: IRouteComponentContext<TState, TData>) {
                     ctx.forceShouldChange = false;

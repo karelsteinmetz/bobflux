@@ -33,9 +33,9 @@ bobril-m@*:
     webfontloader "^1.6.21"
 
 bobril@*:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/bobril/-/bobril-13.1.0.tgz#f609d973051797be9025a00eec296a7ef22bc378"
-  integrity sha512-/K4q5rgvjqd+6vzdQDafgcvnQ4DBtyOVNqdJgFwfeKiuGsfC/RCggBVBgng0c7I9CV725GQwClUPU6X6/vVNGg==
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/bobril/-/bobril-14.0.0.tgz#5678ca7eed7b6f1311e682a935bc6459379ff533"
+  integrity sha512-C0DxMpYo6thWeeKEZ6KaiLOXSA34/sEQQgKxou7Bs6DPY9rFEaI/u6V4lHG5xc68jk9GHbwxE+CeR2uXbn354w==
 
 fun-model@6.*:
   version "6.4.0"
