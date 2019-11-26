@@ -1,7 +1,7 @@
 CHANGELOG
 ===
 
-UNRELEASED
+10.0.0
 --
 
 Fixed
