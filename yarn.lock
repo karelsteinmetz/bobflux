@@ -10,10 +10,11 @@ bobril-flexbox-grid@*:
     bobril "*"
 
 bobril-g11n@*:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/bobril-g11n/-/bobril-g11n-4.4.1.tgz#4b43684a13cd8f8b1707a4bede837ec6bc82c939"
-  integrity sha512-XmqpVX1mCBgAvBnQuRFInoiOJSqEcwRybUwA/lEhoMMbMr16uW0C6NXOiyy5OCy6MBMI0NEtbqc05r4zjKegiQ==
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/bobril-g11n/-/bobril-g11n-5.0.4.tgz#4ed9789a67a2453927dfd268b3239d93fb22afce"
+  integrity sha512-y8Fw7Y4dNCHCtvapKmEPmgq1/owyeXHQecdk1TyV0tOOYjYLPdGGKBMvqAaq0TJ/i3pfB9xh1YlvGALJ/zl1GQ==
   dependencies:
+    bobril "*"
     moment "^2.10.6"
 
 bobril-m-icons@*:
@@ -24,18 +25,17 @@ bobril-m-icons@*:
     bobril "*"
 
 bobril-m@*:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/bobril-m/-/bobril-m-0.15.1.tgz#0e49d20a509be49d054450c0e3d779044327a10d"
-  integrity sha512-6q550avg1vHNL4R8Fir1/Z4/3g2qmtRcliXlqfGUOzbl89y26CCLHhHl3iAA3WtQidOyEoDfCa3oV1oi1KiQCQ==
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/bobril-m/-/bobril-m-0.16.0.tgz#528ffa31dd4279924a828273f66ec663934909de"
+  integrity sha512-8xFr51EFqVL20WaGG3Ll59cOhtIMD7v3hSDQctCrx7laSh9iiwreD8hkP+AzpxBbEZYsFNU+99wPAM6/ymMuag==
   dependencies:
     bobril "*"
     bobril-m-icons "*"
-    webfontloader "^1.6.21"
 
 bobril@*:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/bobril/-/bobril-14.0.0.tgz#5678ca7eed7b6f1311e682a935bc6459379ff533"
-  integrity sha512-C0DxMpYo6thWeeKEZ6KaiLOXSA34/sEQQgKxou7Bs6DPY9rFEaI/u6V4lHG5xc68jk9GHbwxE+CeR2uXbn354w==
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/bobril/-/bobril-17.0.0.tgz#4e3dbb5249e84864736a93f6da528b960c6e6458"
+  integrity sha512-y/qHYPY61W/A27WjrGjSDZGkmwOa0M/+Vuc76nKZ73A2gVt/OzXLBn7CHlh2DoeN0SkeO7hFS/edrwHbQtCimQ==
 
 fun-model@6.*:
   version "6.4.0"
@@ -43,11 +43,6 @@ fun-model@6.*:
   integrity sha512-/ZNoAosMVc5dHrjmRSJh6W0PhYlaieXs39eBu4BFAKo4q+w+8EtMCg5xInL6iH3gPOEKjj7PKz5qYgCbMTg7ww==
 
 moment@^2.10.6:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
-  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
-
-webfontloader@^1.6.21:
-  version "1.6.28"
-  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
-  integrity sha1-23hhKSU8tujq5UwvsF+HCvZnW64=
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
