@@ -10,18 +10,18 @@ export const createDefaultUserInfo = (): IUserInfo => {
     return {
         email: "",
         name: "",
-        surName: ""
+        surName: "",
     };
-}
+};
 
 export interface IUserAccountPageState extends f.IRouteComponentState {
     isEditingEnabled: boolean;
-    editedUserInfo: IUserInfo | null;
+    editedUserInfo?: IUserInfo;
 }
 
 export const createDefaultUserAccountPageState = (): IUserAccountPageState => {
     return {
         isEditingEnabled: false,
-        editedUserInfo: null
+        editedUserInfo: undefined,
     };
-}
+};

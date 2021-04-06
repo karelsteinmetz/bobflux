@@ -31,8 +31,10 @@ export const createMainPage = f.createRouteComponent<s.IApplicationState, f.IRou
                                     type: m.ButtonType.Raised,
                                     feature: b.isActive("todos") || b.isActive("default") ? m.Feature.Secondary : m.Feature.Primary,
                                     children: g.t("Todos"),
-                                    action: () => { a.goTo("todos"); }
-                                })
+                                    action: () => {
+                                        a.goTo("todos");
+                                    },
+                                }),
                             }),
                             fg.Col({
                                 md: 3,
@@ -40,8 +42,8 @@ export const createMainPage = f.createRouteComponent<s.IApplicationState, f.IRou
                                     type: m.ButtonType.Raised,
                                     feature: b.isActive("whatNext") ? m.Feature.Secondary : m.Feature.Primary,
                                     children: g.t("What next?"),
-                                    action: () => a.goTo("whatNext")
-                                })
+                                    action: () => a.goTo("whatNext"),
+                                }),
                             }),
                             fg.Col({
                                 md: 3,
@@ -49,33 +51,32 @@ export const createMainPage = f.createRouteComponent<s.IApplicationState, f.IRou
                                     type: m.ButtonType.Raised,
                                     feature: b.isActive("userAccount") ? m.Feature.Secondary : m.Feature.Primary,
                                     children: g.t("Account"),
-                                    action: () => a.goTo("userAccount")
-                                })
+                                    action: () => a.goTo("userAccount"),
+                                }),
                             }),
                             fg.Col({
                                 md: 1,
-                                children: []
+                                children: [],
                             }),
                             fg.Col({
                                 md: 2,
-                                children: ctx.userInfoFactory()
-                            })
-                        ]
+                                children: ctx.userInfoFactory(),
+                            }),
+                        ],
                     }),
-
-                ]
+                ],
             }),
             m.Paper({
                 children: fg.Row({
                     center: fg.ModificatorType.xs,
                     children: fg.Col({
                         md: 10,
-                        children: me.data.activeRouteHandler()
-                    })
-                })
-            })
+                        children: me.data.activeRouteHandler(),
+                    }),
+                }),
+            }),
         ];
-    }
+    },
 });
 
 export function createRoutes(): b.IRoute[] {
@@ -83,24 +84,24 @@ export function createRoutes(): b.IRoute[] {
         b.route({
             url: "/todos",
             name: "todos",
-            handler: tdp.createTodosPage(c.todosCursor)
+            handler: tdp.createTodosPage(c.todosCursor),
         }),
         b.route({
             url: "/whatNext",
             name: "whatNext",
-            handler: wnp.createWhatNextPage(c.whatNextCursor)
+            handler: wnp.createWhatNextPage(c.whatNextCursor),
         }),
         b.route({
             url: "/userAccount",
             name: "userAccount",
-            handler: ua.createUserAccountPage({ 
-                [f.defaultStateName]: c.userAccountCursor, 
-                userInfo: <any>c.userInfoCursor 
-            })
+            handler: ua.createUserAccountPage({
+                [f.defaultStateName]: c.userAccountCursor,
+                userInfo: <any>c.userInfoCursor,
+            }),
         }),
         b.routeDefault({
             name: "default",
-            handler: tdp.createTodosPage(c.todosCursor)
-        })
-    ]
+            handler: tdp.createTodosPage(c.todosCursor),
+        }),
+    ];
 }
