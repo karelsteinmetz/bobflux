@@ -1,6 +1,14 @@
 CHANGELOG
 ===
 
+11.1.0
+--
+
+Fixed
+-
+Compatibility with Bobril 20.*
+* updated fun-model to 7.*.
+
 10.0.0
 --
 

@@ -20,29 +20,29 @@ bobril-g11n@*:
 bobril-m-icons@*:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/bobril-m-icons/-/bobril-m-icons-2.1.0.tgz#32f81d515a7faf71f857a2ed1b637ec566f4161f"
-  integrity sha1-MvgdUVp/r3H4V6LtG2N+xWb0Fh8=
+  integrity sha512-UZijK0S11hiLTNLBUtgqocePzJWcD2w34EJklHlacJrX2peY/i+ofICz9oGtVQnh2uPE+E7SbZKvyWB0ICb0Aw==
   dependencies:
     bobril "*"
 
 bobril-m@*:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/bobril-m/-/bobril-m-0.16.0.tgz#528ffa31dd4279924a828273f66ec663934909de"
-  integrity sha512-8xFr51EFqVL20WaGG3Ll59cOhtIMD7v3hSDQctCrx7laSh9iiwreD8hkP+AzpxBbEZYsFNU+99wPAM6/ymMuag==
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/bobril-m/-/bobril-m-0.16.1.tgz#42d7854c2cdd6083410f9527c87e495f546dd9be"
+  integrity sha512-wN19WrvZj+yt5E00jilRUBuyt1jqorYavyYGN6Bmh/oaEbWTe+W7UJSiZjs0f3WU+1aHeoenXkXmR7fyvRgjUg==
   dependencies:
     bobril "*"
     bobril-m-icons "*"
 
 bobril@*:
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/bobril/-/bobril-17.0.0.tgz#4e3dbb5249e84864736a93f6da528b960c6e6458"
-  integrity sha512-y/qHYPY61W/A27WjrGjSDZGkmwOa0M/+Vuc76nKZ73A2gVt/OzXLBn7CHlh2DoeN0SkeO7hFS/edrwHbQtCimQ==
+  version "20.4.0"
+  resolved "https://registry.yarnpkg.com/bobril/-/bobril-20.4.0.tgz#2808af926a704310dd1c99ab1b0062cc05c4e667"
+  integrity sha512-VdEo6bQNF/6OtHbBKgE6RrH+zLa0ycBBFMbN4Yl1ga1za22OJ8/ZBTSH0hIiqAGtVYbgJfwi/V5gHy6ptHpypA==
 
-fun-model@6.*:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/fun-model/-/fun-model-6.4.0.tgz#9e99fe067861bacd7383fbe2f3d67577a2aaf23b"
-  integrity sha512-/ZNoAosMVc5dHrjmRSJh6W0PhYlaieXs39eBu4BFAKo4q+w+8EtMCg5xInL6iH3gPOEKjj7PKz5qYgCbMTg7ww==
+fun-model@7.*:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/fun-model/-/fun-model-7.0.1.tgz#dea0ff4ac6d6cf90ca46a9716e46d9efa4eab651"
+  integrity sha512-1/M0RDuCKtGNI8Es5jLva/hSNW9rVkyoCij2hSG9MoxaoIAXKXJbitMfJQ+mdeN0W4ZQlrZWdfXVXDTGf5cemQ==
 
 moment@^2.10.6:
-  version "2.29.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
-  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==

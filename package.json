@@ -1,6 +1,6 @@
 {
     "name": "bobflux",
-    "version": "10.0.2",
+    "version": "11.1.0",
     "description": "Bobflux is pure functional implementation of FLUX architecture.",
     "main": "./index.js",
     "types": "index.d.ts",
@@ -41,7 +41,7 @@
     },
     "dependencies": {
         "bobril": "*",
-        "fun-model": "6.*"
+        "fun-model": "7.*"
     },
     "devDependencies": {
         "bobril-flexbox-grid": "*",

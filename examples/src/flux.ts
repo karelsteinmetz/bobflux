@@ -2,7 +2,7 @@ import * as f from "../../index";
 
 export * from "../../index";
 
-export const createUpdateAction = <TState extends f.IState | undefined, TParams>(
+export const createUpdateAction = <TState extends f.IState | undefined, TParams extends {}>(
     cursor: f.ICursor<TState> | f.ICursorFactory<TState, TParams>,
     postHandler?: (state: TState, params?: TParams) => TState
 ) =>
